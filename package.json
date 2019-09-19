@@ -1,0 +1,44 @@
+{
+  "name": "creative-coding-core",
+  "description": "Utility library that might be useful for creative coding.",
+  "version": "0.1.0",
+  "author": "FAL",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^1.13.0",
+    "@typescript-eslint/parser": "^1.13.0",
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "prettier": "^1.18.2",
+    "rollup": "^1.21.4",
+    "rollup-plugin-typescript2": "^0.21.2",
+    "terser": "^4.3.1",
+    "typedoc": "^0.15.0",
+    "typescript": "^3.6.3"
+  },
+  "files": [
+    "lib",
+    "types",
+    "doc"
+  ],
+  "jsnext:main": "lib/creative-coding-core.mjs",
+  "license": "MIT",
+  "main": "lib/creative-coding-core.js",
+  "module": "lib/creative-coding-core.mjs",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fal-works/creative-coding-core"
+  },
+  "scripts": {
+    "build": "npm-run-all rollup typedoc eslint:es prettier:es terser:es eslint:umd prettier:umd terser:umd",
+    "eslint:es": "eslint --fix ./lib/creative-coding-core.mjs",
+    "eslint:umd": "eslint --fix ./lib/creative-coding-core.js",
+    "prettier:es": "prettier --write ./lib/creative-coding-core.mjs",
+    "prettier:umd": "prettier --write ./lib/creative-coding-core.js",
+    "rollup": "rollup -c",
+    "terser:es": "terser ./lib/creative-coding-core.mjs -c -m -o ./lib/creative-coding-core.min.mjs --comments --ecma 6",
+    "terser:umd": "terser ./lib/creative-coding-core.js -c -m -o ./lib/creative-coding-core.min.js --comments --ecma 6",
+    "typedoc": "typedoc ./src --excludeNotExported"
+  },
+  "types": "types/creative-coding-core.d.ts"
+}

@@ -1,0 +1,13 @@
+{
+  "out": "doc",
+  "mode": "modules",
+  "excludeExternals": true,
+  "excludeNotExported": true,
+  "excludePrivate": true,
+  "target": "ES6",
+  "theme": "minimal",
+  "readme": "README.md",
+  "hideGenerator": true,
+  "ignoreCompilerErrors": false,
+  "includeDeclarations": true
+}
