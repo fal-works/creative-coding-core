@@ -1,8 +1,12 @@
 {
-  "name": "creative-coding-core",
+  "name": "@fal-works/creative-coding-core",
   "description": "Utility library that might be useful for creative coding.",
   "version": "0.1.0",
   "author": "FAL",
+  "bugs": {
+    "url": "https://github.com/fal-works/creative-coding-core/issues"
+  },
+  "dependencies": {},
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^1.13.0",
     "@typescript-eslint/parser": "^1.13.0",
@@ -16,18 +20,24 @@
     "typedoc": "^0.15.0",
     "typescript": "^3.6.3"
   },
+  "directories": {
+    "doc": "doc",
+    "lib": "lib"
+  },
   "files": [
     "lib",
     "types",
     "doc"
   ],
+  "homepage": "https://github.com/fal-works/creative-coding-core#readme",
   "jsnext:main": "lib/creative-coding-core.mjs",
+  "keywords": [],
   "license": "MIT",
   "main": "lib/creative-coding-core.js",
   "module": "lib/creative-coding-core.mjs",
   "repository": {
     "type": "git",
-    "url": "https://github.com/fal-works/creative-coding-core"
+    "url": "git+https://github.com/fal-works/creative-coding-core.git"
   },
   "scripts": {
     "build": "npm-run-all rollup typedoc eslint:es prettier:es terser:es eslint:umd prettier:umd terser:umd",
