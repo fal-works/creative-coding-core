@@ -39,11 +39,11 @@ export const add = (a: Unit, b: Unit): Unit => {
 
 /**
  * Creates a new vector from polar coordinates `angle` and `length`.
- * @param angle
  * @param length
+ * @param angle
  * @return new `Vector2D`.
  */
-export const fromPolar = (angle: number, length: number): Unit => {
+export const fromPolar = (length: number, angle: number): Unit => {
   return {
     x: length * Math.cos(angle),
     y: length * Math.sin(angle)
@@ -59,8 +59,8 @@ export const fromPolar = (angle: number, length: number): Unit => {
  */
 export const addPolar = (
   vector: Unit,
-  angle: number,
-  length: number
+  length: number,
+  angle: number
 ): Unit => {
   return {
     x: vector.x + length * Math.cos(angle),
