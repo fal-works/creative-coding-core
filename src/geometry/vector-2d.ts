@@ -51,10 +51,10 @@ export const fromPolar = (length: number, angle: number): Unit => {
 };
 
 /**
- * Creates a new vector by adding polar coordinates `angle` and `length`.
+ * Creates a new vector by adding polar coordinates.
  * @param vector
- * @param angle
  * @param length
+ * @param angle
  * @return new `Vector2D`.
  */
 export const addPolar = (
@@ -65,5 +65,23 @@ export const addPolar = (
   return {
     x: vector.x + length * Math.cos(angle),
     y: vector.y + length * Math.sin(angle)
+  };
+};
+
+/**
+ * Creates a new vector by subtracting polar coordinates.
+ * @param vector
+ * @param length
+ * @param angle
+ * @return new `Vector2D`.
+ */
+export const subtractPolar = (
+  vector: Unit,
+  length: number,
+  angle: number
+): Unit => {
+  return {
+    x: vector.x - length * Math.cos(angle),
+    y: vector.y - length * Math.sin(angle)
   };
 };
