@@ -9,3 +9,6 @@ export { RectangleSize };
 
 import * as Vector2D from "./vector-2d";
 export { Vector2D };
+
+import * as Bezier from "./bezier";
+export { Bezier };
