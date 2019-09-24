@@ -1,4 +1,4 @@
-import { RectangleSize } from "../geometry/rectangle-size";
+import { Unit } from "../geometry/rectangle-size";
 
 /**
  * Finds HTML element by `id`. If not found, returns `document.body`.
@@ -12,7 +12,7 @@ export const getElementOrBody = (id: string): HTMLElement =>
  * If `node === document.body`, returns the inner width and height of `window`.
  * @param node
  */
-export const getElementSize = (node: Element): RectangleSize =>
+export const getElementSize = (node: Element): Unit =>
   node === document.body
     ? {
         width: window.innerWidth,

@@ -1,14 +1,11 @@
-export { ArrayList } from "./array-list";
-import * as ArrayListUtility from "./array-list-utility";
-export { ArrayListUtility };
+import * as ArrayList from "./array-list";
+export { ArrayList };
 
 import * as ArrayUtility from "./array-utility";
 export { ArrayUtility };
 
-export { Lazy } from "./lazy";
-import * as LazyUtility from "./lazy-utility";
-export { LazyUtility };
+import * as Lazy from "./lazy";
+export { Lazy };
 
-export { Sweepable } from "./sweepable";
-import * as SweepableUtility from "./sweepable-utility";
-export { SweepableUtility };
+import * as Sweepable from "./sweepable";
+export { Sweepable };

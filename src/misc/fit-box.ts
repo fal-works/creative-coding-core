@@ -1,4 +1,4 @@
-import { RectangleSize } from "../geometry/rectangle-size";
+import { Unit } from "../geometry/rectangle-size";
 
 /**
  * Parameter for `getScaleFactor()`.
@@ -18,8 +18,8 @@ export const enum FittingOption {
  * @param fittingOption Defaults to `FIT_TO_BOX`.
  */
 export const calculateScaleFactor = (
-  nonScaledSize: RectangleSize,
-  targetSize: RectangleSize,
+  nonScaledSize: Unit,
+  targetSize: Unit,
   fittingOption?: FittingOption
 ): number => {
   switch (fittingOption) {

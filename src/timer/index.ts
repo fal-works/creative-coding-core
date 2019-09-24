@@ -1,7 +1,5 @@
-export { Timer, TimerListener } from "./timer";
-import * as TimerUtility from "./timer-utility";
-export { TimerUtility };
+import * as Timer from "./timer";
+export { Timer };
 
-export { TimerChain } from "./timer-chain";
-import * as TimerChainUtility from "./timer-chain-utility";
-export { TimerChainUtility };
+import * as TimerChain from "./timer-chain";
+export { TimerChain };

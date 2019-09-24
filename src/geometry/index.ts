@@ -1,14 +1,11 @@
 import * as Angle from "./angle";
 export { Angle };
 
-export { RectangleRegion } from "./rectangle-region";
-import * as RectangleRegionUtility from "./rectangle-region-utility";
-export { RectangleRegionUtility };
+import * as RectangleRegion from "./rectangle-region";
+export { RectangleRegion };
 
-export { RectangleSize } from "./rectangle-size";
-import * as RectangleSizeUtility from "./rectangle-size-utility";
-export { RectangleSizeUtility };
+import * as RectangleSize from "./rectangle-size";
+export { RectangleSize };
 
-export { Vector2D } from "./vector-2d";
-import * as Vector2DUtility from "./vector-2d-utility";
-export { Vector2DUtility };
+import * as Vector2D from "./vector-2d";
+export { Vector2D };
