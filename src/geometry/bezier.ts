@@ -1,4 +1,4 @@
-import { Vector2D } from "./";
+import * as Vector2D from "./vector-2d";
 
 export interface ControlLine {
   readonly length: number;
