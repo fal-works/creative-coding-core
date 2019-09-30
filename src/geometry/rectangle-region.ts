@@ -12,7 +12,10 @@ export interface Unit {
   readonly rightBottom: Vector2D.Unit;
 }
 
-export const create = (topLeftPosition: Vector2D.Unit, size: RectangleSize.Unit) => {
+export const create = (
+  topLeftPosition: Vector2D.Unit,
+  size: RectangleSize.Unit
+): Unit => {
   return {
     topLeft: topLeftPosition,
     rightBottom: {

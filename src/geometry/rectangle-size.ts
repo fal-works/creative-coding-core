@@ -10,12 +10,10 @@ export interface Unit {
  * Calculates the aspect ratio i.e. `width / height`.
  * @param size
  */
-export const getAspectRatio = (size: Unit): number =>
-  size.width / size.height;
+export const getAspectRatio = (size: Unit): number => size.width / size.height;
 
 /**
  * Calculates the area i.e. `width * height`.
  * @param size
  */
-export const getArea = (size: Unit): number =>
-  size.width * size.height;
+export const getArea = (size: Unit): number => size.width * size.height;
