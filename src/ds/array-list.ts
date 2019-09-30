@@ -73,10 +73,28 @@ export const clearReference = <T>(arrayList: Unit<T>): void => {
  * @param arrayList
  * @param callback
  */
-export const loop = <T>(
+export const loop = <T>(arrayList: Unit<T>, callback: (v: T) => void): void =>
+  arrays.loopRange(arrayList.array, callback, 0, arrayList.size);
+
+/**
+ * Runs `callback` for each element of `arrayList` in descending order.
+ * @param arrayList
+ * @param callback
+ */
+export const loopBackwards = <T>(
   arrayList: Unit<T>,
   callback: (v: T) => void
-): void => arrays.loopRange(arrayList.array, callback, 0, arrayList.size);
+): void =>
+  arrays.loopRangeBackwards(arrayList.array, callback, 0, arrayList.size);
+
+/**
+ * Finds `element` in `arrayList`.
+ * @param arrayList
+ * @param element
+ * @return The index of `element`. Negative if not found.
+ */
+export const findIndex = <T>(arrayList: Unit<T>, element: T): number =>
+  arrayList.array.indexOf(element);
 
 /**
  * Removes the element at `index`.
@@ -92,6 +110,22 @@ export const removeShift = <T>(arrayList: Unit<T>, index: number): T => {
   arrayList.size = size - 1;
 
   return removedElement;
+};
+
+/**
+ * Removes `element`.
+ * All subsequent elements will be shifted to the previous index.
+ * @param arrayList
+ * @param element
+ * @return The removed element, or `null` if not found.
+ */
+export const removeShiftElement = <T>(
+  arrayList: Unit<T>,
+  element: T
+): T | null => {
+  const index = findIndex(arrayList, element);
+  if (index >= 0) return removeShift(arrayList, index);
+  return null;
 };
 
 /**
@@ -111,4 +145,19 @@ export const removeSwap = <T>(arrayList: Unit<T>, index: number): T => {
   arrayList.size = lastIndex;
 
   return removedElement;
+};
+
+/**
+ * Removes `element` by replacing it with the last element.
+ * @param arrayList
+ * @param element
+ * @return The removed element, or `null` if not found.
+ */
+export const removeSwapElement = <T>(
+  arrayList: Unit<T>,
+  element: T
+): T | null => {
+  const index = findIndex(arrayList, element);
+  if (index >= 0) return removeSwap(arrayList, index);
+  return null;
 };
