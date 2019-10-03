@@ -56,10 +56,7 @@ export const step = (timerUnit: Unit): void => {
   timerUnit.progressRatio += progressRatioChangeRate;
 };
 
-export const addOnComplete = (
-  timerUnit: Unit,
-  onComplete: Listener
-): Unit => {
+export const addOnComplete = (timerUnit: Unit, onComplete: Listener): Unit => {
   const newUnit: Mutable<Unit> = Object.assign({}, timerUnit);
   const oldOnComplete = timerUnit.onComplete;
   newUnit.onComplete = () => {

@@ -21,7 +21,9 @@ export interface Curve {
   readonly paths: readonly PathSegment[];
 }
 
-export const createCurve = (vertexPropertyList: readonly VertexProperty[]): Curve => {
+export const createCurve = (
+  vertexPropertyList: readonly VertexProperty[]
+): Curve => {
   const paths: PathSegment[] = [];
   const len = vertexPropertyList.length;
   let previousVertex = vertexPropertyList[0];
@@ -32,8 +34,16 @@ export const createCurve = (vertexPropertyList: readonly VertexProperty[]): Curv
     const currentControlLine = currentVertex.controlLine;
 
     paths.push({
-      controlPoint1: Vector2D.addPolar(previousVertex.point, 0.5 * previousControlLine.length, previousControlLine.angle),
-      controlPoint2: Vector2D.subtractPolar(currentVertex.point, 0.5 * currentControlLine.length, currentControlLine.angle),
+      controlPoint1: Vector2D.addPolar(
+        previousVertex.point,
+        0.5 * previousControlLine.length,
+        previousControlLine.angle
+      ),
+      controlPoint2: Vector2D.subtractPolar(
+        currentVertex.point,
+        0.5 * currentControlLine.length,
+        currentControlLine.angle
+      ),
       targetPoint: currentVertex.point
     });
 

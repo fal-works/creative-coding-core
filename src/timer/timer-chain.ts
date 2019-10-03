@@ -22,10 +22,7 @@ export const next = (chain: Unit): Timer.Unit => {
   return chain.current;
 };
 
-export const create = (
-  timers: Timer.Unit[],
-  looped: boolean = false
-): Unit => {
+export const create = (timers: Timer.Unit[], looped: boolean = false): Unit => {
   // eslint-disable-next-line prefer-const
   let newChain: Unit;
   const newTimers: Timer.Unit[] = new Array(timers.length);

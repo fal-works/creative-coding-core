@@ -15,7 +15,9 @@ export interface Sweepable {
  * Removes all elements where `needsSweep == true`.
  * @param arrayList
  */
-export const sweep = <T extends Sweepable>(arrayList: ArrayList.Unit<T>): void => {
+export const sweep = <T extends Sweepable>(
+  arrayList: ArrayList.Unit<T>
+): void => {
   const { array, size } = arrayList;
   let writeIndex = 0;
 

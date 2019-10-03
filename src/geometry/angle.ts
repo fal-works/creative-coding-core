@@ -11,6 +11,8 @@ export const createArray = (resolution: number): readonly number[] => {
   return array;
 };
 
-export const fromDegrees = (degrees: number): number => DEGREES_TO_RADIANS_FACTOR * degrees;
+export const fromDegrees = (degrees: number): number =>
+  DEGREES_TO_RADIANS_FACTOR * degrees;
 
-export const toDegrees = (radians: number): number => RADIANS_TO_DEGREES_FACTOR * radians;
+export const toDegrees = (radians: number): number =>
+  RADIANS_TO_DEGREES_FACTOR * radians;
