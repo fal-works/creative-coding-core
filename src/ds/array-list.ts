@@ -1,4 +1,4 @@
-import * as arrays from "./array-utility";
+import * as ArrayUtility from "./array-utility";
 
 /**
  * A basic array-based list.
@@ -17,10 +17,53 @@ export interface Unit<T> {
   size: number;
 }
 
+/**
+ * Creates an array-list unit.
+ * @param initialCapacity
+ */
 export const create = <T>(initialCapacity: number): Unit<T> => {
   return {
     array: new Array<T>(initialCapacity),
     size: 0
+  };
+};
+
+/**
+ * Creates an array-list unit filled with `value`.
+ * @param size
+ * @param value
+ */
+export const createFilled = <T>(size: number, value: T): Unit<T> => {
+  return {
+    array: new Array<T>(size).fill(value),
+    size
+  };
+};
+
+/**
+ * Creates an array-list unit, filled by running `factory` and assignint the result for each index.
+ * @param size
+ * @param factory
+ */
+export const createPopulated = <T>(size: number, factory: () => T): Unit<T> => {
+  return {
+    array: ArrayUtility.populate(new Array<T>(size), factory),
+    size
+  };
+};
+
+/**
+ * Creates an array-list unit by reusing the reference to `array`.
+ * The `size` of the array-list will be `array.length`.
+ * Be sure that `array` is filled with valid elements.
+ *
+ * @param array
+ * @return A new array-list unit.
+ */
+export const fromArray = <T>(array: T[]): Unit<T> => {
+  return {
+    array,
+    size: array.length
   };
 };
 
@@ -74,7 +117,7 @@ export const clearReference = <T>(arrayList: Unit<T>): void => {
  * @param callback
  */
 export const loop = <T>(arrayList: Unit<T>, callback: (v: T) => void): void =>
-  arrays.loopRange(arrayList.array, callback, 0, arrayList.size);
+  ArrayUtility.loopRange(arrayList.array, callback, 0, arrayList.size);
 
 /**
  * Runs `callback` for each element of `arrayList` in descending order.
@@ -85,7 +128,7 @@ export const loopBackwards = <T>(
   arrayList: Unit<T>,
   callback: (v: T) => void
 ): void =>
-  arrays.loopRangeBackwards(arrayList.array, callback, 0, arrayList.size);
+  ArrayUtility.loopRangeBackwards(arrayList.array, callback, 0, arrayList.size);
 
 /**
  * Finds `element` in `arrayList`.
@@ -160,4 +203,16 @@ export const removeSwapElement = <T>(
   const index = findIndex(arrayList, element);
   if (index >= 0) return removeSwap(arrayList, index);
   return null;
+};
+
+/**
+ * Fills the entire `arrayList` by running `factory` and assigning result for each index.
+ * @param arrayList
+ * @param factory
+ */
+export const populate = <T>(arrayList: Unit<T>, factory: () => T) => {
+  ArrayUtility.populate(arrayList.array, factory);
+  arrayList.size = arrayList.array.length;
+
+  return arrayList;
 };
