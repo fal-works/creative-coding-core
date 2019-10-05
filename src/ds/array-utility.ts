@@ -38,7 +38,7 @@ export const loopRangeBackwards = <T>(
   let index = end;
   while (index > start) {
     --index;
-    callback(array[index], length, array);
+    callback(array[index], index, array);
   }
 };
 
@@ -149,3 +149,21 @@ export const flatRecursive = <T>(array: ArrayOrValue<T>[], depth: number = 1) =>
         []
       )
     : array;
+
+/**
+ * Fills `array` by running `factory` and assigning the result for each index of `array`.
+ * @param array
+ * @param factory A function that returns a new element for assigning to `array`.
+ * @param length The length to populate. Default value is `array.length`.
+ * @return Filled `array`.
+ */
+export const populate = <T>(
+  array: T[],
+  factory: () => T,
+  length?: number
+): T[] => {
+  const len = length || array.length;
+  for (let i = 0; i < len; i += 1) array[i] = factory();
+
+  return array;
+};
