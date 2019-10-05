@@ -9,3 +9,6 @@ export { Lazy };
 
 import * as Sweepable from "./sweepable";
 export { Sweepable };
+
+import * as StructureOfArrays from "./structure-of-arrays";
+export { StructureOfArrays };
