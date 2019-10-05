@@ -1,4 +1,4 @@
-import { Mutable } from "../types/mutable";
+import { Mutable } from "../../types/mutable";
 
 export type Listener = (timerUnit: Unit) => void;
 

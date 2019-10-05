@@ -1,11 +1,13 @@
 import * as Timer from "./timer";
-import { loop } from "../ds/array-utility";
+import { loop } from "../../ds/array-utility";
 
 export interface Unit {
   readonly timers: readonly Timer.Unit[];
   current: Timer.Unit;
   index: number;
 }
+
+export const step = (chain: Unit): void => Timer.step(chain.current);
 
 export const setUnitIndex = (chain: Unit, index: number): void => {
   chain.index = index;
