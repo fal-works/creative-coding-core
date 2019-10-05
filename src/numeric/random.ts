@@ -1,4 +1,18 @@
 import { Range } from "../types/range";
+import { TWO_PI } from "../numeric/math";
+
+/**
+ * Returns random value from `0` up to (but not including) `max`.
+ * @param max
+ * @return A random value.
+ */
+export const value = (max: number) => Math.random() * max;
+
+/**
+ * Returns random value from `0` to (but not including) `2 * PI`.
+ * @return A random radians value.
+ */
+export const angle = () => Math.random() * TWO_PI;
 
 /**
  * Returns random value from `start` up to (but not including) `end`.
