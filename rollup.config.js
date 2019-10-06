@@ -2,7 +2,7 @@ import typescript from "rollup-plugin-typescript2";
 
 const moduleName = "creative-coding-core";
 const umdName = "CreativeCodingCore";
-const version = "0.1.4";
+const version = "0.1.5";
 const year = "2019";
 const description = `* Utility library that might be useful for creative coding.`;
 
