@@ -20,3 +20,5 @@ export const step = (timerSet: Unit) => {
     if (timer.isCompleted) ArrayList.removeSwap(timerSet, i);
   }
 };
+
+export const clear = (timerSet: Unit) => ArrayList.clearReference(timerSet);
