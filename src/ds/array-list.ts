@@ -131,6 +131,23 @@ export const loopBackwards = <T>(
   ArrayUtility.loopRangeBackwards(arrayList.array, callback, 0, arrayList.size);
 
 /**
+ * Finds the first element where `predicate` returns true.
+ * @param arrayList
+ * @param predicate Function that returns `true` if a given value matches the condition.
+ * @return The found `element`. `undefined` if not found.
+ */
+export const find = <T>(
+  arrayList: Unit<T>,
+  predicate: (value: T, index: number, array: T[]) => boolean
+): T | undefined => {
+  const { array, size } = arrayList;
+  for (let i = 0; i < size; i += 1) {
+    if (predicate(array[i], i, array)) return array[i];
+  }
+  return undefined;
+};
+
+/**
  * Finds `element` in `arrayList`.
  * @param arrayList
  * @param element
