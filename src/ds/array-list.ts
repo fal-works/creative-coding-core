@@ -134,10 +134,16 @@ export const loopBackwards = <T>(
  * Finds `element` in `arrayList`.
  * @param arrayList
  * @param element
- * @return The index of `element`. Negative if not found.
+ * @return The index of `element`. `-1` if not found.
  */
-export const findIndex = <T>(arrayList: Unit<T>, element: T): number =>
-  arrayList.array.indexOf(element);
+export const findIndex = <T>(arrayList: Unit<T>, element: T): number => {
+  const { array, size } = arrayList;
+  for (let i = 0; i < size; i += 1) {
+    if (array[i] === element) return i;
+  }
+
+  return -1;
+};
 
 /**
  * Removes the element at `index`.
