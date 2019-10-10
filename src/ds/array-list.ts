@@ -229,6 +229,48 @@ export const removeSwapElement = <T>(
 };
 
 /**
+ * Run `removeShift()` for all indices of element where `predicate` returns true.
+ * @param arrayList
+ * @param predicate
+ */
+export const removeShiftAll = <T>(
+  arrayList: Unit<T>,
+  predicate: (value: T, index: number, array: T[]) => boolean
+): boolean => {
+  // TODO: optimize
+  let found = false;
+  const array = arrayList.array;
+  for (let i = 0; i < arrayList.size; i += 1) {
+    if (predicate(array[i], i, array)) {
+      removeShift(arrayList, i);
+      found = true;
+    }
+  }
+  return found;
+};
+
+/**
+ * Run `removeSwap()` for all indices of element where `predicate` returns true.
+ * @param arrayList
+ * @param predicate
+ */
+export const removeSwapAll = <T>(
+  arrayList: Unit<T>,
+  predicate: (value: T, index: number, array: T[]) => boolean
+): boolean => {
+  // TODO: optimize
+  let found = false;
+  const array = arrayList.array;
+  for (let i = 0; i < arrayList.size; i += 1) {
+    if (predicate(array[i], i, array)) {
+      removeSwap(arrayList, i);
+      found = true;
+    }
+  }
+  return found;
+};
+
+/**
  * Fills the entire `arrayList` by running `factory` and assigning result for each index.
  * @param arrayList
  * @param factory
