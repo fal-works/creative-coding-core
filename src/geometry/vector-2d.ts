@@ -14,6 +14,13 @@ export const zero: Unit = {
 };
 
 /**
+ * Checks if a given vector is completely zero.
+ * @param v
+ * @return `true` if zero.
+ */
+export const isZero = (v: Unit): boolean => v.x === 0 && v.y === 0;
+
+/**
  * Creates a new vector from polar coordinates `angle` and `length`.
  * @param length
  * @param angle
