@@ -116,8 +116,10 @@ export const clearReference = <T>(arrayList: Unit<T>): void => {
  * @param arrayList
  * @param callback
  */
-export const loop = <T>(arrayList: Unit<T>, callback: (v: T) => void): void =>
-  ArrayUtility.loopRange(arrayList.array, callback, 0, arrayList.size);
+export const loop = <T>(
+  arrayList: Unit<T>,
+  callback: (value: T, index: number, array: readonly T[]) => void
+): void => ArrayUtility.loopRange(arrayList.array, callback, 0, arrayList.size);
 
 /**
  * Runs `callback` for each element of `arrayList` in descending order.
@@ -126,7 +128,7 @@ export const loop = <T>(arrayList: Unit<T>, callback: (v: T) => void): void =>
  */
 export const loopBackwards = <T>(
   arrayList: Unit<T>,
-  callback: (v: T) => void
+  callback: (value: T, index: number, array: readonly T[]) => void
 ): void =>
   ArrayUtility.loopRangeBackwards(arrayList.array, callback, 0, arrayList.size);
 

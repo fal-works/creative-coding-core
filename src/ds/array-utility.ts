@@ -6,7 +6,7 @@
  */
 export const loopRange = <T>(
   array: readonly T[],
-  callback: (currentValue: T, index?: number, array?: readonly T[]) => void,
+  callback: (currentValue: T, index: number, array: readonly T[]) => void,
   start: number,
   end: number
 ): void => {
@@ -21,7 +21,7 @@ export const loopRange = <T>(
  */
 export const loop = <T>(
   array: readonly T[],
-  callback: (currentValue: T, index?: number, array?: readonly T[]) => void
+  callback: (currentValue: T, index: number, array: readonly T[]) => void
 ): void => loopRange(array, callback, 0, array.length);
 
 /**
@@ -31,7 +31,7 @@ export const loop = <T>(
  */
 export const loopRangeBackwards = <T>(
   array: readonly T[],
-  callback: (currentValue: T, index?: number, array?: readonly T[]) => void,
+  callback: (currentValue: T, index: number, array: readonly T[]) => void,
   start: number,
   end: number
 ): void => {
@@ -49,7 +49,7 @@ export const loopRangeBackwards = <T>(
  */
 export const loopBackwards = <T>(
   array: readonly T[],
-  callback: (currentValue: T, index?: number, array?: readonly T[]) => void
+  callback: (currentValue: T, index: number, array: readonly T[]) => void
 ): void => loopRangeBackwards(array, callback, 0, array.length);
 
 /**
