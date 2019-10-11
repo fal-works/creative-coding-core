@@ -14,11 +14,11 @@
     "eslint-config-prettier": "^4.3.0",
     "eslint-plugin-prettier": "^3.1.1",
     "prettier": "^1.18.2",
-    "rollup": "^1.21.4",
+    "rollup": "^1.23.1",
     "rollup-plugin-typescript2": "^0.21.2",
-    "terser": "^4.3.1",
+    "terser": "^4.3.8",
     "typedoc": "^0.15.0",
-    "typescript": "^3.6.3"
+    "typescript": "^3.6.4"
   },
   "directories": {
     "doc": "doc",
