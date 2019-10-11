@@ -38,8 +38,8 @@ export const reset = (timerUnit: Unit): void => {
   timerUnit.isCompleted = false;
 };
 
-export const step = (timerUnit: Unit): void => {
-  if (timerUnit.isCompleted) return;
+export const step = (timerUnit: Unit): boolean => {
+  if (timerUnit.isCompleted) return true;
 
   const { count, duration, progressRatioChangeRate } = timerUnit;
 
@@ -48,12 +48,14 @@ export const step = (timerUnit: Unit): void => {
     timerUnit.onProgress(timerUnit);
     timerUnit.isCompleted = true;
     timerUnit.onComplete(timerUnit);
-    return;
+    return true;
   }
 
   timerUnit.onProgress(timerUnit);
   timerUnit.count += 1;
   timerUnit.progressRatio += progressRatioChangeRate;
+
+  return false;
 };
 
 export const addOnComplete = (timerUnit: Unit, onComplete: Listener): Unit => {
