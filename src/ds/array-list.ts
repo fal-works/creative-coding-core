@@ -229,23 +229,36 @@ export const removeSwapElement = <T>(
 };
 
 /**
- * Run `removeShift()` for all indices of element where `predicate` returns true.
+ * Runs `predicate` for each element and removes the element if `predicate` returns `true`.
+ * This does not use `removeShift()` internally.
+ *
+ * Note: Do not add elements within this loop.
+ *
  * @param arrayList
  * @param predicate
+ * @return `true` if any element has been removed.
  */
 export const removeShiftAll = <T>(
   arrayList: Unit<T>,
   predicate: (value: T, index: number, array: T[]) => boolean
 ): boolean => {
-  // TODO: optimize
+  const { array, size } = arrayList;
+  let writeIndex = 0;
   let found = false;
-  const array = arrayList.array;
-  for (let i = 0; i < arrayList.size; i += 1) {
-    if (predicate(array[i], i, array)) {
-      removeShift(arrayList, i);
+
+  for (let readIndex = 0; readIndex < size; readIndex += 1) {
+    const value = array[readIndex];
+    if (predicate(value, readIndex, array)) {
       found = true;
+      continue;
     }
+
+    array[writeIndex] = value;
+    writeIndex += 1;
   }
+
+  arrayList.size = writeIndex;
+
   return found;
 };
 
@@ -253,6 +266,7 @@ export const removeShiftAll = <T>(
  * Run `removeSwap()` for all indices of element where `predicate` returns true.
  * @param arrayList
  * @param predicate
+ * @return `true` if any element has been removed.
  */
 export const removeSwapAll = <T>(
   arrayList: Unit<T>,
