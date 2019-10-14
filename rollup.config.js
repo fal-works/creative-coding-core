@@ -10,8 +10,11 @@ const year = "2019";
 const description = `* Utility library that might be useful for creative coding.`;
 
 const bannerComment = `/**
+ * ${moduleName}
+ *
 ${description}
  * GitHub repository: {@link https://github.com/fal-works/${moduleName}}
+ *
  * @module ${moduleName}
  * @copyright ${year} FAL
  * @author FAL <contact@fal-works.com>
