@@ -8,14 +8,15 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^1.13.0",
-    "@typescript-eslint/parser": "^1.13.0",
-    "eslint": "^5.16.0",
-    "eslint-config-prettier": "^4.3.0",
+    "@typescript-eslint/eslint-plugin": "^2.3.3",
+    "@typescript-eslint/parser": "^2.3.3",
+    "eslint": "^6.5.1",
+    "eslint-config-prettier": "^6.4.0",
     "eslint-plugin-prettier": "^3.1.1",
     "prettier": "^1.18.2",
     "rollup": "^1.23.1",
-    "rollup-plugin-typescript2": "^0.21.2",
+    "rollup-plugin-cleanup": "^3.1.1",
+    "rollup-plugin-typescript2": "^0.24.3",
     "terser": "^4.3.8",
     "typedoc": "^0.15.0",
     "typescript": "^3.6.4"
@@ -24,6 +25,11 @@
     "doc": "doc",
     "lib": "lib"
   },
+  "eslintIgnore": [
+    "*.min.js",
+    "*.min.mjs",
+    "types/**/*.ts"
+  ],
   "files": [
     "lib",
     "types",
