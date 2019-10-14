@@ -22,7 +22,6 @@
     "typescript": "^3.6.4"
   },
   "directories": {
-    "doc": "doc",
     "lib": "lib"
   },
   "eslintIgnore": [
@@ -32,8 +31,7 @@
   ],
   "files": [
     "lib",
-    "types",
-    "doc"
+    "types"
   ],
   "homepage": "https://github.com/fal-works/creative-coding-core#readme",
   "jsnext:main": "lib/creative-coding-core.mjs",
@@ -46,7 +44,7 @@
     "url": "git+https://github.com/fal-works/creative-coding-core.git"
   },
   "scripts": {
-    "build": "npm-run-all rollup typedoc eslint:es prettier:es terser:es eslint:umd prettier:umd terser:umd",
+    "build": "npm-run-all rollup eslint:es prettier:es terser:es eslint:umd prettier:umd terser:umd",
     "eslint:es": "eslint --fix ./lib/creative-coding-core.mjs",
     "eslint:umd": "eslint --fix ./lib/creative-coding-core.js",
     "prettier:es": "prettier --write ./lib/creative-coding-core.mjs",
