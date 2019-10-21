@@ -1,8 +1,8 @@
 import typescript from "rollup-plugin-typescript2";
 import cleanup from "rollup-plugin-cleanup";
 
-const version = "0.1.7";
-const cleanBuild = false;
+const version = "0.1.8";
+const cleanBuild = true;
 
 const moduleName = "creative-coding-core";
 const umdName = "CreativeCodingCore";
