@@ -141,7 +141,7 @@ export type ArrayOrValue<T> = T | T[];
  * @param depth
  * @return A new array.
  */
-export const flatRecursive = <T>(array: ArrayOrValue<T>[], depth: number = 1) =>
+export const flatRecursive = <T>(array: ArrayOrValue<T>[], depth = 1) =>
   depth > 0
     ? array.reduce(
         (acc: ArrayOrValue<T>[], cur): ArrayOrValue<T>[] =>

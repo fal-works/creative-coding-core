@@ -22,9 +22,9 @@ export interface Unit {
 export const create = (
   on: () => void,
   off: () => void,
-  wpm: number = 25,
+  wpm = 25,
   signals: Signal.Sequence = [],
-  loop: boolean = false
+  loop = false
 ): Unit => {
   return {
     on,

@@ -22,7 +22,7 @@ export const bind = (easingFunction: FunctionUnit) => (
 export const concatenate = (
   easingFunctionA: FunctionUnit,
   easingFunctionB: FunctionUnit,
-  thresholdRatio: number = 0.5
+  thresholdRatio = 0.5
 ): FunctionUnit => {
   return ratio => {
     if (ratio < thresholdRatio) return easingFunctionA(ratio / thresholdRatio);
@@ -44,7 +44,7 @@ export const concatenate = (
 export const integrate = (
   easingFunctionA: FunctionUnit,
   easingFunctionB: FunctionUnit,
-  thresholdRatio: number = 0.5
+  thresholdRatio = 0.5
 ): FunctionUnit => {
   return ratio => {
     if (ratio < thresholdRatio)
@@ -105,7 +105,7 @@ export const easeOutQuart: FunctionUnit = ratio => -Math.pow(ratio - 1, 4) + 1;
  * Creates an easeOutBack function.
  * @param ratio
  */
-export const createEaseOutBack = (coefficient: number = 1.70158) => (
+export const createEaseOutBack = (coefficient = 1.70158) => (
   ratio: number
 ): number => {
   const r = ratio - 1;
