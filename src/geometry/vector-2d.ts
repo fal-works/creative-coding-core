@@ -126,3 +126,10 @@ export const distance = (vectorA: Unit, vectorB: Unit): number =>
   Math.sqrt(distanceSquared(vectorA, vectorB));
 
 export const toStr = (vector: Unit): string => `{x:${vector.x},y:${vector.y}}`;
+
+export const copy = (vector: Unit): Unit => {
+  return {
+    x: vector.x,
+    y: vector.y
+  };
+};
