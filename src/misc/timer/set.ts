@@ -22,3 +22,18 @@ export const step = (timerSet: Unit) => {
 };
 
 export const clear = (timerSet: Unit) => ArrayList.clearReference(timerSet);
+
+/**
+ * Creates a timer set instance and returns a set of bound functions.
+ * @param capacity
+ */
+export const construct = (capacity: number) => {
+  const timerSet = create(capacity);
+
+  return {
+    addTimer: (timer: Timer.Unit) => addTimer(timerSet, timer),
+    addChain: (chain: Chain.Unit) => addChain(timerSet, chain),
+    step: () => step(timerSet),
+    clear: () => clear(timerSet)
+  };
+};
