@@ -69,3 +69,17 @@ export const setPolar = (vector: Unit, length: number, angle: number): Unit => {
 
   return vector;
 };
+
+export const multiply = (vector: Unit, multiplier: number): Unit => {
+  vector.x *= multiplier;
+  vector.y *= multiplier;
+
+  return vector;
+};
+
+export const divide = (vector: Unit, divisor: number): Unit => {
+  vector.x /= divisor;
+  vector.y /= divisor;
+
+  return vector;
+};

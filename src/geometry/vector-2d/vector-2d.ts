@@ -123,6 +123,32 @@ export const subtractPolar = (
 };
 
 /**
+ * Creates a new vector with multiplied values.
+ * @param vector
+ * @param multiplier
+ * @return new `Vector2D`.
+ */
+export const multiply = (vector: Unit, multiplier: number): Unit => {
+  return {
+    x: vector.x * multiplier,
+    y: vector.y * multiplier
+  };
+};
+
+/**
+ * Creates a new vector with divided values.
+ * @param vector
+ * @param multiplier
+ * @return new `Vector2D`.
+ */
+export const divide = (vector: Unit, divisor: number): Unit => {
+  return {
+    x: vector.x / divisor,
+    y: vector.y / divisor
+  };
+};
+
+/**
  * Calculates square of distance between `vectorA` and `vectorB`.
  * @param vectorA
  * @param vectorB
