@@ -1,13 +1,16 @@
-import { sq } from "../numeric/math";
+import { sq } from "../../numeric/math";
 
 /**
- * A readonly 2D vector.
+ * Readonly 2D vector.
  */
 export interface Unit {
   readonly x: number;
   readonly y: number;
 }
 
+/**
+ * Zero vector.
+ */
 export const zero: Unit = {
   x: 0,
   y: 0
@@ -119,14 +122,35 @@ export const subtractPolar = (
   };
 };
 
+/**
+ * Calculates square of distance between `vectorA` and `vectorB`.
+ * @param vectorA
+ * @param vectorB
+ * @return Square of distance.
+ */
 export const distanceSquared = (vectorA: Unit, vectorB: Unit): number =>
   sq(vectorB.x - vectorA.x) + sq(vectorB.y - vectorA.y);
 
+/**
+ * Calculates distance between `vectorA` and `vectorB`.
+ * @param vectorA
+ * @param vectorB
+ * @return Distance.
+ */
 export const distance = (vectorA: Unit, vectorB: Unit): number =>
   Math.sqrt(distanceSquared(vectorA, vectorB));
 
+/**
+ * Returns string e.g. `{x:0,y:0}`
+ * @param vector
+ * @return String expression.
+ */
 export const toStr = (vector: Unit): string => `{x:${vector.x},y:${vector.y}}`;
 
+/**
+ * Creates a new vector with same values.
+ * @param vector
+ */
 export const copy = (vector: Unit): Unit => {
   return {
     x: vector.x,
