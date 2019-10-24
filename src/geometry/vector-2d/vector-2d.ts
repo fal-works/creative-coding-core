@@ -1,4 +1,4 @@
-import { sq } from "../../numeric/math";
+import { square } from "../../numeric/math";
 
 /**
  * Readonly 2D vector.
@@ -155,7 +155,7 @@ export const divide = (vector: Unit, divisor: number): Unit => {
  * @return Square of distance.
  */
 export const distanceSquared = (vectorA: Unit, vectorB: Unit): number =>
-  sq(vectorB.x - vectorA.x) + sq(vectorB.y - vectorA.y);
+  square(vectorB.x - vectorA.x) + square(vectorB.y - vectorA.y);
 
 /**
  * Calculates distance between `vectorA` and `vectorB`.
@@ -190,7 +190,7 @@ export const copy = (vector: Unit): Unit => {
  * @return The squared length.
  */
 export const lengthSquared = (vector: Unit): number =>
-  sq(vector.x) + sq(vector.y);
+  square(vector.x) + square(vector.y);
 
 /**
  * Calculates length of `vector`.

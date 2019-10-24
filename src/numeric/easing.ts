@@ -1,4 +1,4 @@
-import { sq, cubic } from "./math";
+import { square, cube } from "./math";
 
 export type FunctionUnit = (ratio: number) => number;
 
@@ -69,25 +69,25 @@ export const easeLinear: FunctionUnit = ratio => ratio;
  * easeInQuad.
  * @param ratio
  */
-export const easeInQuad = sq;
+export const easeInQuad = square;
 
 /**
  * easeOutQuad.
  * @param ratio
  */
-export const easeOutQuad: FunctionUnit = ratio => -sq(ratio - 1) + 1;
+export const easeOutQuad: FunctionUnit = ratio => -square(ratio - 1) + 1;
 
 /**
  * easeInCubic.
  * @param ratio
  */
-export const easeInCubic = cubic;
+export const easeInCubic = cube;
 
 /**
  * easeOutCubic.
  * @param ratio
  */
-export const easeOutCubic: FunctionUnit = ratio => cubic(ratio - 1) + 1;
+export const easeOutCubic: FunctionUnit = ratio => cube(ratio - 1) + 1;
 
 /**
  * easeInQuart.
@@ -109,7 +109,7 @@ export const createEaseOutBack = (coefficient = 1.70158) => (
   ratio: number
 ): number => {
   const r = ratio - 1;
-  return (coefficient + 1) * cubic(r) + coefficient * sq(r) + 1;
+  return (coefficient + 1) * cube(r) + coefficient * square(r) + 1;
 };
 
 export const easeInOutQuad = integrate(easeInQuad, easeOutQuad);

@@ -1,6 +1,5 @@
-export const sq = (v: number) => v * v;
-
-export const cubic = (v: number) => v * v * v;
+export const square = (v: number) => v * v;
+export const cube = (v: number) => v * v * v;
 
 export const PI = Math.PI;
 export const HALF_PI = PI / 2;
