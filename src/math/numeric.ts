@@ -74,6 +74,9 @@ export const cubeRoot = cbrt;
 
 export const square = (v: number) => v * v;
 export const cube = (v: number) => v * v * v;
+export const pow4 = (v: number) => square(v * v);
+export const pow5 = (v: number) => square(v * v) * v;
+
 export const squareInt = (v: number) => imul(v, v);
 export const cubeInt = (v: number) => imul(imul(v, v), v);
 
