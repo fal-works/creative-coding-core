@@ -85,3 +85,12 @@ export const cubeInt = (v: number) => imul(imul(v, v), v);
  */
 export const equal = (a: number, b: number): boolean =>
   abs(a - b) < 2.220446049250313e-16;
+
+/**
+ * Safe version of `Math.atan2`;
+ * @param y
+ * @param x
+ * @return The angle from x-axis to the point. `0` if both `x` and `y` are `0`.
+ */
+export const atan2safe = (y: number, x: number) =>
+  y !== 0 || x !== 0 ? atan2(y, x) : 0;
