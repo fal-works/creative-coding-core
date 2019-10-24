@@ -1,8 +1,23 @@
 import * as Vector2D from "./vector-2d";
+import {
+  ONE_HALF,
+  SQUARE_ROOT_THREE_OVER_TWO,
+  ONE_OVER_SQUARE_ROOT_TWO
+} from "../math/constants";
 
 export const PI = Math.PI;
-export const HALF_PI = PI / 2;
 export const TWO_PI = 2 * PI;
+export const HALF_PI = PI / 2;
+export const THIRD_PI = PI / 3;
+export const QUARTER_PI = PI / 4;
+export const THREE_QUARTERS_PI = 3 * QUARTER_PI;
+
+export const SIN30 = ONE_HALF;
+export const SIN45 = ONE_OVER_SQUARE_ROOT_TWO;
+export const SIN60 = SQUARE_ROOT_THREE_OVER_TWO;
+export const COS30 = SIN60;
+export const COS45 = SIN45;
+export const COS60 = SIN30;
 
 export const DEGREES_TO_RADIANS = TWO_PI / 360;
 export const RADIANS_TO_DEGREES = 360 / TWO_PI;
