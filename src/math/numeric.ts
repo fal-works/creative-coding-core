@@ -94,3 +94,19 @@ export const equal = (a: number, b: number): boolean =>
  */
 export const atan2safe = (y: number, x: number) =>
   y !== 0 || x !== 0 ? atan2(y, x) : 0;
+
+/**
+ * Calculates the sum of squares of `x` and `y`.
+ * @param x
+ * @param y
+ * @return `x^2 + y^2`.
+ */
+export const hypotenuseSquared2D = (x: number, y: number) => x * x + y * y;
+
+/**
+ * A 2D version of `Math.hypot`. Calculates the square root of the sum of squares of `x` and `y`.
+ * @param x
+ * @param y
+ * @return `√(x^2 + y^2)`.
+ */
+export const hypotenuse2D = (x: number, y: number) => sqrt(x * x + y * y);
