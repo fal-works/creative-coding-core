@@ -1,4 +1,10 @@
-import { square } from "../../math/numeric";
+import {
+  cos,
+  sin,
+  hypotenuseSquared2D,
+  hypotenuse2D,
+  atan2safe
+} from "../../math/numeric";
 
 /**
  * Readonly 2D vector.
@@ -31,8 +37,8 @@ export const isZero = (v: Unit): boolean => v.x === 0 && v.y === 0;
  */
 export const fromPolar = (length: number, angle: number): Unit => {
   return {
-    x: length * Math.cos(angle),
-    y: length * Math.sin(angle)
+    x: length * cos(angle),
+    y: length * sin(angle)
   };
 };
 
@@ -72,8 +78,8 @@ export const addCartesian = (vector: Unit, x: number, y: number): Unit => {
  */
 export const addPolar = (vector: Unit, length: number, angle: number): Unit => {
   return {
-    x: vector.x + length * Math.cos(angle),
-    y: vector.y + length * Math.sin(angle)
+    x: vector.x + length * cos(angle),
+    y: vector.y + length * sin(angle)
   };
 };
 
@@ -117,8 +123,8 @@ export const subtractPolar = (
   angle: number
 ): Unit => {
   return {
-    x: vector.x - length * Math.cos(angle),
-    y: vector.y - length * Math.sin(angle)
+    x: vector.x - length * cos(angle),
+    y: vector.y - length * sin(angle)
   };
 };
 
@@ -155,7 +161,7 @@ export const divide = (vector: Unit, divisor: number): Unit => {
  * @return Square of distance.
  */
 export const distanceSquared = (vectorA: Unit, vectorB: Unit): number =>
-  square(vectorB.x - vectorA.x) + square(vectorB.y - vectorA.y);
+  hypotenuseSquared2D(vectorB.x - vectorA.x, vectorB.y - vectorA.y);
 
 /**
  * Calculates distance between `vectorA` and `vectorB`.
@@ -164,7 +170,7 @@ export const distanceSquared = (vectorA: Unit, vectorB: Unit): number =>
  * @return Distance.
  */
 export const distance = (vectorA: Unit, vectorB: Unit): number =>
-  Math.sqrt(distanceSquared(vectorA, vectorB));
+  hypotenuse2D(vectorB.x - vectorA.x, vectorB.y - vectorA.y);
 
 /**
  * Returns string e.g. `{x:0,y:0}`
@@ -190,7 +196,7 @@ export const copy = (vector: Unit): Unit => {
  * @return The squared length.
  */
 export const lengthSquared = (vector: Unit): number =>
-  square(vector.x) + square(vector.y);
+  hypotenuseSquared2D(vector.x, vector.y);
 
 /**
  * Calculates length of `vector`.
@@ -198,14 +204,11 @@ export const lengthSquared = (vector: Unit): number =>
  * @return The length.
  */
 export const length = (vector: Unit): number =>
-  Math.sqrt(lengthSquared(vector));
+  hypotenuse2D(vector.x, vector.y);
 
 /**
  * Calculates angle of `vector` in radians.
  * @param vector
  * @return The angle. `0` if `vector` is a zero vector.
  */
-export const angle = (vector: Unit): number => {
-  const { x, y } = vector;
-  return x !== 0 || y !== 0 ? Math.atan2(y, x) : 0;
-};
+export const angle = (vector: Unit): number => atan2safe(vector.y, vector.x);

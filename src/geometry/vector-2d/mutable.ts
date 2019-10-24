@@ -1,5 +1,6 @@
 import { Mutable } from "../../types/mutable";
 import * as Vector2D from "./vector-2d";
+import { cos, sin } from "../../math/numeric";
 
 export type Unit = Mutable<Vector2D.Unit>;
 
@@ -18,8 +19,8 @@ export const addCartesian = (vector: Unit, x: number, y: number): Unit => {
 };
 
 export const addPolar = (vector: Unit, length: number, angle: number): Unit => {
-  vector.x += length * Math.cos(angle);
-  vector.y += length * Math.sin(angle);
+  vector.x += length * cos(angle);
+  vector.y += length * sin(angle);
 
   return vector;
 };
@@ -43,8 +44,8 @@ export const subtractPolar = (
   length: number,
   angle: number
 ): Unit => {
-  vector.x -= length * Math.cos(angle);
-  vector.y -= length * Math.sin(angle);
+  vector.x -= length * cos(angle);
+  vector.y -= length * sin(angle);
 
   return vector;
 };
@@ -64,8 +65,8 @@ export const setCartesian = (vector: Unit, x: number, y: number): Unit => {
 };
 
 export const setPolar = (vector: Unit, length: number, angle: number): Unit => {
-  vector.x = length * Math.cos(angle);
-  vector.y = length * Math.sin(angle);
+  vector.x = length * cos(angle);
+  vector.y = length * sin(angle);
 
   return vector;
 };

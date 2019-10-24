@@ -1,4 +1,5 @@
 import * as Vector2D from "./vector-2d";
+import { atan2 } from "../math/numeric";
 import {
   ONE_HALF,
   SQUARE_ROOT_THREE_OVER_TWO,
@@ -41,8 +42,10 @@ export const toDegrees = (radians: number): number =>
  * @param position
  * @return The angle. `0` if `position` is a zero vector.
  */
-export const fromOrigin = (position: Vector2D.Unit): number =>
-  Vector2D.isZero(position) ? 0 : Math.atan2(position.y, position.x);
+export const fromOrigin = (position: Vector2D.Unit): number => {
+  const { x, y } = position;
+  return x !== 0 || y !== 0 ? atan2(position.y, position.x) : 0;
+};
 
 /**
  * Calculates the angle in radians between two points.
@@ -56,6 +59,5 @@ export const betweenPoints = (
 ): number => {
   const dx = to.x - from.x;
   const dy = to.y - from.y;
-  if (dx !== 0 || dy !== 0) return Math.atan2(dy, dx);
-  else return 0;
+  return dx !== 0 || dy !== 0 ? atan2(dy, dx) : 0;
 };

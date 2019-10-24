@@ -1,4 +1,4 @@
-import { square, cube } from "./numeric";
+import { square, cube, pow4 } from "./numeric";
 
 export type FunctionUnit = (ratio: number) => number;
 
@@ -93,13 +93,13 @@ export const easeOutCubic: FunctionUnit = ratio => cube(ratio - 1) + 1;
  * easeInQuart.
  * @param ratio
  */
-export const easeInQuart: FunctionUnit = ratio => Math.pow(ratio, 4);
+export const easeInQuart: FunctionUnit = pow4;
 
 /**
  * easeOutQuart.
  * @param ratio
  */
-export const easeOutQuart: FunctionUnit = ratio => -Math.pow(ratio - 1, 4) + 1;
+export const easeOutQuart: FunctionUnit = ratio => -pow4(ratio - 1) + 1;
 
 /**
  * Creates an easeOutBack function.

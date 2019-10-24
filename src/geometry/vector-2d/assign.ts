@@ -1,5 +1,6 @@
 import * as Vector2D from "./vector-2d";
 import * as MutableVector2D from "./mutable";
+import { cos, sin } from "../../math/numeric";
 
 export const add = (
   sourceA: Vector2D.Unit,
@@ -30,8 +31,8 @@ export const addPolar = (
   angle: number,
   target: MutableVector2D.Unit
 ): MutableVector2D.Unit => {
-  target.x = source.x + length * Math.cos(angle);
-  target.y = source.y + length * Math.sin(angle);
+  target.x = source.x + length * cos(angle);
+  target.y = source.y + length * sin(angle);
 
   return target;
 };
@@ -65,8 +66,8 @@ export const subtractPolar = (
   angle: number,
   target: MutableVector2D.Unit
 ): MutableVector2D.Unit => {
-  target.x = source.x - length * Math.cos(angle);
-  target.y = source.y - length * Math.sin(angle);
+  target.x = source.x - length * cos(angle);
+  target.y = source.y - length * sin(angle);
 
   return target;
 };

@@ -1,18 +1,21 @@
 import { Range } from "../types/range";
 import { TWO_PI } from "../geometry/angle";
+import { floor } from "./numeric";
+
+const { random } = Math;
 
 /**
  * Returns random value from `0` up to (but not including) `max`.
  * @param max
  * @return A random value.
  */
-export const value = (max: number) => Math.random() * max;
+export const value = (max: number) => random() * max;
 
 /**
  * Returns random value from `0` to (but not including) `2 * PI`.
  * @return A random radians value.
  */
-export const angle = () => Math.random() * TWO_PI;
+export const angle = () => random() * TWO_PI;
 
 /**
  * Returns random value from `start` up to (but not including) `end`.
@@ -21,7 +24,7 @@ export const angle = () => Math.random() * TWO_PI;
  * @return A random value.
  */
 export const between = (start: number, end: number) =>
-  start + Math.random() * (end - start);
+  start + random() * (end - start);
 
 /**
  * Returns random value from `range.start` up to (but not including) `range.end`.
@@ -36,24 +39,24 @@ export const inRange = (range: Range) => between(range.start, range.end);
  * @param maxInt
  * @return A random integer value.
  */
-export const integer = (maxInt: number) => Math.floor(Math.random() * maxInt);
+export const integer = (maxInt: number) => floor(random() * maxInt);
 
 /**
  * Returns random integer from `minInt` up to (but not including) `maxInt`.
- * The case where `minInt > maxInt` is not expected.
+ * The case where `minInt > maxInt` or `maxInt <= 0` is not expected.
  * @param minInt
  * @param maxInt
  * @return A random integer value.
  */
 export const integerBetween = (minInt: number, maxInt: number) =>
-  minInt + integer(maxInt - minInt);
+  minInt + floor(random() * (maxInt - minInt));
 
 /**
  * Returns `n` or `-n` randomly.
  * @param n Any number.
  * @return A random-signed value of `n`.
  */
-export const signed = (n: number) => (Math.random() < 0.5 ? n : -n);
+export const signed = (n: number) => (random() < 0.5 ? n : -n);
 
 /**
  * Returns one element of `array` randomly.
@@ -78,5 +81,4 @@ export const removeFromArray = <T>(array: T[]): T =>
  * @param probability A number between 0 and 1.
  * @return `true` with the given `probability`.
  */
-export const bool = (probability: number): boolean =>
-  Math.random() < probability;
+export const bool = (probability: number): boolean => random() < probability;

@@ -1,4 +1,5 @@
 import { Unit } from "../geometry/rectangle-size";
+import { min } from "../math/numeric";
 
 /**
  * Parameter for `getScaleFactor()`.
@@ -25,7 +26,7 @@ export const calculateScaleFactor = (
   switch (fittingOption) {
     default:
     case FittingOption.FIT_TO_BOX:
-      return Math.min(
+      return min(
         targetSize.width / nonScaledSize.width,
         targetSize.height / nonScaledSize.height
       );
