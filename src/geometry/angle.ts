@@ -1,5 +1,8 @@
-import { TWO_PI } from "../numeric/math";
 import * as Vector2D from "./vector-2d";
+
+export const PI = Math.PI;
+export const HALF_PI = PI / 2;
+export const TWO_PI = 2 * PI;
 
 const DEGREES_TO_RADIANS_FACTOR = TWO_PI / 360;
 const RADIANS_TO_DEGREES_FACTOR = 360 / TWO_PI;
