@@ -1,5 +1,5 @@
 import { Range } from "../types/range";
-import { TWO_PI } from "../numeric/math";
+import { TWO_PI } from "../geometry/angle";
 
 /**
  * Returns random value from `0` up to (but not including) `max`.

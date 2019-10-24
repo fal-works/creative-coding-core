@@ -1,4 +1,4 @@
-import { square } from "../../numeric/math";
+import { square } from "../../math/numeric";
 
 /**
  * Readonly 2D vector.

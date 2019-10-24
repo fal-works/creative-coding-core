@@ -1,5 +1,5 @@
-import * as Math from "./math";
-export { Math };
+import * as Numeric from "./numeric";
+export { Numeric };
 
 import * as Easing from "./easing";
 export { Easing };

@@ -1,4 +1,4 @@
-import { square, cube } from "./math";
+import { square, cube } from "./numeric";
 
 export type FunctionUnit = (ratio: number) => number;
 
