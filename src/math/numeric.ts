@@ -1,5 +1,87 @@
+export const {
+  abs,
+  acos,
+  asin,
+  atan,
+  atan2,
+  ceil,
+  cos,
+  exp,
+  floor,
+  log,
+  max,
+  min,
+  pow,
+  round,
+  sin,
+  sqrt,
+  tan,
+  clz32,
+  imul,
+  sign,
+  log10,
+  log2,
+  log1p,
+  expm1,
+  cosh,
+  sinh,
+  tanh,
+  acosh,
+  asinh,
+  atanh,
+  hypot,
+  trunc,
+  fround,
+  cbrt
+} = Math;
+
+/**
+ * Same as `Math.sqrt`.
+ * @return √x
+ */
+export const squareRoot = sqrt;
+
+/**
+ * Same as `Math.clz32`.
+ */
+export const leadingZeros32 = clz32;
+
+/**
+ * Same as `Math.imul`.
+ */
+export const multInt = imul;
+
+/**
+ * Same as `Math.hypot`.
+ */
+export const hypotenuse = hypot;
+
+/**
+ * Same as `Math.trunc`.
+ */
+export const integerPart = trunc;
+
+/**
+ * Same as `Math.fround`.
+ */
+export const floatRound = fround;
+
+/**
+ * Same as `Math.cbrt`.
+ * @return ∛x
+ */
+export const cubeRoot = cbrt;
+
 export const square = (v: number) => v * v;
 export const cube = (v: number) => v * v * v;
+export const squareInt = (v: number) => imul(v, v);
+export const cubeInt = (v: number) => imul(imul(v, v), v);
 
-export const nearlyEqual = (a: number, b: number): boolean =>
-  Math.abs(a - b) < 0.0000000000001;
+/**
+ * Checks whether `a` and `b` are considered equal.
+ * @param a
+ * @param b
+ * @return `true` if the absolute difference of `a` and `b` is smaller than `Number.EPSILON`.
+ */
+export const equal = (a: number, b: number): boolean =>
+  abs(a - b) < 2.220446049250313e-16;
