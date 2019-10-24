@@ -1,10 +1,4 @@
-export const {
-  E,
-  LN10,
-  LN2,
-  LOG2E,
-  LOG10E
-} = Math;
+export const { E, LN10, LN2, LOG2E, LOG10E } = Math;
 
 export const ONE_HALF = 1 / 2;
 export const ONE_THIRD = 1 / 3;
