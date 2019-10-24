@@ -183,3 +183,29 @@ export const copy = (vector: Unit): Unit => {
     y: vector.y
   };
 };
+
+/**
+ * Calculates squared length of `vector`.
+ * @param vector
+ * @return The squared length.
+ */
+export const lengthSquared = (vector: Unit): number =>
+  sq(vector.x) + sq(vector.y);
+
+/**
+ * Calculates length of `vector`.
+ * @param vector
+ * @return The length.
+ */
+export const length = (vector: Unit): number =>
+  Math.sqrt(lengthSquared(vector));
+
+/**
+ * Calculates angle of `vector` in radians.
+ * @param vector
+ * @return The angle. `0` if `vector` is a zero vector.
+ */
+export const angle = (vector: Unit): number => {
+  const { x, y } = vector;
+  return x !== 0 || y !== 0 ? Math.atan2(y, x) : 0;
+};
