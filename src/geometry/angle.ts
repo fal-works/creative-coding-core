@@ -35,9 +35,12 @@ export const fromOrigin = (position: Vector2D.Unit): number =>
  * @param to
  * @return The angle. `0` if both points are the same.
  */
-export const between = (from: Vector2D.Unit, to: Vector2D.Unit): number => {
+export const betweenPoints = (
+  from: Vector2D.Unit,
+  to: Vector2D.Unit
+): number => {
   const dx = to.x - from.x;
   const dy = to.y - from.y;
-  if (dx === 0 && dy === 0) return 0;
-  return Math.atan2(dy, dx);
+  if (dx !== 0 || dy !== 0) return Math.atan2(dy, dx);
+  else return 0;
 };
