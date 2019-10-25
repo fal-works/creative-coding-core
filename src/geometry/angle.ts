@@ -61,3 +61,14 @@ export const betweenPoints = (
   const dy = to.y - from.y;
   return dx !== 0 || dy !== 0 ? atan2(dy, dx) : 0;
 };
+
+/**
+ * Calculates the angle in radians between two points.
+ * @return The angle. `0` if both points are the same.
+ */
+export const betweenCoordinates = (
+  x1: number,
+  y1: number,
+  x2: number,
+  y2: number
+): number => (x1 !== x2 || y1 !== y2 ? atan2(x2 - x1, y2 - y1) : 0);
