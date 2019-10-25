@@ -90,6 +90,22 @@ export const equal = (a: number, b: number): boolean =>
   abs(a - b) < 2.220446049250313e-16;
 
 /**
+ * Similar to `Math.min` but accepts only two arguments.
+ * @param a
+ * @param b
+ * @return The smaller of `a` or `b`.
+ */
+export const min2 = (a: number, b: number) => (a < b ? a : b);
+
+/**
+ * Similar to `Math.max` but accepts only two arguments.
+ * @param a
+ * @param b
+ * @return The larger of `a` or `b`.
+ */
+export const max2 = (a: number, b: number) => (a > b ? a : b);
+
+/**
  * Safe version of `Math.atan2`;
  * @param y
  * @param x
