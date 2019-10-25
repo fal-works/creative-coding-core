@@ -3,7 +3,7 @@ import {
   sin,
   hypotenuseSquared2D,
   hypotenuse2D,
-  atan2safe
+  atan2
 } from "../../math/numeric";
 
 /**
@@ -211,4 +211,7 @@ export const length = (vector: Unit): number =>
  * @param vector
  * @return The angle. `0` if `vector` is a zero vector.
  */
-export const angle = (vector: Unit): number => atan2safe(vector.y, vector.x);
+export const angle = (vector: Unit): number => {
+  const { x, y } = vector;
+  return x !== 0 || y !== 0 ? atan2(vector.y, vector.x) : 0;
+};
