@@ -6,6 +6,9 @@ export const TWO_THIRDS = 2 / 3;
 export const ONE_QUARTER = 1 / 4;
 export const TWO_QUARTERS = ONE_HALF;
 export const THREE_QUARTERS = 3 / 4;
+export const INVERSE30 = 1 / 30;
+export const INVERSE60 = 1 / 60;
+export const INVERSE255 = 1 / 255;
 
 /**
  * √2
