@@ -129,3 +129,24 @@ export const hypotenuseSquared2D = (x: number, y: number) => x * x + y * y;
  * @return `√(x^2 + y^2)`.
  */
 export const hypotenuse2D = (x: number, y: number) => sqrt(x * x + y * y);
+
+/**
+ * Linearly interpolates between `start` and `end` by `ratio`.
+ * The result will not be clamped.
+ * @param start
+ * @param end
+ * @param ratio
+ * @return Interpolated value, e.g. `start` if `ratio == 0`, `end` if `ratio == 1`.
+ */
+export const lerp = (start: number, end: number, ratio: number) =>
+  start + ratio * (end - start);
+
+/**
+ * Clamps `value` between `min` and `max`.
+ * @param value
+ * @param min
+ * @param max
+ * @return Clamped value equal or greater than `min` and equal or less than `max`.
+ */
+export const clamp = (value: number, min: number, max: number) =>
+  value < min ? min : value > max ? max : value;
