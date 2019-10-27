@@ -1,5 +1,6 @@
 import { Range } from "../types/range";
 import { TWO_PI } from "../geometry/angle";
+import { Vector2D, RectangleRegion } from "../geometry";
 import { floor } from "./numeric";
 
 const { random } = Math;
@@ -82,3 +83,34 @@ export const removeFromArray = <T>(array: T[]): T =>
  * @return `true` with the given `probability`.
  */
 export const bool = (probability: number): boolean => random() < probability;
+
+/**
+ * Returns random value from `-absoluteValue` up to (but not including) `absoluteValue`.
+ * @param absoluteValue
+ * @return A random value.
+ */
+export const fromAbsolute = (absoluteValue: number): number =>
+  -absoluteValue + random() * 2 * absoluteValue;
+
+/**
+ * Returns a new vector with `length` and random angle.
+ * @param length
+ * @return New `Vector2D` unit.
+ */
+export const vector = (length: number): Vector2D.Unit =>
+  Vector2D.fromPolar(length, angle());
+
+/**
+ * Returns a random point in `region`.
+ * @param region
+ * @return Random `Vector2D`.
+ */
+export const pointInRectangleRegion = (
+  region: RectangleRegion.Unit
+): Vector2D.Unit => {
+  const { topLeft, rightBottom } = region;
+  return {
+    x: between(topLeft.x, rightBottom.x),
+    y: between(topLeft.y, rightBottom.y)
+  };
+};
