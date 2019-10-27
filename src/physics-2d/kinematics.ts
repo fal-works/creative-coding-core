@@ -117,6 +117,22 @@ export const velocityVector = (
 ) => Vector2D.Assign.setCartesian(quantity.vx, quantity.vy, target);
 
 /**
+ * Returns the speed.
+ * @param quantity
+ * @return The speed.
+ */
+export const getSpeed = (quantity: Quantity) =>
+  Numeric.hypotenuse2D(quantity.vx, quantity.vy);
+
+/**
+ * Returns the velocity angle.
+ * @param quantity
+ * @return The angle.
+ */
+export const getVelocityAngle = (quantity: Quantity) =>
+  Numeric.atan2safe(quantity.vy, quantity.vx);
+
+/**
  * Truncates the speed (magnitude of velocity) if it is greater than `maxSpeed`.
  * @param quantity
  * @param maxSpeed
