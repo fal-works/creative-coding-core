@@ -1,4 +1,5 @@
 import { RectangleSize, Vector2D } from "./";
+import { lerp } from "../math/numeric";
 
 export interface Unit {
   /**
@@ -46,4 +47,72 @@ export const containsPoint = (
     x < rightBottom.x - margin &&
     y < rightBottom.y - margin
   );
+};
+
+export const getWidth = (region: Unit) =>
+  region.rightBottom.x - region.topLeft.x;
+
+export const getHeight = (region: Unit) =>
+  region.rightBottom.y - region.topLeft.y;
+
+export const getSize = (region: Unit) => {
+  const { topLeft, rightBottom } = region;
+  return {
+    width: rightBottom.x - topLeft.x,
+    height: rightBottom.y - topLeft.y
+  };
+};
+
+export const getCenterPoint = (region: Unit): Vector2D.Unit => {
+  const { topLeft, rightBottom } = region;
+  return {
+    x: (topLeft.x + rightBottom.x) / 2,
+    y: (topLeft.y + rightBottom.y) / 2
+  };
+};
+
+export const enum ScaleOriginType {
+  TopLeft,
+  Center
+}
+
+/**
+ * Creates a new `RectangleRegion` by scaling `region` with `scaleFactor`.
+ * @param region
+ * @param scaleFactor
+ * @param originType
+ * @return A new scaled `RectangleRegion` unit.
+ */
+export const createScaled = (
+  region: Unit,
+  scaleFactor: number,
+  originType: ScaleOriginType
+) => {
+  const { topLeft, rightBottom } = region;
+  switch (originType) {
+    case ScaleOriginType.TopLeft:
+      return {
+        topLeft,
+        rightBottom: {
+          x: lerp(topLeft.x, rightBottom.x, scaleFactor),
+          y: lerp(topLeft.y, rightBottom.y, scaleFactor)
+        }
+      };
+    case ScaleOriginType.Center: {
+      const center = getCenterPoint(region);
+      const size = getSize(region);
+      const halfWidth = size.width / 2;
+      const halfHeight = size.height / 2;
+      return {
+        topLeft: {
+          x: center.x - halfWidth,
+          y: center.y - halfHeight
+        },
+        rightBottom: {
+          x: center.x + halfWidth,
+          y: center.y + halfHeight
+        }
+      };
+    }
+  }
 };
