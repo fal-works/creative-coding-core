@@ -297,3 +297,41 @@ export const populate = <T>(arrayList: Unit<T>, factory: () => T) => {
 
   return arrayList;
 };
+
+/**
+ * Joins two arrayLists and runs `callback` once for each joined pair.
+ * You should not remove elements from arrayLists during the iteration.
+ * @param arrayListA
+ * @param arrayListB
+ * @param callback
+ */
+export const nestedLoopJoin = <T, U>(
+  arrayListA: Unit<T>,
+  arrayListB: Unit<U>,
+  callback: (elementA: T, elementB: U) => void
+): void =>
+  ArrayUtility.nestedLoopJoinWithRange(
+    arrayListA.array,
+    arrayListB.array,
+    callback,
+    0,
+    arrayListA.size,
+    0,
+    arrayListB.size
+  );
+
+/**
+ * Runs `callback` once for each pair within `arrayList`.
+ * @param arrayList
+ * @param callback
+ */
+export const roundRobin = <T>(
+  arrayList: Unit<T>,
+  callback: (element: T, otherElement: T) => void
+): void =>
+  ArrayUtility.roundRobinWithRange(
+    arrayList.array,
+    callback,
+    0,
+    arrayList.size
+  );
