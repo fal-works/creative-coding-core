@@ -4,3 +4,4 @@ export * from "./math";
 export * from "./misc";
 export * from "./types";
 export * from "./physics-2d";
+export * from "./color";
