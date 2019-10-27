@@ -159,11 +159,22 @@ export const flatRecursive = <T>(array: ArrayOrValue<T>[], depth = 1) =>
  */
 export const populate = <T>(
   array: T[],
-  factory: () => T,
+  factory: (index: number) => T,
   length?: number
 ): T[] => {
   const len = length || array.length;
-  for (let i = 0; i < len; i += 1) array[i] = factory();
+  for (let i = 0; i < len; i += 1) array[i] = factory(i);
 
   return array;
 };
+
+/**
+ * Creates a new array filled by running `factory` for each index and assigning the result.
+ * @param factory
+ * @param length
+ * @return A new populated array.
+ */
+export const createPopulated = <T>(
+  factory: (index: number) => T,
+  length: number
+): T[] => populate(new Array<T>(length), factory);
