@@ -72,6 +72,28 @@ export const subtractPolar = (
   return target;
 };
 
+export const setCartesian = (
+  x: number,
+  y: number,
+  target: MutableVector2D.Unit
+): MutableVector2D.Unit => {
+  target.x = x;
+  target.y = y;
+
+  return target;
+};
+
+export const setPolar = (
+  length: number,
+  angle: number,
+  target: MutableVector2D.Unit
+): MutableVector2D.Unit => {
+  target.x = length * cos(angle);
+  target.y = length * sin(angle);
+
+  return target;
+};
+
 export const multiply = (
   source: Vector2D.Unit,
   multiplier: number,
