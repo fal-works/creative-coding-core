@@ -85,28 +85,15 @@ export const calculateSimple = (
   );
 
 /**
- * Adds `force` to `attracted`.
- * @param force
- * @param attracted
- */
-export const addForce = (
-  force: Vector2D.Unit,
-  attracted: SimpleDynamics.Quantity
-) => {
-  attracted.fx += force.x;
-  attracted.fy += force.y;
-};
-
-/**
  * Adds gravitation force between `bodyA` and `bodyB`.
- * @param forceOnBodyB
  * @param bodyA
  * @param bodyB
+ * @param forceOnBodyB
  */
-export const addForceEachOther = (
-  forceOnBodyB: Vector2D.Unit,
+const addForceEachOther = (
   bodyA: SimpleDynamics.Quantity,
-  bodyB: SimpleDynamics.Quantity
+  bodyB: SimpleDynamics.Quantity,
+  forceOnBodyB: Vector2D.Unit
 ) => {
   const { x: forceX, y: forceY } = forceOnBodyB;
   bodyA.fx -= forceX;
@@ -134,20 +121,23 @@ export const attract = {
     massProduct: number,
     distance: number
   ) =>
-    addForce(
+    SimpleDynamics.addForce(
+      attracted,
       calculateCore(
         attractedRelative,
         massProduct,
         distance,
         temporalGravitation
-      ),
-      attracted
+      )
     ),
   /**
    * Calculates gravitation force and applies it on `attracted`.
    */
   calculate: (attractor: Dynamics.PointMass, attracted: Dynamics.Quantity) =>
-    addForce(calculate(attractor, attracted, temporalGravitation), attracted),
+    SimpleDynamics.addForce(
+      attracted,
+      calculate(attractor, attracted, temporalGravitation)
+    ),
   /**
    * Calculates gravitation force using pre-calculated distance and applies it on `attracted`,
    * assuming that the mass is always `1`.
@@ -160,9 +150,9 @@ export const attract = {
     attractedRelative: Vector2D.Unit,
     distance: number
   ) =>
-    addForce(
-      calculateCoreSimple(attractedRelative, distance, temporalGravitation),
-      attracted
+    SimpleDynamics.addForce(
+      attracted,
+      calculateCoreSimple(attractedRelative, distance, temporalGravitation)
     ),
   /**
    * Calculates gravitation force and applies it on `attracted`,
@@ -172,9 +162,9 @@ export const attract = {
     attractor: Vector2D.Unit,
     attracted: SimpleDynamics.Quantity
   ) =>
-    addForce(
-      calculateSimple(attractor, attracted, temporalGravitation),
-      attracted
+    SimpleDynamics.addForce(
+      attracted,
+      calculateSimple(attractor, attracted, temporalGravitation)
     )
 };
 
@@ -198,18 +188,18 @@ export const attractEachOther = {
     distance: number
   ) =>
     addForceEachOther(
-      calculateCore(bodyBRelative, massProduct, distance, temporalGravitation),
       bodyA,
-      bodyB
+      bodyB,
+      calculateCore(bodyBRelative, massProduct, distance, temporalGravitation)
     ),
   /**
    * Calculates gravitation force and applies it on both `bodyA` and `bodyB`.
    */
   calculate: (bodyA: Dynamics.Quantity, bodyB: Dynamics.Quantity) =>
     addForceEachOther(
-      calculate(bodyA, bodyB, temporalGravitation),
       bodyA,
-      bodyB
+      bodyB,
+      calculate(bodyA, bodyB, temporalGravitation)
     ),
   /**
    * Calculates gravitation force using pre-calculated distance and applies it on both `bodyA` and `bodyB`,
@@ -226,9 +216,9 @@ export const attractEachOther = {
     distance: number
   ) =>
     addForceEachOther(
-      calculateCoreSimple(bodyBRelative, distance, temporalGravitation),
       bodyA,
-      bodyB
+      bodyB,
+      calculateCoreSimple(bodyBRelative, distance, temporalGravitation)
     ),
   /**
    * Calculates gravitation force and applies it on both `bodyA` and `bodyB`,
@@ -239,8 +229,8 @@ export const attractEachOther = {
     bodyB: SimpleDynamics.Quantity
   ) =>
     addForceEachOther(
-      calculateSimple(bodyA, bodyB, temporalGravitation),
       bodyA,
-      bodyB
+      bodyB,
+      calculateSimple(bodyA, bodyB, temporalGravitation)
     )
 };

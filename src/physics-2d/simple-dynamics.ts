@@ -110,3 +110,49 @@ export const truncateForce = (quantity: Quantity, maxMagnitude: number) => {
   quantity.fy = maxMagnitude * Numeric.sin(angle);
   return quantity;
 };
+
+/**
+ * Adds `force` to `quantity`.
+ * @param quantity
+ * @param force
+ * @return The `quantity` instance with assigned force.
+ */
+export const addForce = (quantity: Quantity, force: Vector2D.Unit) => {
+  quantity.fx += force.x;
+  quantity.fy += force.y;
+  return quantity;
+};
+
+/**
+ * Adds force values to `quantity`.
+ * @param quantity
+ * @param fx
+ * @param fy
+ * @return The `quantity` instance with assigned force.
+ */
+export const addForceCartesian = (
+  quantity: Quantity,
+  fx: number,
+  fy: number
+) => {
+  quantity.fx += fx;
+  quantity.fy += fy;
+  return quantity;
+};
+
+/**
+ * Adds force values to `quantity`.
+ * @param quantity
+ * @param magnitude
+ * @param angle
+ * @return The `quantity` instance with assigned force.
+ */
+export const addForcePolar = (
+  quantity: Quantity,
+  magnitude: number,
+  angle: number
+) => {
+  quantity.fx += magnitude * Numeric.cos(angle);
+  quantity.fy += magnitude * Numeric.sin(angle);
+  return quantity;
+};
