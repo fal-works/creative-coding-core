@@ -1,3 +1,5 @@
+import { Range } from "../types";
+
 /**
  * Runs `callback` once for each element of `array` from index `start` up to (but not including) `end`.
  * Unlike `Array.prototype.forEach()`, an element of `array` should not be removed during the iteration.
@@ -178,3 +180,31 @@ export const createPopulated = <T>(
   factory: (index: number) => T,
   length: number
 ): T[] => populate(new Array<T>(length), factory);
+
+/**
+ * Creates a new array of integer numbers starting from `0`.
+ * @param length
+ * @return A new number array.
+ */
+export const createIntegerSequence = (length: number) => {
+  const array = new Array<number>(length);
+
+  for (let i = 0; i < length; i += 1) array[i] = i;
+
+  return array;
+};
+
+/**
+ * Creates a new array of numbers within `range`.
+ * @param range
+ * @return A new number array.
+ */
+export const fromRange = (range: Range) => {
+  const { start, end } = range;
+  const length = end - start;
+  const array = new Array<number>(length);
+
+  for (let i = 0; i < length; i += 1) array[i] = start + i;
+
+  return array;
+};
