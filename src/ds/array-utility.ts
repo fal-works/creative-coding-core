@@ -208,3 +208,23 @@ export const fromRange = (range: Range) => {
 
   return array;
 };
+
+/**
+ * Creates a new array by filtering and mapping `array`.
+ * @param array
+ * @param callback
+ * @return New array, filtered and mapped.
+ */
+export const filterMap = <T, U>(
+  array: T[],
+  callback: (value: T, index: number, array: T[]) => U | undefined
+) => {
+  const result = [];
+  const len = array.length;
+  for (let i = 0; i < len; i += 1) {
+    const mappedValue = callback(array[i], i, array);
+    if (mappedValue !== undefined) result.push(mappedValue);
+  }
+
+  return result;
+};
