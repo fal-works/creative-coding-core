@@ -9,3 +9,6 @@ export { Timer };
 
 import * as MorseCode from "./morse-code";
 export { MorseCode };
+
+import * as ConstantFunction from "./constant-function";
+export { ConstantFunction };
