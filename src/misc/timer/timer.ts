@@ -1,12 +1,10 @@
-import { Mutable } from "../../types/mutable";
-
 export type Listener = (timerUnit: Unit) => void;
 
 export interface Unit {
   readonly duration: number;
   readonly progressRatioChangeRate: number;
-  readonly onProgress: Listener;
-  readonly onComplete: Listener;
+  readonly onProgress: readonly Listener[];
+  readonly onComplete: readonly Listener[];
   count: number;
   progressRatio: number;
   isCompleted: boolean;
@@ -16,14 +14,14 @@ export const emptyListener: Listener = () => {};
 
 export const create = (
   duration: number,
-  onProgress: Listener = emptyListener,
+  onProgress: Listener | Listener[] = emptyListener,
   onComplete: Listener = emptyListener
 ): Unit => {
   return {
     duration,
     progressRatioChangeRate: 1 / duration,
-    onProgress,
-    onComplete,
+    onProgress: Array.isArray(onProgress) ? onProgress.slice() : [onProgress],
+    onComplete: Array.isArray(onComplete) ? onComplete.slice() : [onComplete],
     count: 0,
     progressRatio: 0,
     isCompleted: false
@@ -45,25 +43,29 @@ export const step = (timerUnit: Unit): boolean => {
 
   if (count >= duration) {
     timerUnit.progressRatio = 1;
-    timerUnit.onProgress(timerUnit);
+    for (const fn of timerUnit.onProgress) fn(timerUnit);
     timerUnit.isCompleted = true;
-    timerUnit.onComplete(timerUnit);
+    for (const fn of timerUnit.onComplete) fn(timerUnit);
     return true;
   }
 
-  timerUnit.onProgress(timerUnit);
+  for (const fn of timerUnit.onProgress) fn(timerUnit);
   timerUnit.count += 1;
   timerUnit.progressRatio += progressRatioChangeRate;
 
   return false;
 };
 
-export const addOnComplete = (timerUnit: Unit, onComplete: Listener): Unit => {
-  const newUnit: Mutable<Unit> = Object.assign({}, timerUnit);
-  const oldOnComplete = timerUnit.onComplete;
-  newUnit.onComplete = () => {
-    oldOnComplete(newUnit);
-    onComplete(newUnit);
+export const addOnProgress = (timerUnit: Unit, onProgress: Listener): Unit => {
+  return {
+    ...timerUnit,
+    onProgress: timerUnit.onProgress.concat(onProgress)
   };
-  return newUnit;
+};
+
+export const addOnComplete = (timerUnit: Unit, onComplete: Listener): Unit => {
+  return {
+    ...timerUnit,
+    onComplete: timerUnit.onComplete.concat(onComplete)
+  };
 };
