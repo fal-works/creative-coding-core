@@ -12,3 +12,6 @@ export { MorseCode };
 
 import * as ConstantFunction from "./constant-function";
 export { ConstantFunction };
+
+import * as Tween from "./tween/vector-2d";
+export { Tween };
