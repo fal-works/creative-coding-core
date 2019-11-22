@@ -3,59 +3,52 @@ import { loop } from "../../ds/array-utility";
 
 export interface Unit {
   readonly timers: readonly Timer.Unit[];
-  current: Timer.Unit;
+  readonly loop: boolean;
   index: number;
+  current: Timer.Unit;
   isCompleted: boolean;
 }
 
-export const step = (chain: Unit): boolean => {
-  Timer.step(chain.current);
-  return chain.isCompleted;
-};
-
-export const setUnitIndex = (chain: Unit, index: number): void => {
+export const setIndex = (chain: Unit, index: number): void => {
   chain.index = index;
   chain.current = chain.timers[index];
 };
 
 export const reset = (chain: Unit): void => {
   loop(chain.timers, Timer.reset);
-  setUnitIndex(chain, 0);
+  setIndex(chain, 0);
+  chain.isCompleted = false;
 };
 
-export const next = (chain: Unit): Timer.Unit => {
-  setUnitIndex(chain, chain.index + 1);
-  return chain.current;
-};
+export const step = (chain: Unit): boolean => {
+  const { current } = chain;
 
-export const create = (timers: Timer.Unit[], looped = false): Unit => {
-  // eslint-disable-next-line prefer-const
-  let newChain: Unit;
-  const newTimers: Timer.Unit[] = new Array(timers.length);
+  if (Timer.step(current)) return false;
 
-  const shift = () => next(newChain);
-  const lastIndex = timers.length - 1;
-  for (let i = 0; i < lastIndex; i += 1) {
-    newTimers[i] = Timer.addOnComplete(timers[i], shift);
+  const { timers } = chain;
+  const nextIndex = chain.index + 1;
+  if (nextIndex >= timers.length) {
+    if (chain.loop) {
+      reset(chain);
+      return false;
+    }
+
+    return (chain.isCompleted = true);
   }
-  if (looped)
-    newTimers[lastIndex] = Timer.addOnComplete(timers[lastIndex], () =>
-      reset(newChain)
-    );
-  else
-    newTimers[lastIndex] = Timer.addOnComplete(
-      timers[lastIndex],
-      () => (newChain.isCompleted = true)
-    );
 
-  newChain = {
-    timers: newTimers,
-    current: newTimers[0],
+  setIndex(chain, nextIndex);
+
+  return false;
+};
+
+export const create = (timers: Timer.Unit[], loop = false): Unit => {
+  return {
+    timers: timers.slice(),
+    loop,
     index: 0,
+    current: timers[0],
     isCompleted: false
   };
-
-  return newChain;
 };
 
 export const dummy = create([Timer.dummy]);
