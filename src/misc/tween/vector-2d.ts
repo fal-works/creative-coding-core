@@ -1,5 +1,7 @@
-import { Vector2D, Numeric, Easing } from "../../../";
-import { Timer, ConstantFunction } from "../";
+import { Vector2D } from "../../geometry";
+import { Numeric, Easing } from "../../math";
+import * as Timer from "../timer";
+import * as ConstantFunction from "../constant-function";
 
 export type Parameters = {
   duration: number;
