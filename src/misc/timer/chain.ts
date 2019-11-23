@@ -54,3 +54,6 @@ export class Unit implements Component.Unit {
     return this;
   }
 }
+
+export const create = (components: readonly Component.Unit[]) =>
+  Unit.create(components);
