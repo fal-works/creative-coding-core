@@ -44,5 +44,11 @@ export class Unit implements Component.Unit {
   }
 }
 
+/**
+ * Creates a looped component from `component`.
+ * @param component
+ * @param loopCount `Infinity` if not specified.
+ * @return New `Timer.Loop` instance.
+ */
 export const create = (component: Component.Unit, loopCount = Infinity) =>
   Unit.create(component, loopCount);

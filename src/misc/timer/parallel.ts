@@ -34,5 +34,10 @@ export class Unit implements Component.Unit {
   }
 }
 
+/**
+ * Creates a parallel composite from `components`.
+ * @param components
+ * @return New `Timer.Parallel` instance.
+ */
 export const create = (components: readonly Component.Unit[]) =>
   Unit.create(components);
