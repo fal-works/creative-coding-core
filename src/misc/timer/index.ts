@@ -1,5 +1,8 @@
 export * from "./timer";
 
+import * as Component from "./component";
+export { Component };
+
 import * as Chain from "./chain";
 export { Chain };
 
