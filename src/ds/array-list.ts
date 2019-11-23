@@ -67,13 +67,29 @@ export const fromArray = <T>(array: T[]): Unit<T> => {
   };
 };
 
+/**
+ * Adds `element` to `arrayList`.
+ * @param arrayList
+ * @param element
+ */
 export const add = <T>(arrayList: Unit<T>, element: T): void => {
   arrayList.array[arrayList.size] = element;
   arrayList.size += 1;
 };
 
+/**
+ * Adds `element` to `arrayList`. Same as `add()`.
+ * @param arrayList
+ * @param element
+ */
 export const push = add;
 
+/**
+ * Removes and returns the last element of `arrayList`.
+ * Be sure that `arrayList` is not empty.
+ * @param arrayList
+ * @return The last element of `arrayList`.
+ */
 export const pop = <T>(arrayList: Unit<T>): T => {
   const lastIndex = arrayList.size - 1;
   const removedElement = arrayList.array[lastIndex];
@@ -82,6 +98,11 @@ export const pop = <T>(arrayList: Unit<T>): T => {
   return removedElement;
 };
 
+/**
+ * Adds all elements of `array` to `arrayList`.
+ * @param arrayList
+ * @param array
+ */
 export const addArray = <T>(arrayList: Unit<T>, array: readonly T[]): void => {
   const { array: thisArray, size: destinaionPosition } = arrayList;
   const len = array.length;
@@ -93,6 +114,11 @@ export const addArray = <T>(arrayList: Unit<T>, array: readonly T[]): void => {
   arrayList.size += len;
 };
 
+/**
+ * Adds all elements of `source` to `destination`.
+ * @param destination
+ * @param source
+ */
 export const addList = <T>(destination: Unit<T>, source: Unit<T>): void => {
   const { array: destinationArray, size: destinaionPosition } = destination;
   const { array: sourceArray, size: len } = source;
