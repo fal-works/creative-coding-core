@@ -6,6 +6,9 @@ export { Component };
 import * as Chain from "./chain";
 export { Chain };
 
+import * as Parallel from "./parallel";
+export { Parallel };
+
 import * as Loop from "./loop";
 export { Loop };
 
