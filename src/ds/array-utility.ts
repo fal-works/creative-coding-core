@@ -242,3 +242,25 @@ export const loopRun = <T>(
   const len = functionArray.length;
   for (let i = 0; i < len; i += 1) functionArray[i](argument, i);
 };
+
+/**
+ * Copies values from `source` to `destination`.
+ * @param destination
+ * @param source
+ * @param destinationPosition
+ * @param sourcePosition
+ * @param length
+ */
+export const blit = <T>(
+  destination: T[],
+  source: readonly T[],
+  destinationPosition: number,
+  sourcePosition: number,
+  length: number
+): void => {
+  let i = length;
+  while (i) {
+    i -= 1;
+    destination[destinationPosition + i] = source[sourcePosition + i];
+  }
+};
