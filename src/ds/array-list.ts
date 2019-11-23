@@ -93,8 +93,16 @@ export const addArray = <T>(arrayList: Unit<T>, array: readonly T[]): void => {
   arrayList.size += len;
 };
 
-export const addList = <T>(destination: Unit<T>, source: Unit<T>): void =>
-  addArray(destination, source.array);
+export const addList = <T>(destination: Unit<T>, source: Unit<T>): void => {
+  const { array: destinationArray, size: destinaionPosition } = destination;
+  const { array: sourceArray, size: len } = source;
+  let i = len;
+  while (i) {
+    i -= 1;
+    destinationArray[destinaionPosition + i] = sourceArray[i];
+  }
+  destination.size += len;
+};
 
 /**
  * Clears the contents of `arrayList`.
