@@ -99,6 +99,14 @@ export const pop = <T>(arrayList: Unit<T>): T => {
 };
 
 /**
+ * Returns the element of `arrayList` at `index`.
+ * @param arrayList
+ * @return The element of `arrayList` at `index`.
+ */
+export const get = <T>(arrayList: Unit<T>, index: number): T =>
+  arrayList.array[index];
+
+/**
  * Returns the last element of `arrayList`.
  * Be sure that `arrayList` is not empty.
  * @param arrayList
