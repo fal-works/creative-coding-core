@@ -1,7 +1,7 @@
 import typescript from "rollup-plugin-typescript2";
 import cleanup from "rollup-plugin-cleanup";
 
-const version = "0.1.10";
+const version = "0.1.11";
 const cleanBuild = true;
 
 const moduleName = "creative-coding-core";
@@ -48,7 +48,7 @@ export default {
       celan: cleanBuild
     }),
     cleanup({
-      comments: /^\*\*/, // preserve multiline comments
+      comments: /^\*\*/, // preserve jsdoc comments
       sourcemap: false,
       extensions: ["ts"]
     })
