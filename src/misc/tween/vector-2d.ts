@@ -24,12 +24,15 @@ export const create = (
 
   const ease = parameters.easing || Easing.easeLinear;
 
-  return Timer.create(duration, progress => {
-    const ratio = ease(progress.ratio);
-    Vector2D.Mutable.setCartesian(
-      vector,
-      Numeric.lerp(startX, endX, ratio),
-      Numeric.lerp(startY, endY, ratio)
-    );
+  return Timer.create({
+    duration,
+    onProgress: progress => {
+      const ratio = ease(progress.ratio);
+      Vector2D.Mutable.setCartesian(
+        vector,
+        Numeric.lerp(startX, endX, ratio),
+        Numeric.lerp(startY, endY, ratio)
+      );
+    }
   });
 };

@@ -79,15 +79,20 @@ export class Unit implements Component.Unit {
   }
 }
 
-export const create = (
-  duration: number,
-  onProgress?: Listener | Listeners,
-  onComplete?: Listener | Listeners
-): Unit => {
+/**
+ * Creates a `Timer` instance.
+ * @param parameters
+ * @return New `Timer` instance.
+ */
+export const create = (parameters: {
+  duration: number;
+  onProgress?: Listener | Listeners;
+  onComplete?: Listener | Listeners;
+}): Unit => {
   return Unit.create(
-    createListnerArray(onProgress),
-    createListnerArray(onComplete),
-    createProgress(duration)
+    createListnerArray(parameters.onProgress),
+    createListnerArray(parameters.onComplete),
+    createProgress(parameters.duration)
   );
 };
 

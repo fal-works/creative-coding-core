@@ -20,7 +20,9 @@ export const create = (
   const { start, end, duration } = parameters;
   const ease = parameters.easing || Easing.easeLinear;
 
-  return Timer.create(duration, progress =>
-    setValue(Numeric.lerp(start, end, ease(progress.ratio)))
-  );
+  return Timer.create({
+    duration,
+    onProgress: progress =>
+      setValue(Numeric.lerp(start, end, ease(progress.ratio)))
+  });
 };
