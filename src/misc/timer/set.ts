@@ -18,9 +18,9 @@ export const add = (timerSet: Unit, component: Component.Unit) =>
 
 export const step = (timerSet: Unit) => {
   const { runningComponents, newComponentsBuffer } = timerSet;
-  ArrayList.removeShiftAll(runningComponents, Component.step);
   ArrayList.addList(runningComponents, newComponentsBuffer);
   ArrayList.clear(newComponentsBuffer);
+  ArrayList.removeShiftAll(runningComponents, Component.step);
 };
 
 export const clear = (timerSet: Unit) => {
