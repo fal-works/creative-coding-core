@@ -10,7 +10,7 @@ export const create = (capacity: number): Unit =>
   ArrayList.create<StepCallback>(capacity);
 
 export const addTimer = (timerSet: Unit, timer: Timer.Unit) =>
-  ArrayList.add(timerSet, () => Timer.step(timer));
+  ArrayList.add(timerSet, () => timer.step());
 
 export const addChain = (timerSet: Unit, chain: Chain.Unit) =>
   ArrayList.add(timerSet, () => Chain.step(chain));

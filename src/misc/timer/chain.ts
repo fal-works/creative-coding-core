@@ -1,5 +1,4 @@
 import * as Timer from "./timer";
-import { loop } from "../../ds/array-utility";
 
 export interface Unit {
   readonly timers: readonly Timer.Unit[];
@@ -15,7 +14,7 @@ export const setIndex = (chain: Unit, index: number): void => {
 };
 
 export const reset = (chain: Unit): void => {
-  loop(chain.timers, Timer.reset);
+  for (const timer of chain.timers) timer.reset();
   setIndex(chain, 0);
   chain.isCompleted = false;
 };
@@ -23,7 +22,7 @@ export const reset = (chain: Unit): void => {
 export const step = (chain: Unit): boolean => {
   const { current } = chain;
 
-  if (Timer.step(current)) return false;
+  if (current.step()) return false;
 
   const { timers } = chain;
   const nextIndex = chain.index + 1;
