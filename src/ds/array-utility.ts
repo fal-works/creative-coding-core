@@ -228,3 +228,17 @@ export const filterMap = <T, U>(
 
   return result;
 };
+
+/**
+ * Runs each function of `functionArray` with given `argument`.
+ * An element of `functionArray` should not be removed during the iteration.
+ * @param functionArray
+ * @param argument
+ */
+export const loopRun = <T>(
+  functionArray: readonly ((argument: T, index: number) => void)[],
+  argument: T
+): void => {
+  const len = functionArray.length;
+  for (let i = 0; i < len; i += 1) functionArray[i](argument, i);
+};
