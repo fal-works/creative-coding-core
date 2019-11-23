@@ -13,7 +13,7 @@ export const addTimer = (timerSet: Unit, timer: Timer.Unit) =>
   ArrayList.add(timerSet, () => timer.step());
 
 export const addChain = (timerSet: Unit, chain: Chain.Unit) =>
-  ArrayList.add(timerSet, () => Chain.step(chain));
+  ArrayList.add(timerSet, () => chain.step());
 
 const runStep = (step: StepCallback): boolean => step();
 

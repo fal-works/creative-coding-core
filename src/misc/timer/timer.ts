@@ -1,5 +1,5 @@
-import * as Component from "./component";
 import { ArrayUtility } from "../../ds";
+import * as Component from "./component";
 
 export interface Progress {
   readonly duration: number;
@@ -90,5 +90,3 @@ export const create = (
     createProgress(duration)
   );
 };
-
-export const dummy = Unit.create([], [], createProgress(0), true);

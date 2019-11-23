@@ -1,53 +1,56 @@
-import * as Timer from "./timer";
+import { ArrayUtility } from "../../ds";
+import * as Component from "./component";
 
-export interface Unit {
-  readonly timers: readonly Timer.Unit[];
-  readonly loop: boolean;
-  index: number;
-  current: Timer.Unit;
-  isCompleted: boolean;
-}
-
-export const setIndex = (chain: Unit, index: number): void => {
+const setIndex = (chain: Unit, index: number): void => {
   chain.index = index;
-  chain.current = chain.timers[index];
+  chain.currentComponent = chain.components[index];
 };
 
-export const reset = (chain: Unit): void => {
-  for (const timer of chain.timers) timer.reset();
-  setIndex(chain, 0);
-  chain.isCompleted = false;
-};
-
-export const step = (chain: Unit): boolean => {
-  const { current } = chain;
-
-  if (current.step()) return false;
-
-  const { timers } = chain;
+/**
+ * Increments component index. Set `chain` completed if there is no next component.
+ * @param chain
+ * @return `true` if completed i.e. there is no next component.
+ */
+const setNextIndex = (chain: Unit) => {
   const nextIndex = chain.index + 1;
-  if (nextIndex >= timers.length) {
-    if (chain.loop) {
-      reset(chain);
-      return false;
-    }
 
-    return (chain.isCompleted = true);
+  if (nextIndex < chain.components.length) {
+    setIndex(chain, nextIndex);
+    return false;
   }
 
-  setIndex(chain, nextIndex);
-
-  return false;
+  chain.isCompleted = true;
+  return true;
 };
 
-export const create = (timers: Timer.Unit[], loop = false): Unit => {
-  return {
-    timers: timers.slice(),
-    loop,
-    index: 0,
-    current: timers[0],
-    isCompleted: false
-  };
-};
+export class Unit implements Component.Unit {
+  static create(components: readonly Component.Unit[]) {
+    return new Unit(components);
+  }
 
-export const dummy = create([Timer.dummy]);
+  readonly components: readonly Component.Unit[];
+  index: number;
+  currentComponent: Component.Unit;
+  isCompleted: boolean;
+
+  private constructor(components: readonly Component.Unit[]) {
+    this.components = components.slice();
+    this.index = 0;
+    this.currentComponent = components[0];
+    this.isCompleted = false;
+  }
+
+  step(): boolean {
+    if (!this.currentComponent.step()) return false;
+
+    return setNextIndex(this);
+  }
+
+  reset(): Unit {
+    ArrayUtility.loop(this.components, Component.reset);
+    setIndex(this, 0);
+    this.isCompleted = false;
+
+    return this;
+  }
+}
