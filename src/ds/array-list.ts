@@ -82,6 +82,17 @@ export const pop = <T>(arrayList: Unit<T>): T => {
   return removedElement;
 };
 
+export const addArray = <T>(arrayList: Unit<T>, array: readonly T[]): void => {
+  const { array: thisArray, size: destinaionPosition } = arrayList;
+  const len = array.length;
+  let i = len;
+  while (i) {
+    i -= 1;
+    thisArray[destinaionPosition + i] = array[i];
+  }
+  arrayList.size += len;
+};
+
 /**
  * Clears the contents of `arrayList`.
  * This just sets `size` to `0` and does not nullify references.
