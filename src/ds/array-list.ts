@@ -99,6 +99,24 @@ export const pop = <T>(arrayList: Unit<T>): T => {
 };
 
 /**
+ * Returns the last element of `arrayList`.
+ * Be sure that `arrayList` is not empty.
+ * @param arrayList
+ * @return The last element of `arrayList`.
+ */
+export const peek = <T>(arrayList: Unit<T>): T =>
+  arrayList.array[arrayList.size - 1];
+
+/**
+ * Returns the last element of `arrayList`.
+ * Be sure that `arrayList` is not empty.
+ * Same as `peek()`.
+ * @param arrayList
+ * @return The last element of `arrayList`.
+ */
+export const getLast = peek;
+
+/**
  * Adds all elements of `array` to `arrayList`.
  * @param arrayList
  * @param array
