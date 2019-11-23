@@ -90,3 +90,5 @@ export const create = (
     createProgress(duration)
   );
 };
+
+export const dummy = Unit.create([], [], createProgress(0), true);
