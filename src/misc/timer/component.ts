@@ -1,7 +1,7 @@
 export interface Unit {
   /**
    * Function that steps the progress of timer component.
-   * @return `true` if the component is completed.
+   * Returns `true` if the component is completed.
    */
   step: () => boolean;
 
