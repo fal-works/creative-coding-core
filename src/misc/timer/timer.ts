@@ -92,3 +92,7 @@ export const create = (
 };
 
 export const dummy = Unit.create([], [], createProgress(0), true);
+
+export { create as chain } from "./chain";
+export { create as parallel } from "./parallel";
+export { create as loop } from "./loop";
