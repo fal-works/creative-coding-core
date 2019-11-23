@@ -93,6 +93,9 @@ export const addArray = <T>(arrayList: Unit<T>, array: readonly T[]): void => {
   arrayList.size += len;
 };
 
+export const addList = <T>(destination: Unit<T>, source: Unit<T>): void =>
+  addArray(destination, source.array);
+
 /**
  * Clears the contents of `arrayList`.
  * This just sets `size` to `0` and does not nullify references.
