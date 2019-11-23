@@ -39,15 +39,17 @@ export const create = (
 
   return Timer.create(
     duration,
-    unit => {
-      const ratio = easing(unit.progressRatio);
-      Vector2D.Mutable.setCartesian(
-        vector,
-        Numeric.lerp(startX, targetX, ratio),
-        Numeric.lerp(startY, targetY, ratio)
-      );
-      onProgress(unit);
-    },
+    [
+      progress => {
+        const ratio = easing(progress.ratio);
+        Vector2D.Mutable.setCartesian(
+          vector,
+          Numeric.lerp(startX, targetX, ratio),
+          Numeric.lerp(startY, targetY, ratio)
+        );
+      },
+      onProgress
+    ],
     onComplete
   );
 };
