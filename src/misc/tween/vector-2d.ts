@@ -1,55 +1,35 @@
 import { Vector2D } from "../../geometry";
 import { Numeric, Easing } from "../../math";
 import * as Timer from "../timer";
-import * as ConstantFunction from "../constant-function";
 
 export type Parameters = {
-  duration: number;
-  easing: Easing.FunctionUnit;
-  onProgress: Timer.Listener;
-  onComplete: Timer.Listener;
-};
-
-const getDefaultParameters = (): Parameters => {
-  return {
-    duration: 60,
-    easing: Easing.easeLinear,
-    onProgress: ConstantFunction.returnVoid,
-    onComplete: ConstantFunction.returnVoid
-  };
+  readonly target: Vector2D.Unit;
+  readonly duration: number;
+  readonly easing?: Easing.FunctionUnit;
 };
 
 /**
  * Creates a `Timer` instance for tweening `vector`.
- * @param parameters
+ * @param parameters `target`, `duration` and `easing`(linear by default).
  * @return New `Timer` instance.
  */
 export const create = (
   vector: Vector2D.Mutable.Unit,
-  target: Vector2D.Unit,
-  parameters: Partial<Parameters>
+  parameters: Parameters
 ) => {
-  const { duration, easing, onProgress, onComplete } = Object.assign(
-    getDefaultParameters(),
-    parameters
-  );
+  const { duration } = parameters;
 
   const { x: startX, y: startY } = vector;
-  const { x: targetX, y: targetY } = target;
+  const { x: endX, y: endY } = parameters.target;
 
-  return Timer.create(
-    duration,
-    [
-      progress => {
-        const ratio = easing(progress.ratio);
-        Vector2D.Mutable.setCartesian(
-          vector,
-          Numeric.lerp(startX, targetX, ratio),
-          Numeric.lerp(startY, targetY, ratio)
-        );
-      },
-      onProgress
-    ],
-    onComplete
-  );
+  const ease = parameters.easing || Easing.easeLinear;
+
+  return Timer.create(duration, progress => {
+    const ratio = ease(progress.ratio);
+    Vector2D.Mutable.setCartesian(
+      vector,
+      Numeric.lerp(startX, endX, ratio),
+      Numeric.lerp(startY, endY, ratio)
+    );
+  });
 };
