@@ -150,3 +150,40 @@ export const lerp = (start: number, end: number, ratio: number) =>
  */
 export const clamp = (value: number, min: number, max: number) =>
   value < min ? min : value > max ? max : value;
+
+/**
+ * Maps `value` from the range [`inStart`, `inEnd`] to the range [`outStart`, `outEnd`].
+ * @param value
+ * @param inStart
+ * @param inEnd
+ * @param outStart
+ * @param outEnd
+ * @return Mapped value (unclamped).
+ */
+export const map = (
+  value: number,
+  inStart: number,
+  inEnd: number,
+  outStart: number,
+  outEnd: number
+) => outStart + ((outEnd - outStart) * (value - inStart)) / (inEnd - inStart);
+
+/**
+ * Creates a mapping function that maps `value` from the range [`inStart`, `inEnd`] to the range [`outStart`, `outEnd`].
+ * @param inStart
+ * @param inEnd
+ * @param outStart
+ * @param outEnd
+ * @return New mapping function.
+ */
+export const createMap = (
+  inStart: number,
+  inEnd: number,
+  outStart: number,
+  outEnd: number
+) => {
+  const inLength = inEnd - inStart;
+  const outLength = outEnd - outStart;
+  return (value: number) =>
+    outStart + (outLength * (value - inStart)) / inLength;
+};
