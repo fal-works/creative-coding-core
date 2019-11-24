@@ -187,3 +187,13 @@ export const createMap = (
   return (value: number) =>
     outStart + (outLength * (value - inStart)) / inLength;
 };
+
+/**
+ * Maps `value` from the range [`start`, `end`] to the range [0, 1].
+ * @param value
+ * @param start
+ * @param end
+ * @return Mapped value between 0 and 1 (unclamped).
+ */
+export const inverseLerp = (value: number, start: number, end: number) =>
+  (value - start) / (end - start);
