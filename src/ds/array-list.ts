@@ -45,7 +45,10 @@ export const createFilled = <T>(size: number, value: T): Unit<T> => {
  * @param size
  * @param factory
  */
-export const createPopulated = <T>(size: number, factory: () => T): Unit<T> => {
+export const createPopulated = <T>(
+  size: number,
+  factory: (index: number) => T
+): Unit<T> => {
   return {
     array: ArrayUtility.populate(new Array<T>(size), factory),
     size
@@ -365,7 +368,10 @@ export const removeSwapAll = <T>(
  * @param arrayList
  * @param factory
  */
-export const populate = <T>(arrayList: Unit<T>, factory: () => T) => {
+export const populate = <T>(
+  arrayList: Unit<T>,
+  factory: (index: number) => T
+) => {
   ArrayUtility.populate(arrayList.array, factory);
   arrayList.size = arrayList.array.length;
 
