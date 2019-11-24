@@ -6,6 +6,12 @@ import { floor } from "./numeric";
 const { random } = Math;
 
 /**
+ * Returns random value from `0` up to (but not including) `1`. Same as `Math.random()`.
+ * @return A random value.
+ */
+export const ratio = random;
+
+/**
  * Returns random value from `0` up to (but not including) `max`.
  * @param max
  * @return A random value.
@@ -114,3 +120,44 @@ export const pointInRectangleRegion = (
     y: between(topLeft.y, rightBottom.y)
   };
 };
+
+/**
+ * Similar to `ratio()`, but remaps the result by `curve`.
+ * @param curve Function that takes a random value between [0, 1] and returns a remapped value.
+ * @return A random value.
+ */
+export const ratioCurved = (curve: (ratio: number) => number) =>
+  curve(random());
+
+/**
+ * Similar to `value()`, but remaps the result by `curve`.
+ * @param curve Function that takes a random value between [0, 1] and returns a remapped value.
+ * @param magnitude
+ * @return A random value.
+ */
+export const valueCurved = (
+  curve: (ratio: number) => number,
+  magnitude: number
+) => curve(random()) * magnitude;
+
+/**
+ * Similar to `between()`, but remaps the result by `curve`.
+ * @param curve Function that takes a random value between [0, 1] and returns a remapped value.
+ * @param start
+ * @param end
+ * @return A random value.
+ */
+export const betweenCurved = (
+  curve: (x: number) => number,
+  start: number,
+  end: number
+) => start + curve(random()) * (end - start);
+
+/**
+ * Similar to `inRange()`, but remaps the result by `curve`.
+ * @param curve Function that takes a random value between [0, 1] and returns a remapped value.
+ * @param range
+ * @return A random value.
+ */
+export const inRangeCurved = (curve: (x: number) => number, range: Range) =>
+  betweenCurved(curve, range.start, range.end);
