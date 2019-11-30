@@ -136,7 +136,11 @@ export type ArrayOrValue<T> = T | T[];
  * @returns A new array.
  */
 export const unifyToArray = <T>(arrayOrValue?: ArrayOrValue<T>) =>
-  arrayOrValue ? (Array.isArray(arrayOrValue) ? arrayOrValue.slice() : [arrayOrValue]) : [];
+  arrayOrValue
+    ? Array.isArray(arrayOrValue)
+      ? arrayOrValue.slice()
+      : [arrayOrValue]
+    : [];
 
 /**
  * Creates a new 1-dimensional array by concatenating sub-array elements of a 2-dimensional array.
