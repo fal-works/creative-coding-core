@@ -126,6 +126,18 @@ export const roundRobin = <T>(
   callback: (element: T, otherElement: T) => void
 ): void => roundRobinWithRange(array, callback, 0, array.length);
 
+export type ArrayOrValue<T> = T | T[];
+
+/**
+ * Unifies `arrayOrValue` to array format.
+ * @param arrayOrValue - Either an array, value or undefined.
+ *   - If already an array, a shallow copy is returned.
+ *   - If falsy, a new empty array is returned.
+ * @returns A new array.
+ */
+export const unifyToArray = <T>(arrayOrValue?: ArrayOrValue<T>) =>
+  arrayOrValue ? (Array.isArray(arrayOrValue) ? arrayOrValue.slice() : [arrayOrValue]) : [];
+
 /**
  * Creates a new 1-dimensional array by concatenating sub-array elements of a 2-dimensional array.
  * @param arrays
@@ -134,8 +146,6 @@ export const roundRobin = <T>(
 // eslint-disable-next-line prefer-spread
 export const flatNaive = <T>(arrays: readonly T[][]): readonly T[] =>
   ([] as T[]).concat(...arrays);
-
-export type ArrayOrValue<T> = T | T[];
 
 /**
  * An alternative to `Array.prototype.flat()`.
