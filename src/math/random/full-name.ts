@@ -1,4 +1,5 @@
 export {
+  setBaseFunction as setBaseRandomFunction,
   ratio as randomRatio,
   value as randomValue,
   angle as randomAngle,

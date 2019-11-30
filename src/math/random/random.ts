@@ -3,13 +3,28 @@ import { TWO_PI } from "../../geometry/angle";
 import { Vector2D, RectangleRegion } from "../../geometry";
 import { floor } from "./../numeric";
 
-const { random } = Math;
-
 /**
- * Returns random value from `0` up to (but not including) `1`. Same as `Math.random()`.
+ * The base random function that returns a random number from `0` up to (but not including) `1`.
+ * Defaults to `Math.random`.
  * @return A random value.
  */
-export const ratio = random;
+let random = Math.random;
+
+/**
+ * Returns random value from `0` up to (but not including) `1`.
+ * @return A random value.
+ */
+export let ratio = random;
+
+/**
+ * Sets `randomFunction` as the base function (which is initially set to `Math.random`)
+ * so that it will be used as the base of all `Random` functions.
+ * @param randomFunction - Any function that returns a (pseudo-)random number from `0` up to (but not including) `1`.
+ */
+export const setBaseFunction = (randomFunction: () => number) => {
+  random = randomFunction;
+  ratio = randomFunction;
+};
 
 /**
  * Returns random value from `0` up to (but not including) `max`.
