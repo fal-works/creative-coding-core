@@ -5,3 +5,6 @@ export { Mutable };
 
 import * as Assign from "./assign";
 export { Assign };
+
+import * as FullName from "./full-name";
+export { FullName };
