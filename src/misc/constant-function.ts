@@ -3,6 +3,7 @@ export const returnUndefined = () => undefined;
 export const returnNull = () => null;
 export const returnZero = () => 0;
 export const returnOne = () => 1;
+export const returnArgument = <T>(argument: T) => argument;
 
 /**
  * Runs `callback` without any arguments.
