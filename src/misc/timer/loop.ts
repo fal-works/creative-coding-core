@@ -1,19 +1,19 @@
 import * as Component from "./component";
 
-export class Unit implements Component.Unit {
+export class Unit extends Component.Base {
   static create(component: Component.Unit, loopCount: number) {
     return new Unit(component, loopCount);
   }
 
   remainingCount: number;
-  isCompleted: boolean;
 
   private constructor(
     readonly component: Component.Unit,
     readonly loopCount: number
   ) {
+    super([], loopCount <= 0);
+
     this.remainingCount = loopCount;
-    this.isCompleted = loopCount <= 0;
   }
 
   step(): boolean {
@@ -26,7 +26,7 @@ export class Unit implements Component.Unit {
       return false;
     }
 
-    return (this.isCompleted = true);
+    return this.complete();
   }
 
   reset(): Unit {

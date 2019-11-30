@@ -1,26 +1,29 @@
 import { ArrayList } from "../../ds";
 import * as Component from "./component";
 
-export class Unit implements Component.Unit {
+export class Unit extends Component.Base {
   static create(components: readonly Component.Unit[]) {
     return new Unit(components);
   }
 
   readonly components: readonly Component.Unit[];
   readonly runningComponentList: ArrayList.Unit<Component.Unit>;
-  isCompleted: boolean;
 
   private constructor(components: readonly Component.Unit[]) {
+    super([], false);
+
     this.components = components.slice();
     this.runningComponentList = ArrayList.fromArray(components.slice());
-    this.isCompleted = false;
   }
 
   step(): boolean {
-    ArrayList.removeShiftAll(this.runningComponentList, Component.step);
+    const { runningComponentList } = this;
 
-    if (this.runningComponentList.size > 0) return false;
-    return (this.isCompleted = true);
+    ArrayList.removeShiftAll(runningComponentList, Component.step);
+
+    if (runningComponentList.size > 0) return false;
+
+    return this.complete();
   }
 
   reset(): Unit {

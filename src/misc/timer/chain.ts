@@ -19,11 +19,10 @@ const setNextIndex = (chain: Unit) => {
     return false;
   }
 
-  chain.isCompleted = true;
-  return true;
+  return chain.complete();
 };
 
-export class Unit implements Component.Unit {
+export class Unit extends Component.Base {
   static create(components: readonly Component.Unit[]) {
     return new Unit(components);
   }
@@ -31,13 +30,13 @@ export class Unit implements Component.Unit {
   readonly components: readonly Component.Unit[];
   index: number;
   currentComponent: Component.Unit;
-  isCompleted: boolean;
 
   private constructor(components: readonly Component.Unit[]) {
+    super([], false);
+
     this.components = components.slice();
     this.index = 0;
     this.currentComponent = components[0];
-    this.isCompleted = false;
   }
 
   step(): boolean {

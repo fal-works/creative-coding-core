@@ -26,36 +26,49 @@ const resetProgress = (progress: Progress) => {
 };
 
 export type Listener = (progress: Progress) => void;
-export type Listeners = readonly Listener[];
+export type Listeners = Listener[];
 
-const createListnerArray = (listeners?: Listener | Listeners) =>
-  listeners ? (Array.isArray(listeners) ? listeners.slice() : [listeners]) : [];
-
-export class Unit implements Component.Unit {
+export class Unit extends Component.Base {
   static create(
     onProgress: Listeners,
-    onComplete: Listeners,
+    onComplete: (() => void)[],
     progress: Progress,
     isCompleted = false
   ) {
     return new Unit(onProgress, onComplete, progress, isCompleted);
   }
 
+  onProgress: Listeners;
+  readonly progress: Progress;
+
   private constructor(
-    readonly onProgress: Listeners,
-    readonly onComplete: Listeners,
-    readonly progress: Progress,
-    public isCompleted: boolean
-  ) {}
+    onProgress: Listeners,
+    onComplete: (() => void)[],
+    progress: Progress,
+    isCompleted: boolean
+  ) {
+    super(onComplete, isCompleted);
+
+    this.onProgress = onProgress;
+    this.progress = progress;
+  }
 
   step(): boolean {
     if (this.isCompleted) return true;
 
     const { progress } = this;
 
-    if (progress.count >= progress.duration) return this.complete(progress);
+    if (progress.count >= progress.duration) {
+      progress.ratio = 1;
+      ArrayUtility.loopRunWithArgument(this.onProgress, progress);
 
-    return this.update(progress);
+      return this.complete();
+    }
+
+    ArrayUtility.loopRunWithArgument(this.onProgress, progress);
+    updateProgress(progress);
+
+    return false;
   }
 
   reset(): Unit {
@@ -63,19 +76,6 @@ export class Unit implements Component.Unit {
     this.isCompleted = false;
 
     return this;
-  }
-
-  private update(progress: Progress) {
-    ArrayUtility.loopRun(this.onProgress, progress);
-    updateProgress(progress);
-    return false;
-  }
-
-  private complete(progress: Progress) {
-    progress.ratio = 1;
-    ArrayUtility.loopRun(this.onProgress, progress);
-    ArrayUtility.loopRun(this.onComplete, progress);
-    return (this.isCompleted = true);
   }
 }
 
@@ -86,12 +86,12 @@ export class Unit implements Component.Unit {
  */
 export const create = (parameters: {
   duration: number;
-  onProgress?: Listener | Listeners;
-  onComplete?: Listener | Listeners;
+  onProgress?: ArrayUtility.ArrayOrValue<Listener>;
+  onComplete?: ArrayUtility.ArrayOrValue<() => void>;
 }): Unit => {
   return Unit.create(
-    createListnerArray(parameters.onProgress),
-    createListnerArray(parameters.onComplete),
+    ArrayUtility.unifyToArray(parameters.onProgress),
+    ArrayUtility.unifyToArray(parameters.onComplete),
     createProgress(parameters.duration)
   );
 };
