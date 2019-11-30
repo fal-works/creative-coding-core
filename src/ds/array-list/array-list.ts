@@ -1,4 +1,4 @@
-import * as Arrays from "./arrays";
+import * as Arrays from "./../arrays";
 
 /**
  * A basic array-based list.
