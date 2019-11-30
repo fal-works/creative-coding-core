@@ -1,7 +1,7 @@
-import { Range } from "../types/range";
-import { TWO_PI } from "../geometry/angle";
-import { Vector2D, RectangleRegion } from "../geometry";
-import { floor } from "./numeric";
+import { Range } from "../../types/range";
+import { TWO_PI } from "../../geometry/angle";
+import { Vector2D, RectangleRegion } from "../../geometry";
+import { floor } from "./../numeric";
 
 const { random } = Math;
 
