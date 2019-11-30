@@ -1,4 +1,4 @@
-import { Range } from "../types";
+import { Range } from "../../types";
 
 /**
  * Runs `callback` once for each element of `array` from index `start` up to (but not including) `end`.

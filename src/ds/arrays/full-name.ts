@@ -1,0 +1,21 @@
+export {
+  loopRange as loopArrayRange,
+  loop as loopArray,
+  loopRangeBackwards as loopArrayRangeBackwards,
+  loopBackwards as loopArrayBackwards,
+  nestedLoopJoinWithRange as arrayNestedLoopJoinWithRange,
+  nestedLoopJoin as arrayNestedLoopJoin,
+  roundRobinWithRange as arrayRoundRobinWithRange,
+  roundRobin as arrayRoundRobin,
+  unifyToArray,
+  flatNaive as flatArrayNaive,
+  flatRecursive as flatArrayRecursive,
+  populate as populateArray,
+  createPopulated as createPopulatedArray,
+  createIntegerSequence,
+  fromRange as arrayFromRange,
+  filterMap as filterMapArray,
+  loopRun as loopRunArray,
+  loopRunWithArgument as loopRunArrayWithArgument,
+  blit as blitArray
+} from "./arrays";
