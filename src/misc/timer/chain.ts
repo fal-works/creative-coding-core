@@ -1,4 +1,4 @@
-import { ArrayUtility } from "../../ds";
+import { Arrays } from "../../ds";
 import * as Component from "./component";
 
 const setIndex = (chain: Unit, index: number): void => {
@@ -46,7 +46,7 @@ export class Unit extends Component.Base {
   }
 
   reset(): Unit {
-    ArrayUtility.loop(this.components, Component.reset);
+    Arrays.loop(this.components, Component.reset);
     setIndex(this, 0);
     this.isCompleted = false;
 

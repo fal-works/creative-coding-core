@@ -1,8 +1,8 @@
 import * as ArrayList from "./array-list";
 export { ArrayList };
 
-import * as ArrayUtility from "./array-utility";
-export { ArrayUtility };
+import * as Arrays from "./arrays";
+export { Arrays };
 
 import * as Lazy from "./lazy";
 export { Lazy };

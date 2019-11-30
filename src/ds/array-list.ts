@@ -1,4 +1,4 @@
-import * as ArrayUtility from "./array-utility";
+import * as Arrays from "./arrays";
 
 /**
  * A basic array-based list.
@@ -50,7 +50,7 @@ export const createPopulated = <T>(
   factory: (index: number) => T
 ): Unit<T> => {
   return {
-    array: ArrayUtility.populate(new Array<T>(size), factory),
+    array: Arrays.populate(new Array<T>(size), factory),
     size
   };
 };
@@ -196,7 +196,7 @@ export const clearReference = <T>(arrayList: Unit<T>): void => {
 export const loop = <T>(
   arrayList: Unit<T>,
   callback: (value: T, index: number, array: readonly T[]) => void
-): void => ArrayUtility.loopRange(arrayList.array, callback, 0, arrayList.size);
+): void => Arrays.loopRange(arrayList.array, callback, 0, arrayList.size);
 
 /**
  * Runs `callback` for each element of `arrayList` in descending order.
@@ -207,7 +207,7 @@ export const loopBackwards = <T>(
   arrayList: Unit<T>,
   callback: (value: T, index: number, array: readonly T[]) => void
 ): void =>
-  ArrayUtility.loopRangeBackwards(arrayList.array, callback, 0, arrayList.size);
+  Arrays.loopRangeBackwards(arrayList.array, callback, 0, arrayList.size);
 
 /**
  * Finds the first element where `predicate` returns true.
@@ -372,7 +372,7 @@ export const populate = <T>(
   arrayList: Unit<T>,
   factory: (index: number) => T
 ) => {
-  ArrayUtility.populate(arrayList.array, factory);
+  Arrays.populate(arrayList.array, factory);
   arrayList.size = arrayList.array.length;
 
   return arrayList;
@@ -390,7 +390,7 @@ export const nestedLoopJoin = <T, U>(
   arrayListB: Unit<U>,
   callback: (elementA: T, elementB: U) => void
 ): void =>
-  ArrayUtility.nestedLoopJoinWithRange(
+  Arrays.nestedLoopJoinWithRange(
     arrayListA.array,
     arrayListB.array,
     callback,
@@ -409,9 +409,4 @@ export const roundRobin = <T>(
   arrayList: Unit<T>,
   callback: (element: T, otherElement: T) => void
 ): void =>
-  ArrayUtility.roundRobinWithRange(
-    arrayList.array,
-    callback,
-    0,
-    arrayList.size
-  );
+  Arrays.roundRobinWithRange(arrayList.array, callback, 0, arrayList.size);

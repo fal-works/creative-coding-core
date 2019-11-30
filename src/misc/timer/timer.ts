@@ -1,4 +1,4 @@
-import { ArrayUtility } from "../../ds";
+import { Arrays } from "../../ds";
 import * as Component from "./component";
 
 export interface Progress {
@@ -60,12 +60,12 @@ export class Unit extends Component.Base {
 
     if (progress.count >= progress.duration) {
       progress.ratio = 1;
-      ArrayUtility.loopRunWithArgument(this.onProgress, progress);
+      Arrays.loopRunWithArgument(this.onProgress, progress);
 
       return this.complete();
     }
 
-    ArrayUtility.loopRunWithArgument(this.onProgress, progress);
+    Arrays.loopRunWithArgument(this.onProgress, progress);
     updateProgress(progress);
 
     return false;
@@ -86,12 +86,12 @@ export class Unit extends Component.Base {
  */
 export const create = (parameters: {
   duration: number;
-  onProgress?: ArrayUtility.ArrayOrValue<Listener>;
-  onComplete?: ArrayUtility.ArrayOrValue<() => void>;
+  onProgress?: Arrays.ArrayOrValue<Listener>;
+  onComplete?: Arrays.ArrayOrValue<() => void>;
 }): Unit => {
   return Unit.create(
-    ArrayUtility.unifyToArray(parameters.onProgress),
-    ArrayUtility.unifyToArray(parameters.onComplete),
+    Arrays.unifyToArray(parameters.onProgress),
+    Arrays.unifyToArray(parameters.onComplete),
     createProgress(parameters.duration)
   );
 };

@@ -1,4 +1,4 @@
-import { ArrayUtility } from "../../ds";
+import { Arrays } from "../../ds";
 
 export interface Unit {
   readonly onComplete: (() => void)[];
@@ -53,7 +53,7 @@ export abstract class Base implements Unit {
    * @returns `true`.
    */
   complete(): boolean {
-    ArrayUtility.loopRun(this.onComplete);
+    Arrays.loopRun(this.onComplete);
 
     return (this.isCompleted = true);
   }
