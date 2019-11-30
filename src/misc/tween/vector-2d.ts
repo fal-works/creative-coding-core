@@ -22,7 +22,7 @@ export const create = (
   const { x: startX, y: startY } = vector;
   const { x: endX, y: endY } = parameters.target;
 
-  const ease = parameters.easing || Easing.easeLinear;
+  const ease = parameters.easing || Easing.linear;
 
   return Timer.create({
     duration,

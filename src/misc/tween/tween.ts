@@ -18,7 +18,7 @@ export const create = (
   parameters: Parameters
 ) => {
   const { start, end, duration } = parameters;
-  const ease = parameters.easing || Easing.easeLinear;
+  const ease = parameters.easing || Easing.linear;
 
   return Timer.create({
     duration,
