@@ -12,3 +12,6 @@ export { Vector2D };
 
 import * as Bezier from "./bezier";
 export { Bezier };
+
+import * as Coordinates2D from "./coordinates-2d";
+export { Coordinates2D };
