@@ -10,6 +10,7 @@ export type Parameters = {
 
 /**
  * Creates a `Timer` instance for tweening `vector`.
+ * The initial value of `vector` is evaluated at the timing when the timer starts.
  * @param parameters `target`, `duration` and `easing`(linear by default).
  * @return New `Timer` instance.
  */
@@ -19,13 +20,16 @@ export const create = (
 ) => {
   const { duration } = parameters;
 
-  const { x: startX, y: startY } = vector;
+  let startX: number, startY: number;
   const { x: endX, y: endY } = parameters.target;
 
   const ease = parameters.easing || Easing.linear;
 
   return Timer.create({
     duration,
+    onStart: () => {
+      ({ x: startX, y: startY } = vector);
+    },
     onProgress: progress => {
       const ratio = ease(progress.ratio);
       Vector2D.Mutable.setCartesian(
