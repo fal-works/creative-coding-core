@@ -6,17 +6,18 @@ export class Unit extends Component.Base {
     return new Unit(components);
   }
 
-  readonly components: readonly Component.Unit[];
+  readonly components: Component.Unit[];
   readonly runningComponentList: ArrayList.Unit<Component.Unit>;
 
   private constructor(components: readonly Component.Unit[]) {
-    super([], false);
+    super([], []);
 
     this.components = components.slice();
     this.runningComponentList = ArrayList.fromArray(components.slice());
   }
 
   step(): boolean {
+    this.tryStart();
     const { runningComponentList } = this;
 
     ArrayList.removeShiftAll(runningComponentList, Component.step);
@@ -31,9 +32,20 @@ export class Unit extends Component.Base {
     ArrayList.clear(runningComponentList);
     ArrayList.addArray(runningComponentList, this.components);
     ArrayList.loop(runningComponentList, Component.reset);
+    this.isStarted = false;
     this.isCompleted = false;
 
     return this;
+  }
+
+  setName(name: string): Unit {
+    super.setName(name);
+    return this;
+  }
+
+  addComponent(component: Component.Unit): void {
+    this.components.push(component);
+    ArrayList.add(this.runningComponentList, component);
   }
 }
 

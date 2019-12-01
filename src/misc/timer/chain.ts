@@ -27,12 +27,12 @@ export class Unit extends Component.Base {
     return new Unit(components);
   }
 
-  readonly components: readonly Component.Unit[];
+  readonly components: Component.Unit[];
   index: number;
   currentComponent: Component.Unit;
 
   private constructor(components: readonly Component.Unit[]) {
-    super([], false);
+    super([], []);
 
     this.components = components.slice();
     this.index = 0;
@@ -40,6 +40,8 @@ export class Unit extends Component.Base {
   }
 
   step(): boolean {
+    this.tryStart();
+
     if (!this.currentComponent.step()) return false;
 
     return setNextIndex(this);
@@ -48,8 +50,18 @@ export class Unit extends Component.Base {
   reset(): Unit {
     Arrays.loop(this.components, Component.reset);
     setIndex(this, 0);
+    this.isStarted = false;
     this.isCompleted = false;
 
+    return this;
+  }
+
+  pushComponent(component: Component.Unit): void {
+    this.components.push(component);
+  }
+
+  setName(name: string): Unit {
+    super.setName(name);
     return this;
   }
 }

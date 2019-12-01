@@ -1,7 +1,16 @@
 import { Arrays } from "../../ds";
+import * as Log from "./log";
+
+type Listener = (id: number) => void;
+
+let nextComponentId = 0;
 
 export interface Unit {
-  readonly onComplete: (() => void)[];
+  readonly id: number;
+  name: string;
+  readonly onStart: Listener[];
+  readonly onComplete: Listener[];
+  isStarted: boolean;
   isCompleted: boolean;
 
   /**
@@ -17,10 +26,21 @@ export interface Unit {
   reset(): Unit;
 
   /**
+   * Function that Starts the progress of timer component.
+   */
+  tryStart(): boolean;
+
+  /**
    * Function that immediately completes the progress of timer component.
    * Always returns `true`.
    */
   complete(): boolean;
+
+  /**
+   * Sets the name of `this` for debug purpose.
+   * Returns `this` instance.
+   */
+  setName(name: string): Unit;
 }
 
 /**
@@ -35,26 +55,68 @@ export const step = (component: Unit) => component.step();
  */
 export const reset = (component: Unit) => component.reset();
 
+const defaultName = "no name";
+
 /**
  * Base class for other classes implementing `Component`.
  */
 export abstract class Base implements Unit {
-  protected constructor(
-    readonly onComplete: (() => void)[],
-    public isCompleted: boolean
-  ) {}
+  readonly id = nextComponentId++;
+  name = defaultName;
+  readonly onStart: Listener[];
+  readonly onComplete: Listener[];
+  isStarted: boolean;
+  isCompleted: boolean;
+
+  protected constructor(onStart: Listener[], onComplete: Listener[]) {
+    this.onStart = onStart;
+    this.onComplete = onComplete;
+    this.isStarted = false;
+    this.isCompleted = false;
+
+    Log.verbose(Log.TIMER, this.id, Log.CREATED);
+  }
 
   abstract step(): boolean;
 
   abstract reset(): Unit;
 
   /**
+   * If `this` is not yet started,
+   * runs all functions in `this.onStart`, and sets `this.isStarted` to `true`.
+   * @returns `true` if just started. `false` if already started.
+   */
+  tryStart(): boolean {
+    if (this.isStarted) return false;
+
+    const id = this.id;
+    Log.verbose(Log.TIMER, id, Log.STARTING);
+    Arrays.loopRunWithArgument(this.onStart, id);
+    Log.verbose(Log.TIMER, id, Log.STARTED);
+
+    return (this.isStarted = true);
+  }
+
+  /**
    * Runs all functions in `this.onComplete`, and sets `this.isCompleted` to `true`.
    * @returns `true`.
    */
   complete(): boolean {
-    Arrays.loopRun(this.onComplete);
+    const id = this.id;
+    Log.verbose(Log.TIMER, id, Log.COMPLETING);
+    Arrays.loopRunWithArgument(this.onComplete, id);
+    Log.verbose(Log.TIMER, id, Log.COMPLETED);
 
     return (this.isCompleted = true);
+  }
+
+  /**
+   * Sets the name of `this` for debug purpose.
+   * @param name
+   * @returns `this` instance.
+   */
+  setName(name: string): Unit {
+    this.name = name;
+    return this;
   }
 }

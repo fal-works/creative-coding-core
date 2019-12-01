@@ -17,3 +17,5 @@ export { create as loop } from "./loop";
 
 import * as Set from "./set";
 export { Set };
+
+export { outputVerbose } from "./log";

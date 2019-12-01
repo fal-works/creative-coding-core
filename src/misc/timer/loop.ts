@@ -11,12 +11,14 @@ export class Unit extends Component.Base {
     readonly component: Component.Unit,
     readonly loopCount: number
   ) {
-    super([], loopCount <= 0);
+    super([], []);
 
     this.remainingCount = loopCount;
   }
 
   step(): boolean {
+    this.tryStart();
+
     if (!this.component.step()) return false;
 
     if (this.isCompleted) return true;
@@ -33,13 +35,15 @@ export class Unit extends Component.Base {
     const { loopCount } = this;
     this.remainingCount = loopCount;
 
-    if (loopCount > 0) {
-      this.component.reset();
-      this.isCompleted = false;
-    } else {
-      this.isCompleted = true;
-    }
+    this.component.reset();
+    this.isStarted = false;
+    this.isCompleted = false;
 
+    return this;
+  }
+
+  setName(name: string): Unit {
+    super.setName(name);
     return this;
   }
 }

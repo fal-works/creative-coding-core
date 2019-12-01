@@ -30,24 +30,24 @@ export type Listeners = Listener[];
 
 export class Unit extends Component.Base {
   static create(
+    onStart: (() => void)[],
     onProgress: Listeners,
     onComplete: (() => void)[],
-    progress: Progress,
-    isCompleted = false
+    progress: Progress
   ) {
-    return new Unit(onProgress, onComplete, progress, isCompleted);
+    return new Unit(onStart, onProgress, onComplete, progress);
   }
 
   onProgress: Listeners;
   readonly progress: Progress;
 
   private constructor(
+    onStart: (() => void)[],
     onProgress: Listeners,
     onComplete: (() => void)[],
-    progress: Progress,
-    isCompleted: boolean
+    progress: Progress
   ) {
-    super(onComplete, isCompleted);
+    super(onStart, onComplete);
 
     this.onProgress = onProgress;
     this.progress = progress;
@@ -55,6 +55,7 @@ export class Unit extends Component.Base {
 
   step(): boolean {
     if (this.isCompleted) return true;
+    this.tryStart();
 
     const { progress } = this;
 
@@ -73,8 +74,14 @@ export class Unit extends Component.Base {
 
   reset(): Unit {
     resetProgress(this.progress);
+    this.isStarted = false;
     this.isCompleted = false;
 
+    return this;
+  }
+
+  setName(name: string): Unit {
+    super.setName(name);
     return this;
   }
 }
@@ -86,14 +93,18 @@ export class Unit extends Component.Base {
  */
 export const create = (parameters: {
   duration: number;
+  onStart?: Arrays.ArrayOrValue<() => void>;
   onProgress?: Arrays.ArrayOrValue<Listener>;
   onComplete?: Arrays.ArrayOrValue<() => void>;
 }): Unit => {
   return Unit.create(
+    Arrays.unifyToArray(parameters.onStart),
     Arrays.unifyToArray(parameters.onProgress),
     Arrays.unifyToArray(parameters.onComplete),
     createProgress(parameters.duration)
   );
 };
 
-export const dummy = Unit.create([], [], createProgress(0), true);
+export const dummy = Unit.create([], [], [], createProgress(0));
+dummy.isStarted = true;
+dummy.isCompleted = true;
