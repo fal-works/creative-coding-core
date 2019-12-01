@@ -52,7 +52,7 @@
     "build-es:rollup": "rollup -c ./rollup-config-es.js",
     "build-umd": "run-s build-umd:rollup build-umd:format build-umd:minify",
     "build-umd:format": "eslint --fix ./lib/creative-coding-core.js",
-    "build-umd:minify": "terser ./lib/creative-coding-core.mjs -c -m -o ./lib/creative-coding-core.min.mjs --comments --ecma 6",
+    "build-umd:minify": "terser ./lib/creative-coding-core.js -c -m -o ./lib/creative-coding-core.min.js --comments --ecma 6",
     "build-umd:rollup": "rollup -c ./rollup-config-umd.js",
     "lint": "eslint --fix ./src/**/*.ts",
     "typedoc": "typedoc ./src --excludeNotExported"
