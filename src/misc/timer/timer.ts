@@ -1,4 +1,5 @@
 import { Arrays } from "../../ds";
+import { Numeric } from "../../math";
 import * as Component from "./component";
 
 export interface Progress {
@@ -11,7 +12,7 @@ export interface Progress {
 const createProgress = (duration: number): Progress => {
   return {
     duration,
-    ratioChangeRate: 1 / duration,
+    ratioChangeRate: 1 / Numeric.max2(1, duration),
     count: 0,
     ratio: 0
   };
