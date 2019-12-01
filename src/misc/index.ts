@@ -15,3 +15,6 @@ export { ConstantFunction };
 
 import * as Tween from "./tween";
 export { Tween };
+
+import * as Log from "./log";
+export { Log };
