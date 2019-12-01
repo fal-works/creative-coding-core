@@ -14,7 +14,7 @@ export type Parameters = {
  * @return New `Timer` instance.
  */
 export const create = (
-  setValue: (v: number) => void,
+  setValue: (value: number) => void,
   parameters: Parameters
 ) => {
   const { start, end, duration } = parameters;
