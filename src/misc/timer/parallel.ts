@@ -52,7 +52,7 @@ export class Unit extends Component.Base {
 /**
  * Creates a parallel composite from `components`.
  * @param components
- * @return New `Timer.Parallel` instance.
+ * @returns New `Timer.Parallel` instance.
  */
 export const create = (components: readonly Component.Unit[]) =>
   Unit.create(components);

@@ -89,7 +89,7 @@ export class Unit extends Component.Base {
 /**
  * Creates a `Timer` instance.
  * @param parameters
- * @return New `Timer` instance.
+ * @returns New `Timer` instance.
  */
 export const create = (parameters: {
   duration: number;

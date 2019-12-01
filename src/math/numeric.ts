@@ -37,7 +37,7 @@ export const {
 
 /**
  * Same as `Math.sqrt`.
- * @return √x
+ * @returns √x
  */
 export const squareRoot = sqrt;
 
@@ -68,7 +68,7 @@ export const floatRound = fround;
 
 /**
  * Same as `Math.cbrt`.
- * @return ∛x
+ * @returns ∛x
  */
 export const cubeRoot = cbrt;
 
@@ -84,7 +84,7 @@ export const cubeInt = (v: number) => imul(imul(v, v), v);
  * Checks whether `a` and `b` are considered equal.
  * @param a
  * @param b
- * @return `true` if the absolute difference of `a` and `b` is smaller than `Number.EPSILON`.
+ * @returns `true` if the absolute difference of `a` and `b` is smaller than `Number.EPSILON`.
  */
 export const equal = (a: number, b: number): boolean =>
   abs(a - b) < 2.220446049250313e-16;
@@ -93,7 +93,7 @@ export const equal = (a: number, b: number): boolean =>
  * Similar to `Math.min` but accepts only two arguments.
  * @param a
  * @param b
- * @return The smaller of `a` or `b`.
+ * @returns The smaller of `a` or `b`.
  */
 export const min2 = (a: number, b: number) => (a < b ? a : b);
 
@@ -101,7 +101,7 @@ export const min2 = (a: number, b: number) => (a < b ? a : b);
  * Similar to `Math.max` but accepts only two arguments.
  * @param a
  * @param b
- * @return The larger of `a` or `b`.
+ * @returns The larger of `a` or `b`.
  */
 export const max2 = (a: number, b: number) => (a > b ? a : b);
 
@@ -109,7 +109,7 @@ export const max2 = (a: number, b: number) => (a > b ? a : b);
  * Safe version of `Math.atan2`;
  * @param y
  * @param x
- * @return The angle from x-axis to the point. `0` if both `x` and `y` are `0`.
+ * @returns The angle from x-axis to the point. `0` if both `x` and `y` are `0`.
  */
 export const atan2safe = (y: number, x: number) =>
   y !== 0 || x !== 0 ? atan2(y, x) : 0;
@@ -118,7 +118,7 @@ export const atan2safe = (y: number, x: number) =>
  * Calculates the sum of squares of `x` and `y`.
  * @param x
  * @param y
- * @return `x^2 + y^2`.
+ * @returns `x^2 + y^2`.
  */
 export const hypotenuseSquared2D = (x: number, y: number) => x * x + y * y;
 
@@ -126,7 +126,7 @@ export const hypotenuseSquared2D = (x: number, y: number) => x * x + y * y;
  * A 2D version of `Math.hypot`. Calculates the square root of the sum of squares of `x` and `y`.
  * @param x
  * @param y
- * @return `√(x^2 + y^2)`.
+ * @returns `√(x^2 + y^2)`.
  */
 export const hypotenuse2D = (x: number, y: number) => sqrt(x * x + y * y);
 
@@ -136,7 +136,7 @@ export const hypotenuse2D = (x: number, y: number) => sqrt(x * x + y * y);
  * @param start
  * @param end
  * @param ratio
- * @return Interpolated value, e.g. `start` if `ratio == 0`, `end` if `ratio == 1`.
+ * @returns Interpolated value, e.g. `start` if `ratio == 0`, `end` if `ratio == 1`.
  */
 export const lerp = (start: number, end: number, ratio: number) =>
   start + ratio * (end - start);
@@ -146,7 +146,7 @@ export const lerp = (start: number, end: number, ratio: number) =>
  * @param value
  * @param min
  * @param max
- * @return Clamped value equal or greater than `min` and equal or less than `max`.
+ * @returns Clamped value equal or greater than `min` and equal or less than `max`.
  */
 export const clamp = (value: number, min: number, max: number) =>
   value < min ? min : value > max ? max : value;
@@ -158,7 +158,7 @@ export const clamp = (value: number, min: number, max: number) =>
  * @param inEnd
  * @param outStart
  * @param outEnd
- * @return Mapped value (unclamped).
+ * @returns Mapped value (unclamped).
  */
 export const map = (
   value: number,
@@ -174,7 +174,7 @@ export const map = (
  * @param inEnd
  * @param outStart
  * @param outEnd
- * @return New mapping function.
+ * @returns New mapping function.
  */
 export const createMap = (
   inStart: number,
@@ -193,7 +193,7 @@ export const createMap = (
  * @param value
  * @param start
  * @param end
- * @return Mapped value between 0 and 1 (unclamped).
+ * @returns Mapped value between 0 and 1 (unclamped).
  */
 export const inverseLerp = (value: number, start: number, end: number) =>
   (value - start) / (end - start);

@@ -22,7 +22,7 @@ export const update = (quantity: Quantity) => {
  * random rotational speed within the given range.
  * @param minRotationSpeed
  * @param maxRotationSpeed
- * @return New `Rotation.Quantity`.
+ * @returns New `Rotation.Quantity`.
  */
 export const createRandomQuantity = (
   minRotationSpeed: number,

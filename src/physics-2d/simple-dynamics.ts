@@ -87,7 +87,7 @@ export const postUpdateVerlet = (quantity: VerletQuantity) => {
  * Extracts force values to `target` vector.
  * @param quantity
  * @param target
- * @return `target` vector with assigned acceleration.
+ * @returns `target` vector with assigned acceleration.
  */
 export const forceVector = (
   quantity: Quantity,
@@ -98,7 +98,7 @@ export const forceVector = (
  * Truncates the magnitude of force if it is greater than `maxMagnitude`.
  * @param quantity
  * @param maxSpeed
- * @return The `quantity` instance with truncated force values.
+ * @returns The `quantity` instance with truncated force values.
  */
 export const truncateForce = (quantity: Quantity, maxMagnitude: number) => {
   const { fx, fy } = quantity;
@@ -115,7 +115,7 @@ export const truncateForce = (quantity: Quantity, maxMagnitude: number) => {
  * Adds `force` to `quantity`.
  * @param quantity
  * @param force
- * @return The `quantity` instance with assigned force.
+ * @returns The `quantity` instance with assigned force.
  */
 export const addForce = (quantity: Quantity, force: Vector2D.Unit) => {
   quantity.fx += force.x;
@@ -128,7 +128,7 @@ export const addForce = (quantity: Quantity, force: Vector2D.Unit) => {
  * @param quantity
  * @param fx
  * @param fy
- * @return The `quantity` instance with assigned force.
+ * @returns The `quantity` instance with assigned force.
  */
 export const addForceCartesian = (
   quantity: Quantity,
@@ -145,7 +145,7 @@ export const addForceCartesian = (
  * @param quantity
  * @param magnitude
  * @param angle
- * @return The `quantity` instance with assigned force.
+ * @returns The `quantity` instance with assigned force.
  */
 export const addForcePolar = (
   quantity: Quantity,

@@ -12,7 +12,7 @@ export type Parameters = {
  * Creates a `Timer` instance for tweening `vector`.
  * The initial value of `vector` is evaluated at the timing when the timer starts.
  * @param parameters `target`, `duration` and `easing`(linear by default).
- * @return New `Timer` instance.
+ * @returns New `Timer` instance.
  */
 export const create = (
   vector: Vector2D.Mutable.Unit,

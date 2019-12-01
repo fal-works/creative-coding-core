@@ -9,7 +9,7 @@ const setIndex = (chain: Unit, index: number): void => {
 /**
  * Increments component index. Set `chain` completed if there is no next component.
  * @param chain
- * @return `true` if completed i.e. there is no next component.
+ * @returns `true` if completed i.e. there is no next component.
  */
 const setNextIndex = (chain: Unit) => {
   const nextIndex = chain.index + 1;
@@ -69,7 +69,7 @@ export class Unit extends Component.Base {
 /**
  * Creates a sequential composite from `components`.
  * @param components
- * @return New `Timer.Chain` instance.
+ * @returns New `Timer.Chain` instance.
  */
 export const create = (components: readonly Component.Unit[]) =>
   Unit.create(components);

@@ -15,7 +15,7 @@ export const setConstant = (value: number) => {
  * @param massProduct Pre-calcultad product of mass of attractor and attracted.
  * @param distance Pre-calculated distance.
  * @param target Vector to assign the result.
- * @return The `target` vector with assigned gravitation force.
+ * @returns The `target` vector with assigned gravitation force.
  */
 export const calculateCore = (
   attractedRelative: Vector2D.Unit,
@@ -34,7 +34,7 @@ export const calculateCore = (
  * @param attractor Object that has `x`, `y` and `mass`.
  * @param attracted Object that has `x`, `y` and `mass`.
  * @param target Vector to assign the result.
- * @return The `target` vector with assigned gravitation force.
+ * @returns The `target` vector with assigned gravitation force.
  */
 export const calculate = (
   attractor: Dynamics.PointMass,
@@ -53,7 +53,7 @@ export const calculate = (
  * @param attractedRelative Relative position from attractor to attracted.
  * @param distance Pre-calculated distance.
  * @param target Vector to assign the result.
- * @return The `target` vector with assigned gravitation force.
+ * @returns The `target` vector with assigned gravitation force.
  */
 export const calculateCoreSimple = (
   attractedRelative: Vector2D.Unit,
@@ -71,7 +71,7 @@ export const calculateCoreSimple = (
  * @param attractor
  * @param attracted
  * @param target Vector to assign the result.
- * @return The `target` vector with assigned gravitation force.
+ * @returns The `target` vector with assigned gravitation force.
  */
 export const calculateSimple = (
   attractor: Vector2D.Unit,

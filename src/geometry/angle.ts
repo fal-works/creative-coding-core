@@ -40,7 +40,7 @@ export const toDegrees = (radians: number): number =>
 /**
  * Calculates the angle in radians from origin to `position`.
  * @param position
- * @return The angle. `0` if `position` is a zero vector.
+ * @returns The angle. `0` if `position` is a zero vector.
  */
 export const fromOrigin = (position: Vector2D.Unit): number => {
   const { x, y } = position;
@@ -51,7 +51,7 @@ export const fromOrigin = (position: Vector2D.Unit): number => {
  * Calculates the angle in radians between two points.
  * @param from
  * @param to
- * @return The angle. `0` if both points are the same.
+ * @returns The angle. `0` if both points are the same.
  */
 export const betweenPoints = (
   from: Vector2D.Unit,
@@ -64,7 +64,7 @@ export const betweenPoints = (
 
 /**
  * Calculates the angle in radians between two points.
- * @return The angle. `0` if both points are the same.
+ * @returns The angle. `0` if both points are the same.
  */
 export const betweenCoordinates = (
   x1: number,

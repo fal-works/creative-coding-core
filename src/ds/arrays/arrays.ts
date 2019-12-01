@@ -145,7 +145,7 @@ export const unifyToArray = <T>(arrayOrValue?: ArrayOrValue<T>) =>
 /**
  * Creates a new 1-dimensional array by concatenating sub-array elements of a 2-dimensional array.
  * @param arrays
- * @return A new 1-dimensional array.
+ * @returns A new 1-dimensional array.
  */
 // eslint-disable-next-line prefer-spread
 export const flatNaive = <T>(arrays: readonly T[][]): readonly T[] =>
@@ -155,7 +155,7 @@ export const flatNaive = <T>(arrays: readonly T[][]): readonly T[] =>
  * An alternative to `Array.prototype.flat()`.
  * @param array
  * @param depth
- * @return A new array.
+ * @returns A new array.
  */
 export const flatRecursive = <T>(array: ArrayOrValue<T>[], depth = 1) =>
   depth > 0
@@ -171,7 +171,7 @@ export const flatRecursive = <T>(array: ArrayOrValue<T>[], depth = 1) =>
  * @param array
  * @param factory A function that returns a new element for assigning to `array`.
  * @param length The length to populate. Default value is `array.length`.
- * @return Filled `array`.
+ * @returns Filled `array`.
  */
 export const populate = <T>(
   array: T[],
@@ -188,7 +188,7 @@ export const populate = <T>(
  * Creates a new array filled by running `factory` for each index and assigning the result.
  * @param factory
  * @param length
- * @return A new populated array.
+ * @returns A new populated array.
  */
 export const createPopulated = <T>(
   factory: (index: number) => T,
@@ -198,7 +198,7 @@ export const createPopulated = <T>(
 /**
  * Creates a new array of integer numbers starting from `0`.
  * @param length
- * @return A new number array.
+ * @returns A new number array.
  */
 export const createIntegerSequence = (length: number) => {
   const array = new Array<number>(length);
@@ -211,7 +211,7 @@ export const createIntegerSequence = (length: number) => {
 /**
  * Creates a new array of numbers within `range`.
  * @param range
- * @return A new number array.
+ * @returns A new number array.
  */
 export const fromRange = (range: Range) => {
   const { start, end } = range;
@@ -227,7 +227,7 @@ export const fromRange = (range: Range) => {
  * Creates a new array by filtering and mapping `array`.
  * @param array
  * @param callback
- * @return New array, filtered and mapped.
+ * @returns New array, filtered and mapped.
  */
 export const filterMap = <T, U>(
   array: T[],

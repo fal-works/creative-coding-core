@@ -6,7 +6,7 @@ import { Random } from "../math";
  * Creates an array of HSV values with random hue ∈ [0, 360].
  * @param saturation
  * @param value
- * @return New array of HSV values.
+ * @returns New array of HSV values.
  */
 export const withRandomHue = (saturation: number, value: number) => [
   Random.value(360),
@@ -18,7 +18,7 @@ export const withRandomHue = (saturation: number, value: number) => [
  * Converts HSV values (hue ∈ [0, 360], saturation ∈ [0, 1] and value ∈ [0, 1])
  * to RGB values (red, green, blue ∈ [0, 1]).
  * @param hsvValues
- * @return New array of RGB values.
+ * @returns New array of RGB values.
  */
 export const toRGB = (hsvValues: readonly number[]): readonly number[] => {
   const [hue, saturation, value] = hsvValues;

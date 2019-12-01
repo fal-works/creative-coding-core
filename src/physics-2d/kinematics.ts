@@ -98,7 +98,7 @@ export const postUpdateVerlet = (
  * Assigns position values to `target` vector.
  * @param quantity
  * @param target
- * @return `target` vector with assigned position.
+ * @returns `target` vector with assigned position.
  */
 export const positionVector = (
   quantity: Quantity,
@@ -109,7 +109,7 @@ export const positionVector = (
  * Extracts velocity values to `target` vector.
  * @param quantity
  * @param target
- * @return `target` vector with assigned velocity.
+ * @returns `target` vector with assigned velocity.
  */
 export const velocityVector = (
   quantity: Quantity,
@@ -119,7 +119,7 @@ export const velocityVector = (
 /**
  * Returns the speed.
  * @param quantity
- * @return The speed.
+ * @returns The speed.
  */
 export const getSpeed = (quantity: Quantity) =>
   Numeric.hypotenuse2D(quantity.vx, quantity.vy);
@@ -127,7 +127,7 @@ export const getSpeed = (quantity: Quantity) =>
 /**
  * Returns the velocity angle.
  * @param quantity
- * @return The angle.
+ * @returns The angle.
  */
 export const getVelocityAngle = (quantity: Quantity) =>
   Numeric.atan2safe(quantity.vy, quantity.vx);
@@ -136,7 +136,7 @@ export const getVelocityAngle = (quantity: Quantity) =>
  * Truncates the speed (magnitude of velocity) if it is greater than `maxSpeed`.
  * @param quantity
  * @param maxSpeed
- * @return The `quantity` instance with truncated velocity values.
+ * @returns The `quantity` instance with truncated velocity values.
  */
 export const truncateVelocity = (quantity: Quantity, maxSpeed: number) => {
   const { vx, vy } = quantity;
@@ -153,7 +153,7 @@ export const truncateVelocity = (quantity: Quantity, maxSpeed: number) => {
  * Set values of `velocity` to `quantity`.
  * @param quantity
  * @param velocity
- * @return The `quantity` instance with assigned velocity.
+ * @returns The `quantity` instance with assigned velocity.
  */
 export const setVelocity = (
   quantity: Quantity,
@@ -168,7 +168,7 @@ export const setVelocity = (
  * Set velocity values to `quantity`.
  * @param quantity
  * @param velocity
- * @return The `quantity` instance with assigned velocity.
+ * @returns The `quantity` instance with assigned velocity.
  */
 export const setVelocityCartesian = (
   quantity: Quantity,
@@ -184,7 +184,7 @@ export const setVelocityCartesian = (
  * Set velocity values to `quantity`.
  * @param quantity
  * @param velocity
- * @return The `quantity` instance with assigned velocity.
+ * @returns The `quantity` instance with assigned velocity.
  */
 export const setVelocityPolar = (
   quantity: Quantity,
@@ -201,7 +201,7 @@ export const setVelocityPolar = (
  * @param region
  * @param coefficientOfRestitution
  * @param quantity
- * @return `true` if bounced.
+ * @returns `true` if bounced.
  */
 export const bounceInRectangleRegion = (
   region: RectangleRegion.Unit,

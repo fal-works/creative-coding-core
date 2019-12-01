@@ -61,7 +61,7 @@ export const createPopulated = <T>(
  * Be sure that `array` is filled with valid elements.
  *
  * @param array
- * @return A new array-list unit.
+ * @returns A new array-list unit.
  */
 export const fromArray = <T>(array: T[]): Unit<T> => {
   return {
@@ -91,7 +91,7 @@ export const push = add;
  * Removes and returns the last element of `arrayList`.
  * Be sure that `arrayList` is not empty.
  * @param arrayList
- * @return The last element of `arrayList`.
+ * @returns The last element of `arrayList`.
  */
 export const pop = <T>(arrayList: Unit<T>): T => {
   const lastIndex = arrayList.size - 1;
@@ -104,7 +104,7 @@ export const pop = <T>(arrayList: Unit<T>): T => {
 /**
  * Returns the element of `arrayList` at `index`.
  * @param arrayList
- * @return The element of `arrayList` at `index`.
+ * @returns The element of `arrayList` at `index`.
  */
 export const get = <T>(arrayList: Unit<T>, index: number): T =>
   arrayList.array[index];
@@ -113,7 +113,7 @@ export const get = <T>(arrayList: Unit<T>, index: number): T =>
  * Returns the last element of `arrayList`.
  * Be sure that `arrayList` is not empty.
  * @param arrayList
- * @return The last element of `arrayList`.
+ * @returns The last element of `arrayList`.
  */
 export const peek = <T>(arrayList: Unit<T>): T =>
   arrayList.array[arrayList.size - 1];
@@ -123,7 +123,7 @@ export const peek = <T>(arrayList: Unit<T>): T =>
  * Be sure that `arrayList` is not empty.
  * Same as `peek()`.
  * @param arrayList
- * @return The last element of `arrayList`.
+ * @returns The last element of `arrayList`.
  */
 export const getLast = peek;
 
@@ -213,7 +213,7 @@ export const loopBackwards = <T>(
  * Finds the first element where `predicate` returns true.
  * @param arrayList
  * @param predicate Function that returns `true` if a given value matches the condition.
- * @return The found `element`. `undefined` if not found.
+ * @returns The found `element`. `undefined` if not found.
  */
 export const find = <T>(
   arrayList: Unit<T>,
@@ -230,7 +230,7 @@ export const find = <T>(
  * Finds `element` in `arrayList`.
  * @param arrayList
  * @param element
- * @return The index of `element`. `-1` if not found.
+ * @returns The index of `element`. `-1` if not found.
  */
 export const findIndex = <T>(arrayList: Unit<T>, element: T): number => {
   const { array, size } = arrayList;
@@ -246,7 +246,7 @@ export const findIndex = <T>(arrayList: Unit<T>, element: T): number => {
  * All subsequent elements will be shifted to the previous index.
  * @param arrayList
  * @param index
- * @return The removed element.
+ * @returns The removed element.
  */
 export const removeShift = <T>(arrayList: Unit<T>, index: number): T => {
   const { array, size } = arrayList;
@@ -262,7 +262,7 @@ export const removeShift = <T>(arrayList: Unit<T>, index: number): T => {
  * All subsequent elements will be shifted to the previous index.
  * @param arrayList
  * @param element
- * @return The removed element, or `null` if not found.
+ * @returns The removed element, or `null` if not found.
  */
 export const removeShiftElement = <T>(
   arrayList: Unit<T>,
@@ -279,7 +279,7 @@ export const removeShiftElement = <T>(
  *
  * @param arrayList
  * @param index
- * @return The removed element.
+ * @returns The removed element.
  */
 export const removeSwap = <T>(arrayList: Unit<T>, index: number): T => {
   const array = arrayList.array;
@@ -296,7 +296,7 @@ export const removeSwap = <T>(arrayList: Unit<T>, index: number): T => {
  * Removes `element` by replacing it with the last element.
  * @param arrayList
  * @param element
- * @return The removed element, or `null` if not found.
+ * @returns The removed element, or `null` if not found.
  */
 export const removeSwapElement = <T>(
   arrayList: Unit<T>,
@@ -315,7 +315,7 @@ export const removeSwapElement = <T>(
  *
  * @param arrayList
  * @param predicate
- * @return `true` if any element has been removed.
+ * @returns `true` if any element has been removed.
  */
 export const removeShiftAll = <T>(
   arrayList: Unit<T>,
@@ -345,7 +345,7 @@ export const removeShiftAll = <T>(
  * Run `removeSwap()` for all indices of element where `predicate` returns true.
  * @param arrayList
  * @param predicate
- * @return `true` if any element has been removed.
+ * @returns `true` if any element has been removed.
  */
 export const removeSwapAll = <T>(
   arrayList: Unit<T>,

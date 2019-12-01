@@ -31,7 +31,7 @@ export const create = (
  * @param region
  * @param point
  * @param margin
- * @return `true` if contained.
+ * @returns `true` if contained.
  */
 export const containsPoint = (
   region: Unit,
@@ -81,7 +81,7 @@ export const enum ScaleOriginType {
  * @param region
  * @param scaleFactor
  * @param originType
- * @return A new scaled `RectangleRegion` unit.
+ * @returns A new scaled `RectangleRegion` unit.
  */
 export const createScaled = (
   region: Unit,

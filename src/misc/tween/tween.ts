@@ -11,7 +11,7 @@ export type Parameters = {
 /**
  * Creates a `Timer` instance for tweening value using `setValue()`.
  * @param parameters `start`, `end`, `duration` and `easing`(linear by default).
- * @return New `Timer` instance.
+ * @returns New `Timer` instance.
  */
 export const create = (
   setValue: (value: number) => void,
