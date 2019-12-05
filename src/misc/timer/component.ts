@@ -1,7 +1,6 @@
 import { Arrays } from "../../ds";
 import * as Log from "./log";
-
-type Listener = (id: number) => void;
+import { Listener } from "./private-types";
 
 let nextComponentId = 0;
 

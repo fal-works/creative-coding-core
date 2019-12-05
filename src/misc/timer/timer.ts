@@ -1,6 +1,7 @@
 import { Arrays } from "../../ds";
 import { Numeric } from "../../math";
 import * as Component from "./component";
+import { Listener } from "./private-types";
 
 export interface Progress {
   readonly duration: number;
@@ -8,6 +9,8 @@ export interface Progress {
   count: number;
   ratio: number;
 }
+
+type ProgressListener = (progress: Progress) => void;
 
 const createProgress = (duration: number): Progress => {
   return {
@@ -26,26 +29,23 @@ const resetProgress = (progress: Progress) => {
   progress.ratio = 0;
 };
 
-export type Listener = (progress: Progress) => void;
-export type Listeners = Listener[];
-
 export class Unit extends Component.Base {
   static create(
-    onStart: (() => void)[],
-    onProgress: Listeners,
-    onComplete: (() => void)[],
+    onStart: Listener[],
+    onProgress: ProgressListener[],
+    onComplete: Listener[],
     progress: Progress
   ) {
     return new Unit(onStart, onProgress, onComplete, progress);
   }
 
-  onProgress: Listeners;
+  onProgress: ProgressListener[];
   readonly progress: Progress;
 
   private constructor(
-    onStart: (() => void)[],
-    onProgress: Listeners,
-    onComplete: (() => void)[],
+    onStart: Listener[],
+    onProgress: ProgressListener[],
+    onComplete: Listener[],
     progress: Progress
   ) {
     super(onStart, onComplete);
@@ -94,9 +94,9 @@ export class Unit extends Component.Base {
  */
 export const create = (parameters: {
   duration: number;
-  onStart?: Arrays.ArrayOrValue<() => void>;
-  onProgress?: Arrays.ArrayOrValue<Listener>;
-  onComplete?: Arrays.ArrayOrValue<() => void>;
+  onStart?: Arrays.ArrayOrValue<Listener>;
+  onProgress?: Arrays.ArrayOrValue<ProgressListener>;
+  onComplete?: Arrays.ArrayOrValue<Listener>;
 }): Unit => {
   return Unit.create(
     Arrays.unifyToArray(parameters.onStart),
