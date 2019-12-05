@@ -89,10 +89,10 @@ export abstract class Base implements Unit {
   tryStart(): boolean {
     if (this.isStarted) return false;
 
-    const id = this.id;
-    Log.verbose(Log.TIMER, id, Log.STARTING);
+    const { id, name } = this;
+    Log.verbose(Log.TIMER, id, name, Log.STARTING);
     Arrays.loopRunWithArgument(this.onStart, id);
-    Log.verbose(Log.TIMER, id, Log.STARTED);
+    Log.verbose(Log.TIMER, id, name, Log.STARTED);
 
     return (this.isStarted = true);
   }
@@ -102,10 +102,10 @@ export abstract class Base implements Unit {
    * @returns `true`.
    */
   complete(): boolean {
-    const id = this.id;
-    Log.verbose(Log.TIMER, id, Log.COMPLETING);
+    const { id, name } = this;
+    Log.verbose(Log.TIMER, id, name, Log.COMPLETING);
     Arrays.loopRunWithArgument(this.onComplete, id);
-    Log.verbose(Log.TIMER, id, Log.COMPLETED);
+    Log.verbose(Log.TIMER, id, name, Log.COMPLETED);
 
     return (this.isCompleted = true);
   }
