@@ -24,6 +24,19 @@ export const create = (
   }
 });
 
+export const createFromCenter = (
+  centerPosition: Vector2D.Unit,
+  size: RectangleSize.Unit
+): Unit => {
+  const { x, y } = centerPosition;
+  const halfWidth = size.width / 2;
+  const halfHeight = size.height / 2;
+  return {
+    topLeft: { x: x - halfWidth, y: y - halfHeight },
+    rightBottom: { x: x + halfWidth, y: y + halfHeight }
+  };
+};
+
 /**
  * Checks if `region` contains `point`.
  * @param region
