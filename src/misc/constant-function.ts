@@ -1,4 +1,4 @@
-export const returnVoid = () => {};
+export const returnVoid = () => {}; // eslint-disable-line @typescript-eslint/no-empty-function
 export const returnUndefined = () => undefined;
 export const returnNull = () => null;
 export const returnZero = () => 0;
