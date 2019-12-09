@@ -16,15 +16,13 @@ export interface Unit {
 export const create = (
   topLeftPosition: Vector2D.Unit,
   size: RectangleSize.Unit
-): Unit => {
-  return {
-    topLeft: topLeftPosition,
-    rightBottom: {
-      x: topLeftPosition.x + size.width,
-      y: topLeftPosition.y + size.height
-    }
-  };
-};
+): Unit => ({
+  topLeft: topLeftPosition,
+  rightBottom: {
+    x: topLeftPosition.x + size.width,
+    y: topLeftPosition.y + size.height
+  }
+});
 
 /**
  * Checks if `region` contains `point`.
