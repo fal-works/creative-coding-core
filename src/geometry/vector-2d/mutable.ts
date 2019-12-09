@@ -1,6 +1,11 @@
 import { Mutable } from "../../types/mutable";
 import * as Vector2D from "./vector-2d";
-import { cos, sin, clamp as clampNumber } from "../../math/numeric";
+import {
+  cos,
+  sin,
+  clamp as clampNumber,
+  constrain as constrainNumber
+} from "../../math/numeric";
 
 export type Unit = Mutable<Vector2D.Unit>;
 
@@ -94,6 +99,19 @@ export const clamp = (
 ): Unit => {
   vector.x = clampNumber(vector.x, minX, maxX);
   vector.y = clampNumber(vector.y, minY, maxY);
+
+  return vector;
+};
+
+export const constrain = (
+  vector: Unit,
+  minX: number,
+  maxX: number,
+  minY: number,
+  maxY: number
+): Unit => {
+  vector.x = constrainNumber(vector.x, minX, maxX);
+  vector.y = constrainNumber(vector.y, minY, maxY);
 
   return vector;
 };

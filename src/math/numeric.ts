@@ -152,6 +152,16 @@ export const clamp = (value: number, min: number, max: number) =>
   value < min ? min : value > max ? max : value;
 
 /**
+ * Clamps `value` between `min` and `max`, or returns the average of them if `min > max`.
+ * @param value
+ * @param min
+ * @param max
+ * @returns Constrained value.
+ */
+export const constrain = (value: number, min: number, max: number) =>
+  min > max ? (min + max) / 2 : value < min ? min : value > max ? max : value;
+
+/**
  * Maps `value` from the range [`inStart`, `inEnd`] to the range [`outStart`, `outEnd`].
  * @param value
  * @param inStart
