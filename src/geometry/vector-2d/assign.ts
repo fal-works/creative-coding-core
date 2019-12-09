@@ -1,6 +1,6 @@
 import * as Vector2D from "./vector-2d";
 import * as MutableVector2D from "./mutable";
-import { cos, sin } from "../../math/numeric";
+import { cos, sin, clamp as clampNumber } from "../../math/numeric";
 
 export const add = (
   sourceA: Vector2D.Unit,
@@ -112,6 +112,20 @@ export const divide = (
 ): MutableVector2D.Unit => {
   target.x = source.x / divisor;
   target.y = source.y / divisor;
+
+  return target;
+};
+
+export const clamp = (
+  vector: Vector2D.Unit,
+  minX: number,
+  maxX: number,
+  minY: number,
+  maxY: number,
+  target: MutableVector2D.Unit
+): MutableVector2D.Unit => {
+  target.x = clampNumber(vector.x, minX, maxX);
+  target.y = clampNumber(vector.y, minY, maxY);
 
   return target;
 };

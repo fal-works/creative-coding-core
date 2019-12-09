@@ -1,6 +1,6 @@
 import { Mutable } from "../../types/mutable";
 import * as Vector2D from "./vector-2d";
-import { cos, sin } from "../../math/numeric";
+import { cos, sin, clamp as clampNumber } from "../../math/numeric";
 
 export type Unit = Mutable<Vector2D.Unit>;
 
@@ -81,6 +81,19 @@ export const multiply = (vector: Unit, multiplier: number): Unit => {
 export const divide = (vector: Unit, divisor: number): Unit => {
   vector.x /= divisor;
   vector.y /= divisor;
+
+  return vector;
+};
+
+export const clamp = (
+  vector: Unit,
+  minX: number,
+  maxX: number,
+  minY: number,
+  maxY: number
+): Unit => {
+  vector.x = clampNumber(vector.x, minX, maxX);
+  vector.y = clampNumber(vector.y, minY, maxY);
 
   return vector;
 };
