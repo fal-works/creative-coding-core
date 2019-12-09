@@ -30,7 +30,9 @@ export {
   setCartesian,
   setPolar,
   multiply as multiplyVectorMutable,
-  divide as divideVectorMutable
+  divide as divideVectorMutable,
+  clamp as clampVector,
+  constrain as constrainVector
 } from "./mutable";
 
 export {
@@ -41,5 +43,7 @@ export {
   subtractCartesian as subtractCartesianAssign,
   subtractPolar as subtractPolarAssign,
   multiply as multiplyVectorAssign,
-  divide as divideVectorAssign
+  divide as divideVectorAssign,
+  clamp as clampVectorAssign,
+  constrain as constrainVectorAssign
 } from "./assign";
