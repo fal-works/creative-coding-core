@@ -127,3 +127,8 @@ export const createScaled = (
     }
   }
 };
+
+export const copy = (region: Unit): Unit => ({
+  topLeft: Vector2D.copy(region.topLeft),
+  rightBottom: Vector2D.copy(region.rightBottom)
+});
