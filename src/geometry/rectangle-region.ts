@@ -1,4 +1,5 @@
-import { RectangleSize, Vector2D } from "./";
+import * as RectangleSize from "./rectangle-size";
+import * as Vector2D from "./vector-2d";
 import { lerp } from "../math/numeric";
 
 export interface Unit {
