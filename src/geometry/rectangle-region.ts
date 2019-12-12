@@ -135,11 +135,19 @@ export const createScaled = (
   }
 };
 
+/**
+ * Clones the given `RectangleRegion` instance;
+ * @param region
+ * @returns The cloned instance.
+ */
 export const copy = (region: Unit): Unit => ({
   topLeft: Vector2D.copy(region.topLeft),
   rightBottom: Vector2D.copy(region.rightBottom)
 });
 
+/**
+ * @returns A `RectangleRegion` instance with `Infinity` values.
+ */
 export const createInfinite = (): Unit => ({
   topLeft: { x: -Infinity, y: -Infinity },
   rightBottom: { x: Infinity, y: Infinity }
