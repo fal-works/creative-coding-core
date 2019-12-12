@@ -115,8 +115,9 @@ export const divide = (
   divisor: number,
   target: MutableVector2D.Unit
 ): MutableVector2D.Unit => {
-  target.x = source.x / divisor;
-  target.y = source.y / divisor;
+  const multiplier = 1 / divisor;
+  target.x = source.x * multiplier;
+  target.y = source.y * multiplier;
 
   return target;
 };

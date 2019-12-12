@@ -84,8 +84,9 @@ export const multiply = (vector: Unit, multiplier: number): Unit => {
 };
 
 export const divide = (vector: Unit, divisor: number): Unit => {
-  vector.x /= divisor;
-  vector.y /= divisor;
+  const multiplier = 1 / divisor;
+  vector.x *= multiplier;
+  vector.y *= multiplier;
 
   return vector;
 };
