@@ -1,21 +1,36 @@
 export {
   setBaseFunction as setBaseRandomFunction,
-  ratio as randomRatio,
+  ratio as randomRatio
+} from "./base";
+
+export {
   value as randomValue,
   angle as randomAngle,
   between as randomBetween,
   inRange as randomInRange,
-  integer as randomInteger,
-  integerBetween as randomIntegerBetween,
   signed as randomSigned,
-  fromArray as randomFromArray,
-  removeFromArray as randomRemoveFromArray,
   bool as randomBool,
-  fromAbsolute as randomFromAbsolute,
-  vector as randomVector,
-  pointInRectangleRegion as randomPointInRectangleRegin,
-  ratioCurved as randomRatioCurved,
-  valueCurved as randomValueCurved,
-  betweenCurved as randomBetweenCurved,
-  inRangeCurved as randomInRangeCurved
+  fromAbsolute as randomFromAbsolute
 } from "./random";
+
+export {
+  value as randomInteger,
+  between as randomIntegerBetween
+} from "./integer";
+
+export {
+  get as randomFromArray,
+  removeGet as randomRemoveFromArray
+} from "./arrays";
+
+export {
+  ratio as randomRatioCurved,
+  value as randomValueCurved,
+  between as randomBetweenCurved,
+  inRange as randomInRangeCurved
+} from "./curved";
+
+export {
+  vector as randomVector,
+  pointInRectangleRegion as randomPointInRectangleRegin
+} from "./misc";
