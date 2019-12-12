@@ -17,3 +17,11 @@ export const getAspectRatio = (size: Unit): number => size.width / size.height;
  * @param size
  */
 export const getArea = (size: Unit): number => size.width * size.height;
+
+/**
+ * @returns A `RectangleSize` instance with `Infinity` values.
+ */
+export const createInfinite = () => ({
+  width: Infinity,
+  height: Infinity
+});
