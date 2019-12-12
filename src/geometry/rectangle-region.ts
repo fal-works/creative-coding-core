@@ -75,6 +75,12 @@ export const getSize = (region: Unit) => {
   };
 };
 
+/**
+ * Returns the center point of `region`.
+ * Note that the result will be invalid if the region is infinite.
+ * @param region
+ * @return The center point.
+ */
 export const getCenterPoint = (region: Unit): Vector2D.Unit => {
   const { topLeft, rightBottom } = region;
   return {
@@ -132,4 +138,9 @@ export const createScaled = (
 export const copy = (region: Unit): Unit => ({
   topLeft: Vector2D.copy(region.topLeft),
   rightBottom: Vector2D.copy(region.rightBottom)
+});
+
+export const createInfinite = (): Unit => ({
+  topLeft: { x: -Infinity, y: -Infinity },
+  rightBottom: { x: Infinity, y: Infinity }
 });
