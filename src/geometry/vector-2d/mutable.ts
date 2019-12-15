@@ -9,6 +9,11 @@ import {
 
 export type Unit = Mutable<Vector2D.Unit>;
 
+/**
+ * @returns A mutable 2D vector.
+ */
+export const create = (): Unit => ({ x: 0, y: 0 });
+
 export const add = (vector: Unit, otherVector: Vector2D.Unit): Unit => {
   vector.x += otherVector.x;
   vector.y += otherVector.y;

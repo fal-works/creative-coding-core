@@ -1,4 +1,5 @@
 export {
+  create as createVector,
   zero as zeroVector,
   isZero as vectorIsZero,
   fromPolar as vectorFromPolar,
@@ -20,6 +21,7 @@ export {
 } from "./vector-2d";
 
 export {
+  create as createVectorMutable,
   add as addVectorMutable,
   addCartesian as addCartesianMutable,
   addPolar as addPolarMutable,
