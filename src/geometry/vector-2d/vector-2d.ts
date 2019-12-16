@@ -17,7 +17,7 @@ export interface Unit {
 /**
  * @param x
  * @param y
- * @returns A 2D vector.
+ * @returns A new 2D vector.
  */
 export const create = (x: number, y: number): Unit => ({ x, y });
 

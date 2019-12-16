@@ -10,7 +10,7 @@ import {
 export type Unit = Mutable<Vector2D.Unit>;
 
 /**
- * @returns A mutable 2D vector.
+ * @returns A new mutable 2D vector.
  */
 export const create = (): Unit => ({ x: 0, y: 0 });
 
