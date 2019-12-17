@@ -1,5 +1,5 @@
 import { Range } from "../../types/range";
-import { TWO_PI } from "../../geometry/angle";
+import { TWO_PI, PI } from "../../geometry/angle";
 import { random } from "./base";
 
 /**
@@ -37,6 +37,12 @@ export const inRange = (range: Range) => between(range.start, range.end);
  * @returns A random-signed value of `n`.
  */
 export const signed = (n: number) => (random() < 0.5 ? n : -n);
+
+/**
+ * Returns a positive or negative value randomly with a magnitude from `0` up to (but not including) `PI`.
+ * @returns A random radians value.
+ */
+export const signedAngle = () => (random() < 0.5 ? 1 : -1) * random() * PI;
 
 /**
  * Returns `true` or `false` randomly.
