@@ -19,6 +19,15 @@ export {
 } from "./integer";
 
 export {
+  ratio as randomDiscreteRatio,
+  value as randomDiscreteValue,
+  between as randomDiscreteBetween,
+  signed as randomDiscreteSigned,
+  angle as randomDiscreteAngle,
+  signedAngle as randomDiscreteSignedAngle
+} from "./discrete";
+
+export {
   get as randomFromArray,
   removeGet as randomRemoveFromArray
 } from "./arrays";
