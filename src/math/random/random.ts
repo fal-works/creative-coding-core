@@ -32,19 +32,6 @@ export const between = (start: number, end: number) =>
 export const inRange = (range: Range) => between(range.start, range.end);
 
 /**
- * Returns `n` or `-n` randomly.
- * @param n Any number.
- * @returns A random-signed value of `n`.
- */
-export const signed = (n: number) => (random() < 0.5 ? n : -n);
-
-/**
- * Returns a positive or negative value randomly with a magnitude from `0` up to (but not including) `PI`.
- * @returns A random radians value.
- */
-export const signedAngle = () => (random() < 0.5 ? 1 : -1) * random() * PI;
-
-/**
  * Returns `true` or `false` randomly.
  * @param probability A number between 0 and 1.
  * @returns `true` with the given `probability`.
@@ -52,9 +39,23 @@ export const signedAngle = () => (random() < 0.5 ? 1 : -1) * random() * PI;
 export const bool = (probability: number): boolean => random() < probability;
 
 /**
- * Returns random value from `-absoluteValue` up to (but not including) `absoluteValue`.
- * @param absoluteValue
+ * Returns `1` or `-1` randomly.
+ * @param positiveProbability A number between 0 and 1 for the probability of a positive value being returned.
+ * @returns Either `1` or `-1`.
+ */
+export const sign = (positiveProbability: number) =>
+  random() < positiveProbability ? 1 : -1;
+
+/**
+ * Returns a positive or negative value randomly with a magnitude from `0` up to (but not including) `maxMagnitude`.
+ * @param maxMagnitude
  * @returns A random value.
  */
-export const fromAbsolute = (absoluteValue: number): number =>
-  -absoluteValue + random() * 2 * absoluteValue;
+export const signed = (maxMagnitude: number) =>
+  (random() < 0.5 ? 1 : -1) * random() * maxMagnitude;
+
+/**
+ * Returns a positive or negative value randomly with a magnitude from `0` up to (but not including) `PI`.
+ * @returns A random radians value.
+ */
+export const signedAngle = () => (random() < 0.5 ? 1 : -1) * random() * PI;

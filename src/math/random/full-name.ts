@@ -8,22 +8,24 @@ export {
   angle as randomAngle,
   between as randomBetween,
   inRange as randomInRange,
-  signed as randomSigned,
   bool as randomBool,
-  fromAbsolute as randomFromAbsolute
+  sign as randomSign,
+  signed as randomSigned,
+  signedAngle as randomSignedAngle
 } from "./random";
 
 export {
   value as randomInteger,
-  between as randomIntegerBetween
+  between as randomIntegerBetween,
+  signed as randomIntegerSigned
 } from "./integer";
 
 export {
   ratio as randomDiscreteRatio,
   value as randomDiscreteValue,
+  angle as randomDiscreteAngle,
   between as randomDiscreteBetween,
   signed as randomDiscreteSigned,
-  angle as randomDiscreteAngle,
   signedAngle as randomDiscreteSignedAngle
 } from "./discrete";
 
