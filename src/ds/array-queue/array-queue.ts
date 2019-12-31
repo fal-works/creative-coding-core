@@ -136,3 +136,10 @@ export const dequeueSafeIf = <T>(
   predicate: (value: T) => boolean
 ): T | undefined =>
   queue.headIndex !== queue.tailIndex ? dequeueIf(queue, predicate) : undefined;
+
+/**
+ * Checks if `queue` is empty.
+ * @param queue
+ * @returns `true` if `queue.size === 0`.
+ */
+export const isEmpty = <T>(queue: Unit<T>) => queue.size === 0;
