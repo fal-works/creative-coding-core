@@ -143,3 +143,26 @@ export const dequeueSafeIf = <T>(
  * @returns `true` if `queue.size === 0`.
  */
 export const isEmpty = <T>(queue: Unit<T>) => queue.size === 0;
+
+/**
+ * Clears the contents of `queue`.
+ * This does not nullify references.
+ * @param queue
+ */
+export const clear = <T>(queue: Unit<T>) => {
+  queue.headIndex = 0;
+  queue.tailIndex = 0;
+  queue.size = 0;
+};
+
+/**
+ * Clears the contents of `queue` and also nullifies all references.
+ * @param queue
+ */
+export const clearReference = <T>(queue: Unit<T>): void => {
+  clear(queue);
+  const { array } = queue;
+  const capacity = array.length;
+  array.length = 0;
+  array.length = capacity;
+};
