@@ -4,6 +4,7 @@ export interface Unit<T> {
   array: Array<T>;
   headIndex: number;
   tailIndex: number;
+  size: number;
 }
 
 /**
@@ -14,7 +15,8 @@ export interface Unit<T> {
 export const create = <T>(capacity: number): Unit<T> => ({
   array: new Array<T>(capacity),
   headIndex: 0,
-  tailIndex: 0
+  tailIndex: 0,
+  size: 0
 });
 
 /**
@@ -28,6 +30,7 @@ export const enqueue = <T>(queue: Unit<T>, element: T) => {
   array[tailIndex] = element;
   const nextTailIndex = tailIndex + 1;
   queue.tailIndex = nextTailIndex < array.length ? nextTailIndex : 0;
+  queue.size += 1;
 };
 
 /**
@@ -40,6 +43,7 @@ export const dequeue = <T>(queue: Unit<T>): T => {
   const { array, headIndex } = queue;
   const nextHeadIndex = headIndex + 1;
   queue.headIndex = nextHeadIndex < array.length ? nextHeadIndex : 0;
+  queue.size -= 1;
 
   return array[headIndex];
 };
@@ -55,6 +59,7 @@ export const dequeueSafe = <T>(queue: Unit<T>): T | undefined => {
 
   const nextHeadIndex = headIndex + 1;
   queue.headIndex = nextHeadIndex < array.length ? nextHeadIndex : 0;
+  queue.size -= 1;
 
   return array[headIndex];
 };
@@ -115,6 +120,7 @@ export const dequeueIf = <T>(
 
   const nextHeadIndex = headIndex + 1;
   queue.headIndex = nextHeadIndex < array.length ? nextHeadIndex : 0;
+  queue.size -= 1;
 
   return topElement;
 };
