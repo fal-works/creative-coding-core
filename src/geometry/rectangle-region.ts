@@ -152,3 +152,48 @@ export const createInfinite = (): Unit => ({
   topLeft: { x: -Infinity, y: -Infinity },
   rightBottom: { x: Infinity, y: Infinity }
 });
+
+/**
+ * Creates a new `RectangleRegion` by adding `margin` to `region`.
+ * @param region
+ * @param margin
+ * @returns A new `RectangleRegion` unit.
+ */
+export const addMargin = (region: Unit, margin: number) => {
+  const { topLeft: originalTopLeft, rightBottom: originalRightBottom } = region;
+
+  return {
+    topLeft: {
+      x: originalTopLeft.x - margin,
+      y: originalTopLeft.y - margin
+    },
+    rightBottom: {
+      x: originalRightBottom.x + margin,
+      y: originalRightBottom.y + margin
+    }
+  };
+};
+
+/**
+ * Creates a new `RectangleRegion` by adding `margins` to `region`.
+ * @param region
+ * @param margins
+ * @returns A new `RectangleRegion` unit.
+ */
+export const addMargins = (
+  region: Unit,
+  margins: { top: number; left: number; bottom: number; right: number }
+) => {
+  const { topLeft: originalTopLeft, rightBottom: originalRightBottom } = region;
+
+  return {
+    topLeft: {
+      x: originalTopLeft.x - margins.left,
+      y: originalTopLeft.y - margins.top
+    },
+    rightBottom: {
+      x: originalRightBottom.x + margins.right,
+      y: originalRightBottom.y + margins.bottom
+    }
+  };
+};
