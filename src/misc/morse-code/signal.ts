@@ -51,46 +51,48 @@ const morseCodeMap = new Map<string, string>([
   ["+", ".-.-."]
 ]);
 
-export class Unit {
-  public readonly binaryString: string;
-
-  public constructor(
-    readonly isOn: boolean,
-    readonly length: 0 | 1 | 3 | 7,
-    readonly codeString: string
-  ) {
-    let s = "";
-    const binaryCharacter = isOn ? "1" : "0";
-    for (let i = 0; i < length; i += 1) {
-      s += binaryCharacter;
-    }
-    this.binaryString = s;
-  }
+export interface Unit {
+  readonly isOn: boolean;
+  readonly length: 0 | 1 | 3 | 7;
+  readonly codeString: string;
+  readonly binaryString: string;
 }
 
-class On extends Unit {
-  public constructor(length: 1 | 3, codeString: string) {
-    super(true, length, codeString);
+const createSignalUnit = (
+  isOn: boolean,
+  length: 0 | 1 | 3 | 7,
+  codeString: string
+) => {
+  let s = "";
+  const binaryCharacter = isOn ? "1" : "0";
+  for (let i = 0; i < length; i += 1) {
+    s += binaryCharacter;
   }
-}
+  return Object.freeze({
+    isOn,
+    length,
+    codeString,
+    binaryString: s
+  });
+};
 
-class Off extends Unit {
-  public constructor(length: 0 | 1 | 3 | 7, codeString: string) {
-    super(false, length, codeString);
-  }
-}
+const createOnSignalUnit = (length: 1 | 3, codeString: string) =>
+  createSignalUnit(true, length, codeString);
 
-export const DIT = new On(1, ".");
-export const DAH = new On(3, "-");
-export const INTER_ELEMENT_GAP = new Off(1, "");
-export const SHORT_GAP = new Off(3, " ");
-export const MEDIUM_GAP = new Off(7, " / ");
-export const NUL = new Off(0, "");
+const createOffSignalUnit = (length: 0 | 1 | 3 | 7, codeString: string) =>
+  createSignalUnit(false, length, codeString);
+
+export const DIT = createOnSignalUnit(1, ".");
+export const DAH = createOnSignalUnit(3, "-");
+export const INTER_ELEMENT_GAP = createOffSignalUnit(1, "");
+export const SHORT_GAP = createOffSignalUnit(3, " ");
+export const MEDIUM_GAP = createOffSignalUnit(7, " / ");
+export const NUL = createOffSignalUnit(0, "");
 
 export function encode(sentence: string): Unit[] {
   const upperCaseSentence = sentence.toUpperCase();
   const signals: Unit[] = [];
-  let gap: Off | undefined = undefined;
+  let gap: Unit | undefined = undefined;
 
   for (let i = 0, len = upperCaseSentence.length; i < len; i += 1) {
     const character = upperCaseSentence.charAt(i);
