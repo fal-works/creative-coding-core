@@ -19,7 +19,7 @@
     "rollup-plugin-cleanup": "^3.1.1",
     "rollup-plugin-typescript2": "^0.25.3",
     "terser": "^4.6.2",
-    "typedoc": "^0.15.6",
+    "typedoc": "^0.16.2",
     "typescript": "^3.7.4"
   },
   "directories": {
