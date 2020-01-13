@@ -17,9 +17,9 @@ export const vector = (length: number): Vector2D.Unit =>
 export const pointInRectangleRegion = (
   region: RectangleRegion.Unit
 ): Vector2D.Unit => {
-  const { topLeft, rightBottom } = region;
+  const { topLeft, bottomRight } = region;
   return {
-    x: between(topLeft.x, rightBottom.x),
-    y: between(topLeft.y, rightBottom.y)
+    x: between(topLeft.x, bottomRight.x),
+    y: between(topLeft.y, bottomRight.y)
   };
 };

@@ -11,7 +11,7 @@ export interface Unit {
   /**
    * The position of the right bottom corner of rectangle.
    */
-  readonly rightBottom: Vector2D.Unit;
+  readonly bottomRight: Vector2D.Unit;
 }
 
 export const create = (
@@ -19,7 +19,7 @@ export const create = (
   size: RectangleSize.Unit
 ): Unit => ({
   topLeft: topLeftPosition,
-  rightBottom: {
+  bottomRight: {
     x: topLeftPosition.x + size.width,
     y: topLeftPosition.y + size.height
   }
@@ -34,7 +34,7 @@ export const createFromCenter = (
   const halfHeight = size.height / 2;
   return {
     topLeft: { x: x - halfWidth, y: y - halfHeight },
-    rightBottom: { x: x + halfWidth, y: y + halfHeight }
+    bottomRight: { x: x + halfWidth, y: y + halfHeight }
   };
 };
 
@@ -50,28 +50,28 @@ export const containsPoint = (
   point: Vector2D.Unit,
   margin: number
 ): boolean => {
-  const { topLeft, rightBottom } = region;
+  const { topLeft, bottomRight } = region;
   const { x, y } = point;
 
   return (
     x >= topLeft.x + margin &&
     y >= topLeft.y + margin &&
-    x < rightBottom.x - margin &&
-    y < rightBottom.y - margin
+    x < bottomRight.x - margin &&
+    y < bottomRight.y - margin
   );
 };
 
 export const getWidth = (region: Unit) =>
-  region.rightBottom.x - region.topLeft.x;
+  region.bottomRight.x - region.topLeft.x;
 
 export const getHeight = (region: Unit) =>
-  region.rightBottom.y - region.topLeft.y;
+  region.bottomRight.y - region.topLeft.y;
 
 export const getSize = (region: Unit) => {
-  const { topLeft, rightBottom } = region;
+  const { topLeft, bottomRight } = region;
   return {
-    width: rightBottom.x - topLeft.x,
-    height: rightBottom.y - topLeft.y
+    width: bottomRight.x - topLeft.x,
+    height: bottomRight.y - topLeft.y
   };
 };
 
@@ -82,10 +82,10 @@ export const getSize = (region: Unit) => {
  * @return The center point.
  */
 export const getCenterPoint = (region: Unit): Vector2D.Unit => {
-  const { topLeft, rightBottom } = region;
+  const { topLeft, bottomRight } = region;
   return {
-    x: (topLeft.x + rightBottom.x) / 2,
-    y: (topLeft.y + rightBottom.y) / 2
+    x: (topLeft.x + bottomRight.x) / 2,
+    y: (topLeft.y + bottomRight.y) / 2
   };
 };
 
@@ -105,15 +105,15 @@ export const createScaled = (
   region: Unit,
   scaleFactor: number,
   originType: ScaleOriginType
-) => {
-  const { topLeft, rightBottom } = region;
+): Unit => {
+  const { topLeft, bottomRight } = region;
   switch (originType) {
     case ScaleOriginType.TopLeft:
       return {
         topLeft,
-        rightBottom: {
-          x: lerp(topLeft.x, rightBottom.x, scaleFactor),
-          y: lerp(topLeft.y, rightBottom.y, scaleFactor)
+        bottomRight: {
+          x: lerp(topLeft.x, bottomRight.x, scaleFactor),
+          y: lerp(topLeft.y, bottomRight.y, scaleFactor)
         }
       };
     case ScaleOriginType.Center: {
@@ -126,7 +126,7 @@ export const createScaled = (
           x: center.x - halfWidth,
           y: center.y - halfHeight
         },
-        rightBottom: {
+        bottomRight: {
           x: center.x + halfWidth,
           y: center.y + halfHeight
         }
@@ -142,7 +142,7 @@ export const createScaled = (
  */
 export const copy = (region: Unit): Unit => ({
   topLeft: Vector2D.copy(region.topLeft),
-  rightBottom: Vector2D.copy(region.rightBottom)
+  bottomRight: Vector2D.copy(region.bottomRight)
 });
 
 /**
@@ -150,7 +150,7 @@ export const copy = (region: Unit): Unit => ({
  */
 export const createInfinite = (): Unit => ({
   topLeft: { x: -Infinity, y: -Infinity },
-  rightBottom: { x: Infinity, y: Infinity }
+  bottomRight: { x: Infinity, y: Infinity }
 });
 
 /**
@@ -159,17 +159,17 @@ export const createInfinite = (): Unit => ({
  * @param margin
  * @returns A new `RectangleRegion` unit.
  */
-export const addMargin = (region: Unit, margin: number) => {
-  const { topLeft: originalTopLeft, rightBottom: originalRightBottom } = region;
+export const addMargin = (region: Unit, margin: number): Unit => {
+  const { topLeft: originalTopLeft, bottomRight: originalBottomRight } = region;
 
   return {
     topLeft: {
       x: originalTopLeft.x - margin,
       y: originalTopLeft.y - margin
     },
-    rightBottom: {
-      x: originalRightBottom.x + margin,
-      y: originalRightBottom.y + margin
+    bottomRight: {
+      x: originalBottomRight.x + margin,
+      y: originalBottomRight.y + margin
     }
   };
 };
@@ -183,17 +183,17 @@ export const addMargin = (region: Unit, margin: number) => {
 export const addMargins = (
   region: Unit,
   margins: { top: number; left: number; bottom: number; right: number }
-) => {
-  const { topLeft: originalTopLeft, rightBottom: originalRightBottom } = region;
+): Unit => {
+  const { topLeft: originalTopLeft, bottomRight: originalBottomRight } = region;
 
   return {
     topLeft: {
       x: originalTopLeft.x - margins.left,
       y: originalTopLeft.y - margins.top
     },
-    rightBottom: {
-      x: originalRightBottom.x + margins.right,
-      y: originalRightBottom.y + margins.bottom
+    bottomRight: {
+      x: originalBottomRight.x + margins.right,
+      y: originalBottomRight.y + margins.bottom
     }
   };
 };

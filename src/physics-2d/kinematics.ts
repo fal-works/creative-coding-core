@@ -210,7 +210,7 @@ export const bounceInRectangleRegion = (
 ): boolean => {
   const { x, y, vx, vy } = quantity;
   const { x: leftX, y: topY } = region.topLeft;
-  const { x: rightX, y: bottomY } = region.rightBottom;
+  const { x: rightX, y: bottomY } = region.bottomRight;
 
   if (x < leftX) {
     quantity.x = leftX;
