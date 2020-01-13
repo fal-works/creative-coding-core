@@ -1,7 +1,7 @@
 {
   "name": "@fal-works/creative-coding-core",
   "description": "Utility library that might be useful for creative coding.",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "author": "FAL",
   "bugs": {
     "url": "https://github.com/fal-works/creative-coding-core/issues"
