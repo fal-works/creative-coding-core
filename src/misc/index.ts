@@ -16,5 +16,8 @@ export { ConstantFunction };
 import * as Tween from "./tween";
 export { Tween };
 
+import * as Repeater from "./repeater";
+export { Repeater };
+
 import * as Log from "./log";
 export { Log };
