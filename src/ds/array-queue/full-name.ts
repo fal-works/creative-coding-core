@@ -6,6 +6,7 @@ export {
   enqueueSafe,
   dequeue,
   dequeueSafe,
+  dequeueIfFull,
   loop as loopArrayQueue,
   peek as peekArrayQueue,
   peekSafe as peekArrayQueueSafe,

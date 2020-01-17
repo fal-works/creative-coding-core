@@ -88,6 +88,14 @@ export const dequeueSafe = <T>(queue: Unit<T>): T | undefined => {
 };
 
 /**
+ * Removes the top (oldest) element from `queue` only if `queue` is full.
+ * @param queue
+ * @returns Removed element, or `undefined` if empty.
+ */
+export const dequeueIfFull = <T>(queue: Unit<T>): T | undefined =>
+  isFull(queue) ? dequeue(queue) : undefined;
+
+/**
  * Retunrs the top (oldest) element from `queue`.
  * Be sure that `queue` is not empty.
  * @param queue
