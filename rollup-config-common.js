@@ -3,12 +3,12 @@ import cleanup from "rollup-plugin-cleanup";
 
 // ----------------------------------------------------------------------------
 
-const version = "0.6.1";
+const version = "0.7.0";
 const cleanBuild = true;
 
 const moduleName = "creative-coding-core";
 const umdName = "CreativeCodingCore";
-const year = "2019";
+const year = "2019-2020";
 const description = `* Utility library that might be useful for creative coding.`;
 
 const bannerComment = `/**
