@@ -222,3 +222,12 @@ export const angle = (vector: Unit): number => {
   const { x, y } = vector;
   return x !== 0 || y !== 0 ? atan2(vector.y, vector.x) : 0;
 };
+
+/**
+ * Calculates the dot product of `vectorA` and `vectorB`.
+ * @param vectorA
+ * @param vectorB
+ * @returns The dot product.
+ */
+export const dot = (vectorA: Unit, vectorB: Unit): number =>
+  vectorA.x * vectorB.x + vectorA.y * vectorB.y;
