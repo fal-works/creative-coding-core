@@ -72,25 +72,17 @@ export const dequeue = <T>(queue: Unit<T>): T => {
 };
 
 /**
- * Removes the top (oldest) element from `queue`.
+ * Removes the top (oldest) element from `queue` if `queue` is not empty.
  * @param queue
  * @returns Removed element, or `undefined` if empty.
  */
-export const dequeueSafe = <T>(queue: Unit<T>): T | undefined => {
-  const { array, headIndex, tailIndex } = queue;
-  if (headIndex === tailIndex) return undefined;
-
-  const nextHeadIndex = headIndex + 1;
-  queue.headIndex = nextHeadIndex < array.length ? nextHeadIndex : 0;
-  queue.size -= 1;
-
-  return array[headIndex];
-};
+export const dequeueSafe = <T>(queue: Unit<T>): T | undefined =>
+  isEmpty(queue) ? undefined : dequeue(queue);
 
 /**
  * Removes the top (oldest) element from `queue` only if `queue` is full.
  * @param queue
- * @returns Removed element, or `undefined` if empty.
+ * @returns Removed element, or `undefined` if not full.
  */
 export const dequeueIfFull = <T>(queue: Unit<T>): T | undefined =>
   isFull(queue) ? dequeue(queue) : undefined;
