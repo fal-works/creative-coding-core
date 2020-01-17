@@ -7,5 +7,9 @@ export {
   peek as peekArrayQueue,
   peekSafe as peekArrayQueueSafe,
   dequeueIf,
-  dequeueSafeIf
+  dequeueSafeIf,
+  isEmpty as arrayQueueIsEmpty,
+  isFull as arrayQueueIsFull,
+  clear as clearArrayQueue,
+  clearReference as clearArrayQueueReference
 } from "./array-queue";

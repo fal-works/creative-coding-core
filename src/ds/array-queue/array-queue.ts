@@ -145,6 +145,13 @@ export const dequeueSafeIf = <T>(
 export const isEmpty = <T>(queue: Unit<T>) => queue.size === 0;
 
 /**
+ * Checks if `queue` is full.
+ * @param queue
+ * @returns `true` if `queue.size === queue.array.length`.
+ */
+export const isFull = <T>(queue: Unit<T>) => queue.size === queue.array.length;
+
+/**
  * Clears the contents of `queue`.
  * This does not nullify references.
  * @param queue
