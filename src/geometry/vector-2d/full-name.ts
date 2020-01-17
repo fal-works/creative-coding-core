@@ -34,7 +34,9 @@ export {
   multiply as multiplyVectorMutable,
   divide as divideVectorMutable,
   clamp as clampVector,
-  constrain as constrainVector
+  constrain as constrainVector,
+  separate as separateVector,
+  separateEachOther as separateVectors
 } from "./mutable";
 
 export {
