@@ -12,3 +12,6 @@ export { Gravitation };
 
 import * as Rotation from "./rotation";
 export { Rotation };
+
+import * as Bounce from "./bounce";
+export { Bounce };
