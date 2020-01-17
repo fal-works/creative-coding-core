@@ -114,9 +114,10 @@ export const loop = <T>(
   queue: Unit<T>,
   callback: (value: T, index: number, array: readonly T[]) => void
 ): void => {
+  if (queue.size === 0) return;
   const { array, headIndex, tailIndex } = queue;
 
-  if (headIndex <= tailIndex) {
+  if (headIndex < tailIndex) {
     Arrays.loopRange(array, callback, headIndex, tailIndex);
     return;
   }
