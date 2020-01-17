@@ -93,6 +93,4 @@ export const updateVerlet = (quantity: VerletQuantity) => {
 export const postUpdateVerlet = (quantity: VerletQuantity) => {
   const { mass } = quantity;
   Kinematics.postUpdateVerlet(quantity, quantity.fx / mass, quantity.fy / mass);
-  quantity.fx = 0;
-  quantity.fy = 0;
 };

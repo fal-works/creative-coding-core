@@ -79,8 +79,6 @@ export const updateVerlet = (quantity: VerletQuantity) => {
  */
 export const postUpdateVerlet = (quantity: VerletQuantity) => {
   Kinematics.postUpdateVerlet(quantity, quantity.fx, quantity.fy);
-  quantity.fx = 0;
-  quantity.fy = 0;
 };
 
 /**
