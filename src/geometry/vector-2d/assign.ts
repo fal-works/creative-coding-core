@@ -4,7 +4,8 @@ import {
   cos,
   sin,
   clamp as clampNumber,
-  constrain as constrainNumber
+  constrain as constrainNumber,
+  hypotenuse2D
 } from "../../math/numeric";
 
 export const add = (
@@ -146,6 +147,34 @@ export const constrain = (
 ): MutableVector2D.Unit => {
   target.x = constrainNumber(vector.x, minX, maxX);
   target.y = constrainNumber(vector.y, minY, maxY);
+
+  return target;
+};
+
+export const normalize = (
+  vector: Vector2D.Unit,
+  target: MutableVector2D.Unit
+): MutableVector2D.Unit => {
+  const { x, y } = vector;
+  const length = hypotenuse2D(x, y);
+
+  target.x = x / length;
+  target.y = y / length;
+
+  return target;
+};
+
+export const normalizeBetween = (
+  from: Vector2D.Unit,
+  to: Vector2D.Unit,
+  target: MutableVector2D.Unit
+): MutableVector2D.Unit => {
+  const dx = to.x - from.x;
+  const dy = to.y - from.y;
+  const distance = hypotenuse2D(dx, dy);
+
+  target.x = dx / distance;
+  target.y = dy / distance;
 
   return target;
 };

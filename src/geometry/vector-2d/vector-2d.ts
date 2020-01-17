@@ -231,3 +231,35 @@ export const angle = (vector: Unit): number => {
  */
 export const dot = (vectorA: Unit, vectorB: Unit): number =>
   vectorA.x * vectorB.x + vectorA.y * vectorB.y;
+
+/**
+ * Creates a new unit vector from `vector`.
+ * @param vector
+ * @returns new `Vector2D`.
+ */
+export const normalize = (vector: Unit): Unit => {
+  const { x, y } = vector;
+  const length = hypotenuse2D(x, y);
+
+  return {
+    x: x / length,
+    y: y / length
+  };
+};
+
+/**
+ * Creates a new normal unit vector from a point to another.
+ * @param to
+ * @param from
+ * @returns new `Vector2D`.
+ */
+export const normalizeBetween = (from: Unit, to: Unit): Unit => {
+  const dx = to.x - from.x;
+  const dy = to.y - from.y;
+  const distance = hypotenuse2D(dx, dy);
+
+  return {
+    x: dx / distance,
+    y: dy / distance
+  };
+};
