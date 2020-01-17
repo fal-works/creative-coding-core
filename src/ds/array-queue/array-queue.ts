@@ -20,6 +20,20 @@ export const create = <T>(capacity: number): Unit<T> => ({
 });
 
 /**
+ * Checks if `queue` is empty.
+ * @param queue
+ * @returns `true` if `queue.size === 0`.
+ */
+export const isEmpty = <T>(queue: Unit<T>) => queue.size === 0;
+
+/**
+ * Checks if `queue` is full.
+ * @param queue
+ * @returns `true` if `queue.size === queue.array.length`.
+ */
+export const isFull = <T>(queue: Unit<T>) => queue.size === queue.array.length;
+
+/**
  * Adds `element` to `queue` as the last (newest) element.
  * Be sure that `queue` is not full.
  * @param queue
@@ -31,6 +45,15 @@ export const enqueue = <T>(queue: Unit<T>, element: T) => {
   const nextTailIndex = tailIndex + 1;
   queue.tailIndex = nextTailIndex < array.length ? nextTailIndex : 0;
   queue.size += 1;
+};
+
+/**
+ * Adds `element` to `queue` as the last (newest) element if `queue` is not yet full.
+ * @param queue
+ * @param element
+ */
+export const enqueueSafe = <T>(queue: Unit<T>, element: T) => {
+  if (!isFull(queue)) enqueue(queue, element);
 };
 
 /**
@@ -136,20 +159,6 @@ export const dequeueSafeIf = <T>(
   predicate: (value: T) => boolean
 ): T | undefined =>
   queue.headIndex !== queue.tailIndex ? dequeueIf(queue, predicate) : undefined;
-
-/**
- * Checks if `queue` is empty.
- * @param queue
- * @returns `true` if `queue.size === 0`.
- */
-export const isEmpty = <T>(queue: Unit<T>) => queue.size === 0;
-
-/**
- * Checks if `queue` is full.
- * @param queue
- * @returns `true` if `queue.size === queue.array.length`.
- */
-export const isFull = <T>(queue: Unit<T>) => queue.size === queue.array.length;
 
 /**
  * Clears the contents of `queue`.

@@ -1,6 +1,9 @@
 export {
   create as createArrayQueue,
+  isEmpty as arrayQueueIsEmpty,
+  isFull as arrayQueueIsFull,
   enqueue,
+  enqueueSafe,
   dequeue,
   dequeueSafe,
   loop as loopArrayQueue,
@@ -8,8 +11,6 @@ export {
   peekSafe as peekArrayQueueSafe,
   dequeueIf,
   dequeueSafeIf,
-  isEmpty as arrayQueueIsEmpty,
-  isFull as arrayQueueIsFull,
   clear as clearArrayQueue,
   clearReference as clearArrayQueueReference
 } from "./array-queue";
