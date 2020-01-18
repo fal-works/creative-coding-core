@@ -158,8 +158,7 @@ export const dequeueIf = <T>(
 export const dequeueSafeIf = <T>(
   queue: Unit<T>,
   predicate: (value: T) => boolean
-): T | undefined =>
-  queue.headIndex !== queue.tailIndex ? dequeueIf(queue, predicate) : undefined;
+): T | undefined => (isEmpty(queue) ? undefined : dequeueIf(queue, predicate));
 
 /**
  * Clears the contents of `queue`.
