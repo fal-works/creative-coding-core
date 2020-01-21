@@ -119,8 +119,8 @@ export const createScaled = (
     case ScaleOriginType.Center: {
       const center = getCenterPoint(region);
       const size = getSize(region);
-      const halfWidth = size.width / 2;
-      const halfHeight = size.height / 2;
+      const halfWidth = scaleFactor * (size.width / 2);
+      const halfHeight = scaleFactor * (size.height / 2);
       return {
         topLeft: {
           x: center.x - halfWidth,
