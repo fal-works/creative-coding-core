@@ -8,3 +8,5 @@ export { Assign };
 
 import * as FullName from "./full-name";
 export { FullName };
+
+export * from "./functions";
