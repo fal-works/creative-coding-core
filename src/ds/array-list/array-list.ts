@@ -1,74 +1,26 @@
 import * as Arrays from "./../arrays";
+import * as ArrayCollection from "../array-collection";
 
 /**
  * A basic array-based list.
  * Used for avoiding reallocation by adding or removing elements of `Array`.
  */
-export interface Unit<T> {
-  /**
-   * The raw array that holds elements.
-   * This should be dense but may not be filled.
-   */
-  array: T[];
+export type Unit<T> = ArrayCollection.Unit<T>;
 
-  /**
-   * The number of valid elements in `array`.
-   */
-  size: number;
-}
+export const create: <T>(initialCapacity: number) => Unit<T> =
+  ArrayCollection.create;
 
-/**
- * Creates an array-list unit.
- * @param initialCapacity
- */
-export const create = <T>(initialCapacity: number): Unit<T> => {
-  return {
-    array: new Array<T>(initialCapacity),
-    size: 0
-  };
-};
+export const createFilled: <T>(size: number, value: T) => Unit<T> =
+  ArrayCollection.createFilled;
 
-/**
- * Creates an array-list unit filled with `value`.
- * @param size
- * @param value
- */
-export const createFilled = <T>(size: number, value: T): Unit<T> => {
-  return {
-    array: new Array<T>(size).fill(value),
-    size
-  };
-};
-
-/**
- * Creates an array-list unit, filled by running `factory` and assignint the result for each index.
- * @param size
- * @param factory
- */
-export const createPopulated = <T>(
+export const createPopulated: <T>(
   size: number,
   factory: (index: number) => T
-): Unit<T> => {
-  return {
-    array: Arrays.populate(new Array<T>(size), factory),
-    size
-  };
-};
+) => Unit<T> = ArrayCollection.createPopulated;
 
-/**
- * Creates an array-list unit by reusing the reference to `array`.
- * The `size` of the array-list will be `array.length`.
- * Be sure that `array` is filled with valid elements.
- *
- * @param array
- * @returns A new array-list unit.
- */
-export const fromArray = <T>(array: T[]): Unit<T> => {
-  return {
-    array,
-    size: array.length
-  };
-};
+export const fromArray: <T>(array: T[]) => Unit<T> = ArrayCollection.fromArray;
+
+export { clear, clearReference, isEmpty, isFull } from "../array-collection";
 
 /**
  * Adds `element` to `arrayList`.
@@ -160,15 +112,6 @@ export const addList = <T>(destination: Unit<T>, source: Unit<T>): void => {
 };
 
 /**
- * Clears the contents of `arrayList`.
- * This just sets `size` to `0` and does not nullify references.
- * @param arrayList
- */
-export const clear = <T>(arrayList: Unit<T>): void => {
-  arrayList.size = 0;
-};
-
-/**
  * Nullifies the slots that are not used.
  * @param arrayList
  */
@@ -177,15 +120,6 @@ export const cleanUnusedSlots = <T>(arrayList: Unit<T>): void => {
   const capacity = array.length;
   array.length = size;
   array.length = capacity;
-};
-
-/**
- * Clears the contents of `arrayList` and also nullifies all references.
- * @param arrayList
- */
-export const clearReference = <T>(arrayList: Unit<T>): void => {
-  arrayList.size = 0;
-  cleanUnusedSlots(arrayList);
 };
 
 /**

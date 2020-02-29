@@ -1,43 +1,29 @@
 import * as Arrays from "./../arrays";
+import * as ArrayCollection from "../array-collection";
 
-export interface Unit<T> {
+export interface Unit<T> extends ArrayCollection.Unit<T> {
   array: Array<T>;
+  size: number;
   headIndex: number;
   tailIndex: number;
-  size: number;
 }
 
 /**
  * Creates an array-based queue.
- * @param capacity
  * @returns A queue object.
  */
 export const create = <T>(capacity: number): Unit<T> => ({
-  array: new Array<T>(capacity),
+  ...ArrayCollection.create(capacity),
   headIndex: 0,
-  tailIndex: 0,
-  size: 0
+  tailIndex: 0
 });
 
-/**
- * Checks if `queue` is empty.
- * @param queue
- * @returns `true` if `queue.size === 0`.
- */
-export const isEmpty = <T>(queue: Unit<T>) => queue.size === 0;
-
-/**
- * Checks if `queue` is full.
- * @param queue
- * @returns `true` if `queue.size === queue.array.length`.
- */
-export const isFull = <T>(queue: Unit<T>) => queue.size === queue.array.length;
+import { isEmpty, isFull } from "../array-collection";
+export { isEmpty, isFull };
 
 /**
  * Adds `element` to `queue` as the last (newest) element.
  * Be sure that `queue` is not full.
- * @param queue
- * @param element
  */
 export const enqueue = <T>(queue: Unit<T>, element: T) => {
   const { array, tailIndex } = queue;
@@ -49,8 +35,6 @@ export const enqueue = <T>(queue: Unit<T>, element: T) => {
 
 /**
  * Adds `element` to `queue` as the last (newest) element if `queue` is not yet full.
- * @param queue
- * @param element
  */
 export const enqueueSafe = <T>(queue: Unit<T>, element: T) => {
   if (!isFull(queue)) enqueue(queue, element);
@@ -59,7 +43,6 @@ export const enqueueSafe = <T>(queue: Unit<T>, element: T) => {
 /**
  * Removes the top (oldest) element from `queue`.
  * Be sure that `queue` is not empty.
- * @param queue
  * @returns Removed element.
  */
 export const dequeue = <T>(queue: Unit<T>): T => {
@@ -73,7 +56,6 @@ export const dequeue = <T>(queue: Unit<T>): T => {
 
 /**
  * Removes the top (oldest) element from `queue` if `queue` is not empty.
- * @param queue
  * @returns Removed element, or `undefined` if empty.
  */
 export const dequeueSafe = <T>(queue: Unit<T>): T | undefined =>
@@ -81,24 +63,19 @@ export const dequeueSafe = <T>(queue: Unit<T>): T | undefined =>
 
 /**
  * Removes the top (oldest) element from `queue` only if `queue` is full.
- * @param queue
  * @returns Removed element, or `undefined` if not full.
  */
 export const dequeueIfFull = <T>(queue: Unit<T>): T | undefined =>
   isFull(queue) ? dequeue(queue) : undefined;
 
 /**
- * Retunrs the top (oldest) element from `queue`.
- * Be sure that `queue` is not empty.
- * @param queue
- * @returns Removed element.
+ * @returns The top (oldest) element from `queue`.
+ * Unspecified if `queue` is empty.
  */
 export const peek = <T>(queue: Unit<T>): T => queue.array[queue.headIndex];
 
 /**
- * Retunrs the top (oldest) element from `queue`.
- * @param queue
- * @returns Removed element, or `undefined` if empty.
+ * @returns The top (oldest) element, or `undefined` if empty.
  */
 export const peekSafe = <T>(queue: Unit<T>): T | undefined => {
   const { headIndex } = queue;
@@ -107,8 +84,6 @@ export const peekSafe = <T>(queue: Unit<T>): T | undefined => {
 
 /**
  * Runs `callback` for each element of `queue`.
- * @param arrayList
- * @param callback
  */
 export const loop = <T>(
   queue: Unit<T>,
@@ -129,7 +104,6 @@ export const loop = <T>(
 /**
  * Removes the top (oldest) element from `queue` if `predicate` returns true.
  * Be sure that `queue` is not empty.
- * @param queue
  * @param predicate Function that returns `true` if a given value matches the condition.
  * @returns Removed element, or `undefined` if not removed.
  */
@@ -151,7 +125,6 @@ export const dequeueIf = <T>(
 
 /**
  * Removes the top (oldest) element from `queue` if `predicate` returns true.
- * @param queue
  * @param predicate Function that returns `true` if a given value matches the condition.
  * @returns Removed element, or `undefined` if empty or not removed.
  */
@@ -161,24 +134,13 @@ export const dequeueSafeIf = <T>(
 ): T | undefined => (isEmpty(queue) ? undefined : dequeueIf(queue, predicate));
 
 /**
- * Clears the contents of `queue`.
+ * Clears the contents.
  * This does not nullify references.
- * @param queue
  */
 export const clear = <T>(queue: Unit<T>) => {
+  ArrayCollection.clear(queue);
   queue.headIndex = 0;
   queue.tailIndex = 0;
-  queue.size = 0;
 };
 
-/**
- * Clears the contents of `queue` and also nullifies all references.
- * @param queue
- */
-export const clearReference = <T>(queue: Unit<T>): void => {
-  clear(queue);
-  const { array } = queue;
-  const capacity = array.length;
-  array.length = 0;
-  array.length = capacity;
-};
+export { clearReference } from "../array-collection";
