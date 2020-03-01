@@ -41,8 +41,10 @@ export const enqueue = <T extends Element<T>>(
 export const dequeue = <T extends Element<T>>(queue: Unit<T>): T | null => {
   const { top } = queue;
   if (top !== null) {
-    queue.top = top.next;
-    top.next = null;
+    const next = top.next;
+    queue.top = next;
+    if (!next) queue.last = null;
+    isolate(top);
   }
   return top;
 };
