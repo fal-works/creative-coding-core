@@ -30,8 +30,12 @@ export const enqueue = <T extends Element<T>>(
   element: T
 ): void => {
   const { last } = queue;
-  if (last === null) queue.top = queue.last = element;
-  else queue.last = last.next = element;
+  if (last === null) {
+    queue.top = queue.last = element;
+  } else {
+    last.next = element;
+    queue.last = element;
+  }
 };
 
 /**
