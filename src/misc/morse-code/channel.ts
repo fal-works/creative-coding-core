@@ -63,7 +63,7 @@ const setNextRun = (
   channel: Unit,
   ms: number
 ) => {
-  channel.timeout = setTimeout(() => {
+  channel.timeout = window.setTimeout(() => {
     channel.timeout = undefined;
     run(channel);
   }, ms);
@@ -78,7 +78,7 @@ const run = (channel: Unit) => {
     return;
   }
 
-  channel.timeout = setTimeout(() => {
+  channel.timeout = window.setTimeout(() => {
     if (channel.loop) {
       channel.off(Signal.NUL);
       channel.timeout = undefined;
