@@ -4,7 +4,7 @@ import {
   umdName,
   bannerComment,
   input,
-  createPlugins
+  createPlugins,
 } from "./rollup-config-common";
 
 export default {
@@ -15,7 +15,7 @@ export default {
     name: umdName,
     sourcemap: false,
     banner: bannerComment,
-    preferConst: true
+    preferConst: true,
   },
-  plugins: createPlugins()
+  plugins: createPlugins(),
 };

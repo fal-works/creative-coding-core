@@ -3,7 +3,7 @@ import {
   moduleName,
   bannerComment,
   input,
-  createPlugins
+  createPlugins,
 } from "./rollup-config-common";
 
 export default {
@@ -13,7 +13,7 @@ export default {
     format: "es",
     sourcemap: false,
     banner: bannerComment,
-    preferConst: true
+    preferConst: true,
   },
-  plugins: createPlugins({ declaration: true })
+  plugins: createPlugins({ declaration: true }),
 };

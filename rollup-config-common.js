@@ -33,17 +33,17 @@ export { distributionDirectory, moduleName, umdName, bannerComment };
 
 export const input = `src/${moduleName}.ts`;
 
-export const createPlugins = compilerOptionsOverride => [
+export const createPlugins = (compilerOptionsOverride) => [
   typescript({
     useTsconfigDeclarationDir: true,
     celan: cleanBuild,
     tsconfigOverride: compilerOptionsOverride
       ? { compilerOptions: compilerOptionsOverride }
-      : undefined
+      : undefined,
   }),
   cleanup({
     comments: /^\*\*/, // preserve jsdoc comments
     sourcemap: false,
-    extensions: ["ts"]
-  })
+    extensions: ["ts"],
+  }),
 ];
