@@ -15,5 +15,5 @@ export default {
     banner: bannerComment,
     preferConst: true,
   },
-  plugins: createPlugins({ declaration: true }),
+  plugins: createPlugins(),
 };

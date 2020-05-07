@@ -7,6 +7,7 @@
     "eslint:recommended",
     "plugin:prettier/recommended"
   ],
+  "ignorePatterns": ["out/**/*.js"],
   "parserOptions": {
     "ecmaVersion": 2015,
     "sourceType": "module"

@@ -1,10 +1,9 @@
-import typescript from "rollup-plugin-typescript2";
+import resolve from "@rollup/plugin-node-resolve";
 import cleanup from "rollup-plugin-cleanup";
 
 // ----------------------------------------------------------------------------
 
 const version = "0.8.1";
-const cleanBuild = true;
 
 const moduleName = "creative-coding-core";
 const umdName = "CreativeCodingCore";
@@ -31,19 +30,13 @@ const distributionDirectory = "lib";
 
 export { distributionDirectory, moduleName, umdName, bannerComment };
 
-export const input = `src/${moduleName}.ts`;
+export const input = `out/${moduleName}.js`;
 
-export const createPlugins = (compilerOptionsOverride) => [
-  typescript({
-    useTsconfigDeclarationDir: true,
-    celan: cleanBuild,
-    tsconfigOverride: compilerOptionsOverride
-      ? { compilerOptions: compilerOptionsOverride }
-      : undefined,
-  }),
+export const createPlugins = () => [
+  resolve(),
   cleanup({
     comments: /^\*\*/, // preserve jsdoc comments
     sourcemap: false,
-    extensions: ["ts"],
+    extensions: ["js"],
   }),
 ];
