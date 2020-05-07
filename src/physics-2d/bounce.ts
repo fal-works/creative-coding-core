@@ -44,7 +44,7 @@ export const withinRectangle = (
 
   const {
     topLeft: { x: minX, y: minY },
-    bottomRight: { x: maxX, y: maxY }
+    bottomRight: { x: maxX, y: maxY },
   } = region;
 
   if (x < minX) {
@@ -133,7 +133,7 @@ export const addForceEachOther = {
     SimpleDynamics.addForce(quantityB, bounceForce);
     Vector2D.Mutable.multiply(bounceForce, -1);
     SimpleDynamics.addForce(quantityA, bounceForce);
-  }
+  },
 };
 
 /**
@@ -152,7 +152,7 @@ export const addForceWithinRectangle = (
 
   const {
     topLeft: { x: minX, y: minY },
-    bottomRight: { x: maxX, y: maxY }
+    bottomRight: { x: maxX, y: maxY },
   } = region;
 
   const forceFactor = 1 + restitution;

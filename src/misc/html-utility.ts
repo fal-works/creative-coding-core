@@ -16,6 +16,6 @@ export const getElementSize = (node: Element): Unit =>
   node === document.body
     ? {
         width: window.innerWidth,
-        height: window.innerHeight
+        height: window.innerHeight,
       }
     : node.getBoundingClientRect();

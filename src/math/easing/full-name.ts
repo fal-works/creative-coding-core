@@ -3,7 +3,7 @@ export {
   cubic as easeInCubic,
   quart as easeInQuart,
   expo as easeInExpo,
-  createBack as createEaseInBack
+  createBack as createEaseInBack,
 } from "./in";
 
 export {
@@ -11,7 +11,7 @@ export {
   cubic as easeOutCubic,
   quart as easeOutQuart,
   expo as easeOutExpo,
-  createBack as createEaseOutBack
+  createBack as createEaseOutBack,
 } from "./out";
 
 export {
@@ -19,7 +19,7 @@ export {
   cubic as easeInOutCubic,
   quart as easeInOutQuart,
   expo as easeInOutExpo,
-  createBack as createEaseInOutBack
+  createBack as createEaseInOutBack,
 } from "./in-out";
 
 export {
@@ -27,12 +27,12 @@ export {
   cubic as easeOutInCubic,
   quart as easeOutInQuart,
   expo as easeOutInExpo,
-  createBack as createEaseOutInBack
+  createBack as createEaseOutInBack,
 } from "./out-in";
 
 export { linear as easeLinear } from "./other";
 
 export {
   concatenate as concatenateEasing,
-  integrate as integrateEasing
+  integrate as integrateEasing,
 } from "./composite";

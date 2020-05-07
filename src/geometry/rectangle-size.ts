@@ -23,5 +23,5 @@ export const getArea = (size: Unit): number => size.width * size.height;
  */
 export const createInfinite = () => ({
   width: Infinity,
-  height: Infinity
+  height: Infinity,
 });

@@ -22,7 +22,7 @@ export const createQuantity = (
     vy: vy || 0,
     fx: 0,
     fy: 0,
-    mass
+    mass,
   };
 };
 
@@ -46,7 +46,7 @@ export const createVerletQuantity = (
     vy2: 0,
     fx: 0,
     fy: 0,
-    mass
+    mass,
   };
 };
 

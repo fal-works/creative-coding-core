@@ -165,7 +165,7 @@ export const attract = {
     SimpleDynamics.addForce(
       attracted,
       calculateSimple(attractor, attracted, temporalGravitation)
-    )
+    ),
 };
 
 /**
@@ -232,5 +232,5 @@ export const attractEachOther = {
       bodyA,
       bodyB,
       calculateSimple(bodyA, bodyB, temporalGravitation)
-    )
+    ),
 };

@@ -18,6 +18,6 @@ export const from = <T>(prototypeStructure: T, length: number): Unit<T> => {
 
   return {
     data,
-    length
+    length,
   };
 };

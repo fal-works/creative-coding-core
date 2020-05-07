@@ -12,7 +12,7 @@ export interface Unit<T> {
 export const create = <T>(factory: () => T): Unit<T> => {
   return {
     value: undefined,
-    factory
+    factory,
   };
 };
 

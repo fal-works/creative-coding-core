@@ -48,7 +48,7 @@ const morseCodeMap = new Map<string, string>([
   [")", "-.--.-"],
   ['"', ".-..-."],
   ["=", "-...-"],
-  ["+", ".-.-."]
+  ["+", ".-.-."],
 ]);
 
 export interface Unit {
@@ -72,7 +72,7 @@ const createSignalUnit = (
     isOn,
     length,
     codeString,
-    binaryString: s
+    binaryString: s,
   });
 };
 

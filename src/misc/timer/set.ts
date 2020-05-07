@@ -9,7 +9,7 @@ export interface Unit {
 export const create = (capacity: number): Unit => {
   return {
     runningComponents: ArrayList.create(capacity),
-    newComponentsBuffer: ArrayList.create(capacity)
+    newComponentsBuffer: ArrayList.create(capacity),
   };
 };
 
@@ -38,6 +38,6 @@ export const construct = (capacity: number) => {
   return {
     add: add.bind(undefined, timerSet),
     step: step.bind(undefined, timerSet),
-    clear: clear.bind(undefined, timerSet)
+    clear: clear.bind(undefined, timerSet),
   };
 };

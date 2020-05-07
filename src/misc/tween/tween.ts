@@ -24,8 +24,8 @@ export const create = (
 
   return Timer.create({
     duration,
-    onProgress: progress =>
-      setValue(Numeric.lerp(start, end, ease(progress.ratio)))
+    onProgress: (progress) =>
+      setValue(Numeric.lerp(start, end, ease(progress.ratio))),
   });
 };
 
@@ -54,7 +54,7 @@ export const setCreate = (
       endValue = end;
       ease = easing || Easing.linear;
     },
-    onProgress: progress =>
-      setValue(Numeric.lerp(startValue, endValue, ease(progress.ratio)))
+    onProgress: (progress) =>
+      setValue(Numeric.lerp(startValue, endValue, ease(progress.ratio))),
   });
 };

@@ -19,7 +19,7 @@ export const createQuantity = (
     vx: vx || 0,
     vy: vy || 0,
     fx: 0,
-    fy: 0
+    fy: 0,
   };
 };
 
@@ -39,7 +39,7 @@ export const createVerletQuantity = (
     vx2: 0,
     vy2: 0,
     fx: 0,
-    fy: 0
+    fy: 0,
   };
 };
 

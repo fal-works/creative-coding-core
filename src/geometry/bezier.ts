@@ -44,7 +44,7 @@ export const createCurve = (
         0.5 * currentControlLine.length,
         currentControlLine.angle
       ),
-      targetPoint: currentVertex.point
+      targetPoint: currentVertex.point,
     });
 
     previousVertex = currentVertex;
@@ -53,6 +53,6 @@ export const createCurve = (
 
   return {
     startPoint: vertexPropertyList[0].point,
-    paths
+    paths,
   };
 };

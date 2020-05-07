@@ -19,7 +19,7 @@ export interface Unit<T extends Element<T>> {
 
 export const create = <T extends Element<T>>(): Unit<T> => ({
   top: null,
-  last: null
+  last: null,
 });
 
 /**

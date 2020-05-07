@@ -5,7 +5,7 @@ import {
   sin,
   clamp as clampNumber,
   constrain as constrainNumber,
-  hypotenuse2D
+  hypotenuse2D,
 } from "../../math/numeric";
 
 export const add = (

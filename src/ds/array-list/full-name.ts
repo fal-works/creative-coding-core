@@ -26,5 +26,5 @@ export {
   removeSwapAll as removeSwapAllFromArrayList,
   populate as populateArrayList,
   nestedLoopJoin as arrayListNestedLoopJoin,
-  roundRobin as arrayListRoundRobin
+  roundRobin as arrayListRoundRobin,
 } from "./array-list";

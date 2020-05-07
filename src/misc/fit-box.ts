@@ -8,7 +8,7 @@ import { min2 } from "../math/numeric";
 export const enum FittingOption {
   FIT_TO_BOX = "FIT_TO_BOX",
   FIT_WIDTH = "FIT_WIDTH",
-  FIT_HEIGHT = "FIT_HEIGHT"
+  FIT_HEIGHT = "FIT_HEIGHT",
 }
 
 /**

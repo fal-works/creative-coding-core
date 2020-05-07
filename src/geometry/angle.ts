@@ -3,7 +3,7 @@ import { atan2 } from "../math/numeric";
 import {
   ONE_HALF,
   SQUARE_ROOT_THREE_OVER_TWO,
-  ONE_OVER_SQUARE_ROOT_TWO
+  ONE_OVER_SQUARE_ROOT_TWO,
 } from "../math/constants";
 
 export const PI = Math.PI;

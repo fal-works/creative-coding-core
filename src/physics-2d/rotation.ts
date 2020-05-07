@@ -32,6 +32,6 @@ export const createRandomQuantity = (
     rotationAngle: Random.angle(),
     rotationVelocity: Random.signed(
       Random.between(minRotationSpeed, maxRotationSpeed)
-    )
+    ),
   };
 };

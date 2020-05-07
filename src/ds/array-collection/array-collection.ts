@@ -25,7 +25,7 @@ export interface Unit<T> {
 export const create = <T>(initialCapacity: number): Unit<T> => {
   return {
     array: new Array<T>(initialCapacity),
-    size: 0
+    size: 0,
   };
 };
 
@@ -37,7 +37,7 @@ export const create = <T>(initialCapacity: number): Unit<T> => {
 export const createFilled = <T>(size: number, value: T): Unit<T> => {
   return {
     array: new Array<T>(size).fill(value),
-    size
+    size,
   };
 };
 
@@ -53,7 +53,7 @@ export const createPopulated = <T>(
 ): Unit<T> => {
   return {
     array: Arrays.populate(new Array<T>(size), factory),
-    size
+    size,
   };
 };
 
@@ -67,7 +67,7 @@ export const createPopulated = <T>(
 export const fromArray = <T>(array: T[]): Unit<T> => {
   return {
     array,
-    size: array.length
+    size: array.length,
   };
 };
 

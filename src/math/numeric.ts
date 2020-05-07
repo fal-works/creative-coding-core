@@ -32,7 +32,7 @@ export const {
   hypot,
   trunc,
   fround,
-  cbrt
+  cbrt,
 } = Math;
 
 /**

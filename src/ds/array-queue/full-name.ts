@@ -13,5 +13,5 @@ export {
   dequeueIf,
   dequeueSafeIf,
   clear as clearArrayQueue,
-  clearReference as clearArrayQueueReference
+  clearReference as clearArrayQueueReference,
 } from "./array-queue";

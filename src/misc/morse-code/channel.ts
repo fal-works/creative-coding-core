@@ -34,7 +34,7 @@ export const create = (
     loop,
     signals,
     index: 0,
-    timeout: undefined
+    timeout: undefined,
   };
 };
 

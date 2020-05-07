@@ -21,8 +21,8 @@ export const create = (
   topLeft: topLeftPosition,
   bottomRight: {
     x: topLeftPosition.x + size.width,
-    y: topLeftPosition.y + size.height
-  }
+    y: topLeftPosition.y + size.height,
+  },
 });
 
 export const createFromCenter = (
@@ -34,7 +34,7 @@ export const createFromCenter = (
   const halfHeight = size.height / 2;
   return {
     topLeft: { x: x - halfWidth, y: y - halfHeight },
-    bottomRight: { x: x + halfWidth, y: y + halfHeight }
+    bottomRight: { x: x + halfWidth, y: y + halfHeight },
   };
 };
 
@@ -71,7 +71,7 @@ export const getSize = (region: Unit) => {
   const { topLeft, bottomRight } = region;
   return {
     width: bottomRight.x - topLeft.x,
-    height: bottomRight.y - topLeft.y
+    height: bottomRight.y - topLeft.y,
   };
 };
 
@@ -85,13 +85,13 @@ export const getCenterPoint = (region: Unit): Vector2D.Unit => {
   const { topLeft, bottomRight } = region;
   return {
     x: (topLeft.x + bottomRight.x) / 2,
-    y: (topLeft.y + bottomRight.y) / 2
+    y: (topLeft.y + bottomRight.y) / 2,
   };
 };
 
 export const enum ScaleOriginType {
   TopLeft,
-  Center
+  Center,
 }
 
 /**
@@ -113,8 +113,8 @@ export const createScaled = (
         topLeft,
         bottomRight: {
           x: lerp(topLeft.x, bottomRight.x, scaleFactor),
-          y: lerp(topLeft.y, bottomRight.y, scaleFactor)
-        }
+          y: lerp(topLeft.y, bottomRight.y, scaleFactor),
+        },
       };
     case ScaleOriginType.Center: {
       const center = getCenterPoint(region);
@@ -124,12 +124,12 @@ export const createScaled = (
       return {
         topLeft: {
           x: center.x - halfWidth,
-          y: center.y - halfHeight
+          y: center.y - halfHeight,
         },
         bottomRight: {
           x: center.x + halfWidth,
-          y: center.y + halfHeight
-        }
+          y: center.y + halfHeight,
+        },
       };
     }
   }
@@ -142,7 +142,7 @@ export const createScaled = (
  */
 export const copy = (region: Unit): Unit => ({
   topLeft: Vector2D.copy(region.topLeft),
-  bottomRight: Vector2D.copy(region.bottomRight)
+  bottomRight: Vector2D.copy(region.bottomRight),
 });
 
 /**
@@ -150,7 +150,7 @@ export const copy = (region: Unit): Unit => ({
  */
 export const createInfinite = (): Unit => ({
   topLeft: { x: -Infinity, y: -Infinity },
-  bottomRight: { x: Infinity, y: Infinity }
+  bottomRight: { x: Infinity, y: Infinity },
 });
 
 /**
@@ -165,12 +165,12 @@ export const addMargin = (region: Unit, margin: number): Unit => {
   return {
     topLeft: {
       x: originalTopLeft.x - margin,
-      y: originalTopLeft.y - margin
+      y: originalTopLeft.y - margin,
     },
     bottomRight: {
       x: originalBottomRight.x + margin,
-      y: originalBottomRight.y + margin
-    }
+      y: originalBottomRight.y + margin,
+    },
   };
 };
 
@@ -189,11 +189,11 @@ export const addMargins = (
   return {
     topLeft: {
       x: originalTopLeft.x - margins.left,
-      y: originalTopLeft.y - margins.top
+      y: originalTopLeft.y - margins.top,
     },
     bottomRight: {
       x: originalBottomRight.x + margins.right,
-      y: originalBottomRight.y + margins.bottom
-    }
+      y: originalBottomRight.y + margins.bottom,
+    },
   };
 };

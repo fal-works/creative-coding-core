@@ -17,7 +17,7 @@ const createProgress = (duration: number): Progress => {
     duration,
     ratioChangeRate: 1 / Numeric.max2(1, duration),
     count: 0,
-    ratio: 0
+    ratio: 0,
   };
 };
 const updateProgress = (progress: Progress) => {

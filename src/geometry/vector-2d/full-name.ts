@@ -17,7 +17,7 @@ export {
   copy as copyVector,
   lengthSquared as vectorLengthSquared,
   length as vectorLength,
-  angle as vectorAngle
+  angle as vectorAngle,
 } from "./vector-2d";
 
 export {
@@ -36,7 +36,7 @@ export {
   clamp as clampVector,
   constrain as constrainVector,
   separate as separateVector,
-  separateEachOther as separateVectors
+  separateEachOther as separateVectors,
 } from "./mutable";
 
 export {
@@ -49,5 +49,5 @@ export {
   multiply as multiplyVectorAssign,
   divide as divideVectorAssign,
   clamp as clampVectorAssign,
-  constrain as constrainVectorAssign
+  constrain as constrainVectorAssign,
 } from "./assign";

@@ -5,7 +5,7 @@ import {
   sin,
   clamp as clampNumber,
   constrain as constrainNumber,
-  lerp
+  lerp,
 } from "../../math/numeric";
 import * as Angle from "../angle";
 

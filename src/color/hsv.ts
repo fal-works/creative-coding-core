@@ -11,7 +11,7 @@ import { Random } from "../math";
 export const withRandomHue = (saturation: number, value: number) => [
   Random.value(360),
   saturation,
-  value
+  value,
 ];
 
 /**

@@ -13,7 +13,7 @@ export interface Unit {
 export const create = (callback: () => void, frequency = 1) => ({
   callback,
   frequency,
-  accumulation: 0
+  accumulation: 0,
 });
 
 /**

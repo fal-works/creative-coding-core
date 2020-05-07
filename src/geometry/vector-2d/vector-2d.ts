@@ -3,7 +3,7 @@ import {
   sin,
   hypotenuseSquared2D,
   hypotenuse2D,
-  atan2
+  atan2,
 } from "../../math/numeric";
 
 /**
@@ -26,7 +26,7 @@ export const create = (x: number, y: number): Unit => ({ x, y });
  */
 export const zero: Unit = {
   x: 0,
-  y: 0
+  y: 0,
 };
 
 /**
@@ -45,7 +45,7 @@ export const isZero = (v: Unit): boolean => v.x === 0 && v.y === 0;
 export const fromPolar = (length: number, angle: number): Unit => {
   return {
     x: length * cos(angle),
-    y: length * sin(angle)
+    y: length * sin(angle),
   };
 };
 
@@ -58,7 +58,7 @@ export const fromPolar = (length: number, angle: number): Unit => {
 export const add = (a: Unit, b: Unit): Unit => {
   return {
     x: a.x + b.x,
-    y: a.y + b.y
+    y: a.y + b.y,
   };
 };
 
@@ -72,7 +72,7 @@ export const add = (a: Unit, b: Unit): Unit => {
 export const addCartesian = (vector: Unit, x: number, y: number): Unit => {
   return {
     x: vector.x + x,
-    y: vector.y + y
+    y: vector.y + y,
   };
 };
 
@@ -86,7 +86,7 @@ export const addCartesian = (vector: Unit, x: number, y: number): Unit => {
 export const addPolar = (vector: Unit, length: number, angle: number): Unit => {
   return {
     x: vector.x + length * cos(angle),
-    y: vector.y + length * sin(angle)
+    y: vector.y + length * sin(angle),
   };
 };
 
@@ -99,7 +99,7 @@ export const addPolar = (vector: Unit, length: number, angle: number): Unit => {
 export const subtract = (a: Unit, b: Unit): Unit => {
   return {
     x: a.x - b.x,
-    y: a.y - b.y
+    y: a.y - b.y,
   };
 };
 
@@ -113,7 +113,7 @@ export const subtract = (a: Unit, b: Unit): Unit => {
 export const subtractCartesian = (vector: Unit, x: number, y: number): Unit => {
   return {
     x: vector.x - x,
-    y: vector.y - y
+    y: vector.y - y,
   };
 };
 
@@ -131,7 +131,7 @@ export const subtractPolar = (
 ): Unit => {
   return {
     x: vector.x - length * cos(angle),
-    y: vector.y - length * sin(angle)
+    y: vector.y - length * sin(angle),
   };
 };
 
@@ -144,7 +144,7 @@ export const subtractPolar = (
 export const multiply = (vector: Unit, multiplier: number): Unit => {
   return {
     x: vector.x * multiplier,
-    y: vector.y * multiplier
+    y: vector.y * multiplier,
   };
 };
 
@@ -157,7 +157,7 @@ export const multiply = (vector: Unit, multiplier: number): Unit => {
 export const divide = (vector: Unit, divisor: number): Unit => {
   return {
     x: vector.x / divisor,
-    y: vector.y / divisor
+    y: vector.y / divisor,
   };
 };
 
@@ -193,7 +193,7 @@ export const toStr = (vector: Unit): string => `{x:${vector.x},y:${vector.y}}`;
 export const copy = (vector: Unit): Unit => {
   return {
     x: vector.x,
-    y: vector.y
+    y: vector.y,
   };
 };
 
@@ -243,7 +243,7 @@ export const normalize = (vector: Unit): Unit => {
 
   return {
     x: x / length,
-    y: y / length
+    y: y / length,
   };
 };
 
@@ -260,6 +260,6 @@ export const normalizeBetween = (from: Unit, to: Unit): Unit => {
 
   return {
     x: dx / distance,
-    y: dy / distance
+    y: dy / distance,
   };
 };

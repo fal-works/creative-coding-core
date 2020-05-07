@@ -26,14 +26,14 @@ export const create = (
 
   return Timer.create({
     duration,
-    onProgress: progress => {
+    onProgress: (progress) => {
       const ratio = ease(progress.ratio);
       Vector2D.Mutable.setCartesian(
         vector,
         Numeric.lerp(startX, endX, ratio),
         Numeric.lerp(startY, endY, ratio)
       );
-    }
+    },
   });
 };
 
@@ -62,13 +62,13 @@ export const setCreate = (
       ({ x: endX, y: endY } = target);
       ease = easing || Easing.linear;
     },
-    onProgress: progress => {
+    onProgress: (progress) => {
       const ratio = ease(progress.ratio);
       Vector2D.Mutable.setCartesian(
         vector,
         Numeric.lerp(startX, endX, ratio),
         Numeric.lerp(startY, endY, ratio)
       );
-    }
+    },
   });
 };

@@ -15,7 +15,7 @@ export interface Unit<T> extends ArrayCollection.Unit<T> {
 export const create = <T>(capacity: number): Unit<T> => ({
   ...ArrayCollection.create(capacity),
   headIndex: 0,
-  tailIndex: 0
+  tailIndex: 0,
 });
 
 import { isEmpty, isFull } from "../array-collection";

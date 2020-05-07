@@ -17,7 +17,7 @@ export const createQuantity = (
     x,
     y,
     vx: vx || 0,
-    vy: vy || 0
+    vy: vy || 0,
   };
 };
 

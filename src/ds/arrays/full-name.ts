@@ -17,5 +17,5 @@ export {
   filterMap as filterMapArray,
   loopRun as loopRunArray,
   loopRunWithArgument as loopRunArrayWithArgument,
-  blit as blitArray
+  blit as blitArray,
 } from "./arrays";

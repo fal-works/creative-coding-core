@@ -20,6 +20,6 @@ export const pointInRectangleRegion = (
   const { topLeft, bottomRight } = region;
   return {
     x: between(topLeft.x, bottomRight.x),
-    y: between(topLeft.y, bottomRight.y)
+    y: between(topLeft.y, bottomRight.y),
   };
 };
