@@ -16,7 +16,7 @@ export interface Unit {
   readonly loop: boolean;
   signals: Signal.Sequence;
   index: number;
-  timeout: NodeJS.Timeout | undefined;
+  timeout: number | undefined;
 }
 
 export const create = (
