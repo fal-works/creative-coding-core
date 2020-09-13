@@ -7,17 +7,24 @@
     "eslint:recommended",
     "plugin:prettier/recommended"
   ],
-  "ignorePatterns": ["out/**/*.js"],
+  "ignorePatterns": [
+    "out/**/*.js"
+  ],
   "parserOptions": {
     "ecmaVersion": 2015,
     "sourceType": "module"
   },
   "overrides": [
     {
-      "files": ["lib/*.js"],
+      "files": [
+        "lib/*.js"
+      ],
       "env": {
         "node": true,
         "amd": true
+      },
+      "globals": {
+        "globalThis": "readonly"
       },
       "parserOptions": {
         "sourceType": "script"
@@ -27,7 +34,9 @@
       }
     },
     {
-      "files": ["src/**/*.ts"],
+      "files": [
+        "src/**/*.ts"
+      ],
       "extends": [
         "plugin:@typescript-eslint/eslint-recommended",
         "plugin:@typescript-eslint/recommended",
