@@ -9,3 +9,6 @@ export { Random };
 
 import * as MathConstants from "./constants";
 export { MathConstants };
+
+import * as Matrix from "./matrix";
+export { Matrix };
