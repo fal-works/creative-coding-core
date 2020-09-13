@@ -3,7 +3,7 @@ import cleanup from "rollup-plugin-cleanup";
 
 // ----------------------------------------------------------------------------
 
-const version = "0.9.0";
+const version = "0.10.0";
 
 const moduleName = "creative-coding-core";
 const umdName = "CreativeCodingCore";
